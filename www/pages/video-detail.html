@@ -1,0 +1,22 @@
+<div>
+
+    <h1>{{video.video1_name}}</h1>
+
+    <section   ng-show="videoPart1" >
+        <video  width="{{width}}" id="video"  autoplay src="{{getUrlVideo(CurrentVideoLink)}}" controls>
+        </video>
+    </section>
+    <div ng-hide="videoPart1">
+        <h1>{{video.question}}</h1>
+        <ul>
+            <li ng-repeat="answer in answers">
+                <a ng-click="isCorrectAnswer(this.answer.status)">{{answer.text}}</a>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+</div>

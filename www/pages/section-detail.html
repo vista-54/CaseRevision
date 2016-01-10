@@ -1,0 +1,9 @@
+<div>
+    <h1>Topics lists</h1>
+    <ul>
+        <li ng-repeat="topic in topics">
+            <span><a href="#{{page}}/{{topic.id}}">{{"ID:"+topic.id+" Name:"+topic.name}}</a></span>
+
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,12 @@
+<div>
+    <h1>Video lists {{topicId}}</h1>
+   
+    <ul >
+        <li ng-repeat="video in videos">
+            <!--{{count=parseInt(count)+1}}-->
+            
+            <span ><a href="#{{page}}/{{video.id}}">{{"ID:"+video.id+" Name:"+video.name}}</a></span>
+
+        </li>
+    </ul>
+</div>

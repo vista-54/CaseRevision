@@ -1,0 +1,103 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*==================*/
+.myrow{
+    text-align: center;
+}
+.myrow img   {
+    width: 100%;
+}
+.wrapper-site-login {
+    background: #C3D7DC;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+/*=================*/
+.sectionHeader{
+    position: relative;
+    background: rgb(219,231,234);
+}
+.sectionHeader .logoBox{
+    text-align: left;
+    width: 100%;
+}
+.sectionHeader .logoBox img{
+    text-align: left;
+    width: 80%;
+}
+.sectionHeader .menuIco{
+    position: absolute;
+    right: 8px;
+    top: 10px;
+}
+.sectionHeader .sectionLinks{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+.sectionHeader .guyBox{
+
+    text-align: center;
+}
+.parentLinks:after{
+    clear: both;
+    content: "";
+    display: block;
+}
+.guyBox img{
+
+
+}
+.sectionContent{
+    /*text-align: center;*/
+}
+.sectionContent h1{
+    text-align: center;
+}
+.sectionContent span{
+    display: block;
+    text-align: left;
+    font: 600 14px "Microsoft Tai Le";
+    padding: 0 0 0 10px;
+}
