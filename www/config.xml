@@ -18,7 +18,10 @@
     <allow-intent href="geo:*"/>
     <preference name="orientation" value="portrait" />
     <preference name="phonegap-version" value="3.6.3"/>
-
+    <preference name="fullscreen" value="false"/>
+    <preference name="webviewbounce" value="false"/>
+    <preference name="DisallowOverscroll" value="true"/>
+    <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4"/>
     <gap:splash gap:platform="android" src="res/screen/android/splash.png"/>
     <gap:splash gap:platform="ios" src="res/screen/ios/splash.png"/>
     <gap:plugin name="org.apache.cordova.splashscreen"/>

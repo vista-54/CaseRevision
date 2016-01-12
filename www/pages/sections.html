@@ -1,56 +1,7 @@
-<!--<div>
-    <div class="sectionHeader">
-        <div>
-            <div class="logoBox">
-                <img alt='logo' src='img/logo.png'>
-            </div>
-            <div class="menuIco">
-                <img alt='logo' src='img/menu-icon.png'>
-            </div>
-        </div>
-        <div class="parentLinks">
-            <div class='sectionLinks'>
-                <div>
-                    <img alt='watch' src='img/watch.png'>
-                </div>
-                <div>
-                    <img alt='WhatUsers' src='img/WhatUsers.png'>
-                </div>
-            </div>
-            <div class='sectionLinks'>
-                <div>
-                    <img alt='Range' src='img/Range.png'>
-                </div>
-                <div>
-                    <img alt='JoinUs2' src='img/JoinUs2.png'>
-                </div>
-            </div>
-        </div>
-                <div class="guyBox">
-                    <img alt='headerGuy' src="img/guy1.png" style="margin-top: {{
-                       getPosGuy()
-                         }} ">
-                </div>
-    </div>
-    <div class="sectionContent">
-        <h1>
-            Watch & learn wherever you are
-        </h1>
-        <span>CaseReVision is a market first and is aiming to revolutionise the university law sector. CaseReVision aims to create a lasting visual image imprinted in your memory to help you get the key information down when it comes to the all important exam period. Take a look at our sample video and see if you think CaseReVision can help you like we've helped hundreds before you!
-        </span>
-    </div>
-    <div class="sectionFooter"></div>
-</div>-->
-<ul>
+<div class="historylinks"><a href="#/sections">Sections</a></div>
+<ul class="list">
     <li ng-repeat="section in sections">
-        <span><a href="#/section/{{section.id}}">{{section.name}}</a></span>
-        <p>
-            {{section.coming_soon}}
-            <!--      {{phone.snippet}}-->
-        </p>
+        <span><a  href="#/section/{{section.id}}">{{section.name+" "+getComingSoon(section.coming_soon)}}</a></span>
     </li>
-    <!--    <li><a href="#/rRange">Range of law sections</a></li>
-        <li><a href="#/watch">Watch & learn wherever you are</a></li>
-        <li><a href="#/users">What our users are saying</a></li>
-        <li><a href="#/join">Join us today!</a></li>-->
+    
 </ul>

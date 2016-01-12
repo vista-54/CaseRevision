@@ -1,11 +1,11 @@
 <div>
-    <h1>Video lists {{topicId}}</h1>
-   
-    <ul >
+<!--    <h1>Video lists {{topicId}}</h1>-->
+   <div class="historylinks"><a href="#/sections">Sections</a> > <a href="{{sectionLink}}">{{sectionName}}</a> > <a href="#{{page}}/{{video.id}}">{{getTopicName()}}</a></div>
+    <ul class="list">
         <li ng-repeat="video in videos">
             <!--{{count=parseInt(count)+1}}-->
             
-            <span ><a href="#{{page}}/{{video.id}}">{{"ID:"+video.id+" Name:"+video.name}}</a></span>
+            <span ><a href="#{{page}}/{{video.id}}">{{video.name}}</a></span>
 
         </li>
     </ul>

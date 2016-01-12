@@ -3,34 +3,76 @@
         <meta charset="utf-8">
         <title>CaseRevision</title>
         <link  href="css/index.css" rel='stylesheet'>
-        <link  href="css/bootstrap-3.3.6-dist/css/bootstrap.css" rel='stylesheet'>
+        <link  href="css/layout.css" rel='stylesheet'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!--<link  href="css/bootstrap-3.3.6-dist/css/bootstrap.css" rel='stylesheet'>-->
 
         <!--<script src="js/index.js"></script>-->
 
 
     </head>
-    <body>
-    <ng-view></ng-view>
-    <!--    <div>
-    
-            <div ng-view></div>
-            <a href="#/">Home</a>
-            <a href="#/login">login</a>
-            <a href="#/sections">Sections</a>
-                        <div ng-include="loadPage('login')">
-            
-                        </div>
-    
-        </div>-->
-    <script src="js/libs/angular/angular.min.js"></script>
-    <script src="js/libs/jq/jquery.min.js"></script>
+    <body class="input">
+        <div class="head-wrapper">
+            <div class="mobile-menu" >
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Law Sections</a></li>
+                    <li><a href="#">Join Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Signup</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </div>
 
-    <script src="js/controllers/AppController.js"></script>
-    <!--<script src="js/controllers/loginController.js"></script>-->
-    <script src="js/libs/angular-route/angular-route.min.js"></script>
-    <!--<script src="js/libs/angular-jwplayer/dist/angular-jwplayer.min.js"></script>-->
-    <!--<script src="js/libs/ngvideo/dist/ng-video.min.js"></script>-->
-    <script src="js/libs/ngCordova/dist/ng-cordova.js"></script>
-    <script src="cordova.js"></script>
-</body>
+            <header>
+                <!--<div class="menu-button"></div>-->
+            </header>
+            <img class="logotype" src="img/logo.png" alt="Logo">
+            
+            <ng-view></ng-view>
+            <footer>
+<!--                <div class="back-block"><i class="fa fa-chevron-left"></i><span class="button-name">Back</span></div>
+                <div class="search-block"><span class="button-name">Search</span><i class="fa fa-search"></i></div>-->
+            </footer>
+
+
+            <!--    <div>
+            
+                    <div ng-view></div>
+                    <a href="#/">Home</a>
+                    <a href="#/login">login</a>
+                    <a href="#/sections">Sections</a>
+                                <div ng-include="loadPage('login')">
+                    
+                                </div>
+            
+                </div>-->
+            <script src="cordova.js"></script>
+            <script src="js/libs/angular/angular.min.js"></script>
+            <script src="js/libs/jq/jquery.min.js"></script>
+            <script src="js/libs/ngvideo/dist/ng-video.min.js"></script>
+            <!--<script type="text/javascript" src="js/libs/angular-jwplayer/dist/angular-jwplayer.min.js" ></script>-->
+
+            <!--<script src="js/controllers/loginController.js"></script>-->
+            <script src="js/libs/angular-route/angular-route.min.js"></script>
+            <script src="js/libs/jwplayer/jwplayer.js"></script>
+
+            <!--<script src="js/libs/angular-jwplayer/dist/angular-jwplayer.min.js"></script>-->
+
+            <script src="js/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+
+            <!--<script type="text/javascript" src="js/libs/jw-plangular-master/dist/jw-plangular.min.js"></script>-->
+            <script type="text/javascript">jwplayer.key = "Bte4fkW3EquKCISahS/lNNf0FWwMaOFvYx9s+A==";</script>
+            <script src="js/libs/ngCordova/dist/ng-cordova.js"></script>
+            <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>-->
+            <script src="js/controllers/AppController.js"></script>
+            <!--<script type="text/javascript">jwplayer.key = "Bte4fkW3EquKCISahS/lNNf0FWwMaOFvYx9s+A=="</script>-->
+<!--            <script>$(function () {
+                    $('.menu-button').click(function () {
+                        $('.mobile-menu').slideToggle('.mobile-menu');
+                    });
+                })
+            </script>-->
+    </body>
 </html>

@@ -5,11 +5,12 @@
  */
 
 
-var app = angular.module('CaseRevisionApp', ['ngRoute', 'ngCordova']);
+var app = angular.module('CaseRevisionApp', ['ngRoute', 'ngVideo', 'ui.router', 'ngCordova']);
 var username = '';
 var auth_key = '';
 document.addEventListener("deviceready", function () {
     console.log("Device Is ready!!!");
+    StatusBar.overlaysWebView(false);
 }, false);
 app.config(['$routeProvider', function ($routeProvide) {
 
@@ -61,7 +62,7 @@ function AppController($scope, $location) {
 }
 
 function loginController($scope, $http, $rootScope) {
-
+    $scope.TopMenuClass = 'menuOff';
     $scope.login = function () {
         if (!$scope.loginForm.$valid) {
             console.log("Form Invalid");
@@ -73,7 +74,7 @@ function loginController($scope, $http, $rootScope) {
         var params = {};
         params.login = $scope.user.username;
         params.password = $scope.user.password;
-        var req = $http.get("http://caserevision.apes-at-work.com/api/login?login=" + params.login + "&password=" + params.password);
+        var req = $http.get("http://caserevision.com/api/login?login=" + params.login + "&password=" + params.password);
         req.success(function (data, status, headers, config) {
             console.log(status, data);
             if (data.success) {
@@ -91,13 +92,22 @@ function loginController($scope, $http, $rootScope) {
     };
     console.log("loginController");
 }
-function sectionController($scope, $http, $rootScope) {
+function sectionController($scope, $http, $rootScope, $location) {
+    $scope.linkTree = $location.url();
+    $scope.TopMenuClass = 'menuOn';
     console.log("sectionController");
-    var req = $http.get("http://caserevision.apes-at-work.com/api/get-sections?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key);
+    $scope.getComingSoon = function (com) {
+        if (com === "1") {
+            return "(coming soon)";
+        }
+    };
+    var req = $http.get("http://caserevision.com/api/get-sections?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key);
     req.success(function (data, status, headers, config) {
         console.log(data);
         $scope.sections = data.sections;
+        $rootScope.sections = $scope.sections;
     });
+
     req.error(function (data, status, headers, config) {
         console.log(data);
     });
@@ -106,23 +116,50 @@ function sectionDetailController($scope, $routeParams, $http, $rootScope, $locat
     console.log("sectionDetailController");
     $scope.sectionId = $routeParams.sectionId;
     $scope.page = $location.url();
-    var req = $http.get("http://caserevision.apes-at-work.com/api/get-topics?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId);
+
+    $scope.$on('$routeChangeSuccess', function (event, current, previous) {
+        console.log(event);
+        console.log(current);
+        console.log(previous);
+
+//        console.log(oldUrl);
+    });
+    $scope.getSectionName = function () {
+//          $scope.getSectionById();
+        $rootScope.sectionName = $rootScope.sections[parseInt($scope.sectionId) - 1].name;
+        $rootScope.sectionLink = '#' + $scope.page;
+        return $rootScope.sections[parseInt($scope.sectionId) - 1].name;
+    };
+
+
+    var req = $http.get("http://caserevision.com/api/get-topics?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId);
     req.success(function (data, status, headers, config) {
         console.log(data);
         $scope.access = data.access;
         $scope.topics = data.topics;
+        $rootScope.topics = $scope.topics;
     });
     req.error(function (data, status, headers, config) {
         console.log(data);
     });
 }
-function topicDetailController($scope, $routeParams, $http, $rootScope, $location) {
+function topicDetailController($scope, $routeParams, $http, $location, $rootScope, $location) {
     console.log("topicDetailController");
     $scope.topicId = $routeParams.topicId;
     $scope.page = $location.url();
+    $scope.sectionName = $rootScope.sectionName;
+    $scope.sectionLink = $rootScope.sectionLink;
+    $scope.getTopicName = function () {
+//          $scope.getSectionById();
+        $rootScope.topicName = $rootScope.topics[parseInt($scope.topicId) - 1].name;
+        $rootScope.topicLink = '#' + $scope.page;
+        return $rootScope.topics[parseInt($scope.topicId) - 1].name;
+    };
+//    $rootScope.on('$locationChangeStart', function () {
+//        console.log('$locationChangeStart');
+//    })
 
-
-    var req = $http.get("http://caserevision.apes-at-work.com/api/get-videos?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&topic_id=" + $scope.topicId);
+    var req = $http.get("http://caserevision.com/api/get-videos?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&topic_id=" + $scope.topicId);
 
     req.success(function (data, status, headers, config) {
         console.log(data);
@@ -133,11 +170,41 @@ function topicDetailController($scope, $routeParams, $http, $rootScope, $locatio
         console.log(data);
     });
 }
-function videoDetailController($scope, $sce, $routeParams, $http, $rootScope) {
+function videoDetailController($location, $scope, $sce, $routeParams, $http, $rootScope) {
     var videoBlock = document.getElementById("video");
+
+//    console.log($location.url());
+//    console.log($location.path());
+//    console.log($location.search());
+    $scope.sectionName = $rootScope.sectionName;
+    $scope.sectionLink = $rootScope.sectionLink;
+    $scope.topicName = $rootScope.topicName;
+    $scope.topicLink = $rootScope.topicLink;
+    $scope.getVideoName = function () {
+//          $scope.getSectionById();
+
+        return $scope.video.name;
+    };
+    console.log($location);
+    $scope.$on('$routeChangeSuccess', function (event, current, previous) {
+        console.log(event);
+        console.log(current);
+        console.log(previous);
+        $scope.backPage = previous.scope.page;
+        if (!$scope.backPage) {
+            $scope.backPage = previous.scope.backPage;
+        }
+//        console.log(oldUrl);
+    });
+    console.log(window.location)
+
     videoBlock.onended = function () {
         console.log("Video END");
-        $scope.getAnswers();
+        if (videoBlock.getAttribute("data-number-video") === "1") {
+//            videoBlock.webkitRequestFullscreen();
+            $scope.getAnswers();
+
+        }
     };
     console.log("videoDetailController");
     $scope.videoId = $routeParams.videoId;
@@ -150,15 +217,50 @@ function videoDetailController($scope, $sce, $routeParams, $http, $rootScope) {
         }
     };
     $scope.video = $rootScope.videos[$scope.getVideoById($scope.videoId)];
+    $scope.CurrentVideoLink = $scope.video.video1_part;
+    $scope.CurrentVideoName = $scope.video.video1_name;
+
+//    video = jwplayer('video');
+//    video.setup({
+//        file: $scope.CurrentVideoLink,
+//        width: '100%',
+//        autostart: true,
+//        aspectratio: '16:9',
+//        events: {
+//            onReady: function () {
+////                videoBlock.show(100);
+//
+////                popUpBlock.fadeIn(200);
+//            },
+//            onComplete: function () {
+//                $scope.getAnswers();
+//            }
+//        }
+//    });
+
+//      $scope.playerOptions = {
+//      file: "http://youtu.be/iF9XGbm42xo"
+//      , width: "100%"
+//      , stretching: "uniform"
+//    };
+
+    // The directive waits to fire until the scope 
+    // associated with 'watch-me' in the directive changes.
+    // So we can set that here. 
+//    $scope.watchme = true;
+
+    $scope.numberVideo = 1;
+
     $scope.width = $(window).width();
     $scope.height = $(window).height();
-    $scope.CurrentVideoLink = $scope.video.video1_part;
+
     $scope.getUrlVideo = function (name) {
         return $sce.trustAsResourceUrl(name);
     };
+    $scope.isAnswerResult = false;
     $scope.videoPart1 = true;
     $scope.getAnswers = function () {
-        var req = $http.get("http://caserevision.apes-at-work.com/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
+        var req = $http.get("http://caserevision.com/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
         req.success(function (data, status, headers, config) {
             console.log(data);
             $scope.answers = data.videos;
@@ -168,16 +270,46 @@ function videoDetailController($scope, $sce, $routeParams, $http, $rootScope) {
             console.log(data);
         });
     };
-    $scope.isCorrectAnswer = function (status) {
-        if (parseInt(status) === 1) {
+    $scope.isCorrectAnswer = function (ob) {
+        if (parseInt(ob.answer.status) === 1) {
             console.log("Answer is correct");
+            $scope.isCorrect = 'green';
             $scope.videoPart1 = true;
             $scope.CurrentVideoLink = $scope.video.video2_part;
+            $scope.numberVideo = 2;
+            $scope.isAnswerResult = true;
+            $scope.result = "You are correct";
+//            $scope.videoStart();
         }
         else {
             console.log("Answer is INcorrect");
+            $scope.isCorrect = 'red';
             $scope.videoPart1 = true;
             $scope.CurrentVideoLink = $scope.video.video1_part;
+            $scope.numberVideo = 1;
+            $scope.result = "You are incorrect";
+
+
+
+//            $scope.videoStart();
         }
+    };
+    $scope.backBtn = function () {
+        window.location = '#' + $scope.backPage;
+    };
+    $scope.continueBtn = function () {
+        var Id = parseInt($scope.getVideoById($scope.video.id)) + 1;
+        return window.location = '#' + $scope.backPage + "/" + $rootScope.videos[Id].id;
+
+    };
+    $scope.IsNextContinue = function (id) {
+        var nextId = parseInt($scope.getVideoById(id)) + 1;
+        if ($rootScope.videos[nextId]) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
     };
 }

@@ -1,16 +1,30 @@
 <div>
-
-    <h1>{{video.video1_name}}</h1>
+    <div class="historylinks"><a href="#/sections">Sections</a> > <a href="{{sectionLink}}">{{sectionName}}</a> > <a href="{{topicLink}}">{{topicName}}</a> > <a href="{{topicLink}}">{{getVideoName()}}</a></div>
+    <h1 class="nameVideo" ng-show="videoPart1">{{CurrentVideoName}}</h1>
 
     <section   ng-show="videoPart1" >
-        <video  width="{{width}}" id="video"  autoplay src="{{getUrlVideo(CurrentVideoLink)}}" controls>
+        <video  width="{{width}}" id="video" data-number-video="{{numberVideo}}"  autoplay src="{{getUrlVideo(CurrentVideoLink)}}" controls>
         </video>
+
+        <!--<video vi-screen></video>-->
+        <!--        <div >
+                    <div ui-view class="video-container">
+                        <jw-plangular watch-me="watchMe" player-id="playTest"  options="playerOptions"></jw-plangular>
+                    </div>
+                </div>-->
     </section>
+    <div class="judgement" ng-show="isAnswerResult">{{video.judgement}}</div>
+    <nav ng-show="isAnswerResult">
+
+        <button class="btn" ng-click="backBtn()">Back</button>
+        <button class="btn" ng-click="continueBtn()" ng-show="IsNextContinue(video.id)">Continue</button>
+    </nav>
     <div ng-hide="videoPart1">
-        <h1>{{video.question}}</h1>
-        <ul>
+        <div class="Result">{{result}}</div>
+        <h1 class="quesion">{{video.question}}</h1>
+        <ul class="answeres" >
             <li ng-repeat="answer in answers">
-                <a ng-click="isCorrectAnswer(this.answer.status)">{{answer.text}}</a>
+                <a  ng-click="isCorrectAnswer(this)">{{answer.text}}</a>
             </li>
         </ul>
 
