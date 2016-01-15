@@ -1,12 +1,12 @@
 
 
 
-
-    <form  name="loginForm" class="loginForm" role="form">
-        <input type="text" name="login" placeholder="username" ng-model="user.username" required>
-        <input type="password" name="password" placeholder="password" ng-model="user.password" required>
-    </form>
-    <button type="button" ng-click="login()" class="btn btn-primary" name="login-button">Login</button> 
+<h1 class="incorrectAutho" ng-show="loginSuccess">Invalid login or password</h1>
+<form  name="loginForm" class="loginForm" role="form">
+    <input type="text" name="login" placeholder="username" ng-model="user.username" required>
+    <input type="password" name="password" placeholder="password" ng-model="user.password" required>
+</form>
+<button type="button" ng-click="login()" class="btn btn-primary" name="login-button">Login</button> 
 
 
 

@@ -1,0 +1,10 @@
+<div>
+    <!--<h1>Topics lists</h1>-->
+    <div class="historylinks"><a href="#/sections">Sections</a> > <a href="#{{page}}/{{topic.id}}">{{getSectionName()}}</a></div>
+    <ul class="list">
+        <li ng-repeat="topic in topics">
+            <span><a href="#{{page}}/{{topic.id}}">{{topic.name}}</a></span>
+
+        </li>
+    </ul>
+</div>

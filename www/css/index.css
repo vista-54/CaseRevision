@@ -95,7 +95,9 @@ body.input{
     background: #495677;
     display: none;
 }
-
+.mobile-menu ul{
+    padding: 0 0 15px 0;
+}
 .mobile-menu li a {
     font-size: 1.3em;
     padding-left: 15px;
@@ -105,7 +107,10 @@ body.input{
 }
 
 .mobile-menu li {
-    line-height: 40px;
+    line-height: 40px; 
+    padding: 0 0 5px 0px;
+
+
 }
 
 header {
@@ -148,8 +153,8 @@ header {
     color: #dbe7ea;
     position: absolute;
     right: 8px;
-    top: 4px;
-    font-size: 19px;
+    top: -3px;
+    font-size: 30px;
 }
 
 /*MY*/
@@ -161,6 +166,9 @@ header {
     padding: 0 0 0px 20px;
     /*background: rgb(173, 151, 196);*/
     margin: 0 0 10px 0;
+}
+.list li img{
+    padding: 5px 20px 0 0px;
 }
 .list li:nth-child(2n) a{
     color:rgb(131, 62, 202);
@@ -175,6 +183,7 @@ header {
     font-size: 20px;
 }
 .quesion{
+    position: relative;
     font-size: 27px;
     font-weight: 800;
     /* line-height: 2.00; */
@@ -186,11 +195,16 @@ header {
     padding: 0 0 0 20px;
 }
 .answeres li{
-
+    position: relative;
     font-size: 16px;
     padding: 0 0 10px 0px;
     /* background: rgb(173, 151, 196); */
     margin: 0 0 10px 0;
+}
+.answeres li img{
+    position: absolute;
+    top: 0;
+    width: 30px;
 }
 .answeres li a{
     display: block;
@@ -198,12 +212,18 @@ header {
     height: 100%;
     font-size: 25px;
     font-weight: 800;
+    padding: 0 0 0 60px;
 }
 .green{
-    background: greenyellow!Important;
+    color: green!Important;
+    font-size: 25px;
+    font-weight: 800;
+
 }
 .red{
-    background:red!Important;
+    color:red!Important;
+    font-size: 25px;
+    font-weight: 800;
 }
 .loginForm{
     padding: 0 10px 0px 10px;
@@ -220,6 +240,7 @@ header {
     font-size: 16px;
     color: rgb(255,255,255);
     padding: 10px 20px 10px 20px;
+    outline: 0;
 }
 /*Footer*/
 footer {
@@ -291,4 +312,21 @@ nav {
 }
 .historylinks a{
     text-decoration: none;
+    color: rgb(128, 92, 165);
+}
+.view{
+    padding: 0 0 60px 0;
+}
+.quesion img{
+    position: absolute;
+    /*    top: 10px;
+        width: 30px;*/
+}
+.quesion span{
+    display: block;
+    padding: 0 0 0 60px;
+}
+.incorrectAutho{
+    color:red;
+    padding: 10px 0 10px 0;
 }
