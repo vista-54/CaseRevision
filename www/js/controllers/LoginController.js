@@ -9,8 +9,16 @@
 
 app.controller('loginController', loginController);
 function loginController($scope, $http, $rootScope) {
+    $scope.user = {};
+    var storage = window.localStorage;
+    $scope.user.username = storage['login'];
+    $scope.user.password = storage['password'];
+    $scope.user.rememb=storage['rememb'];
+    if(storage['rememb']){
+        $scope.user.remember=true;
+    }
     $rootScope.isLogged = false;
-    $scope.isLogged = $rootScope.isLogged;
+//    $scope.isLogged = $rootScope.isLogged;
     $scope.loginSuccess = false;
 //    $scope.TopMenuClass = 'menuOff';
     $scope.login = function () {
@@ -18,8 +26,19 @@ function loginController($scope, $http, $rootScope) {
             console.log("Form Invalid");
             return false;
         }
+        console.log($scope.user.remember);
         console.log("Login button click");
+        if ($scope.user.remember) {
+            storage['login'] = $scope.user.username;
+            storage['password'] = $scope.user.password;
+            storage['rememb'] = true;
+        }
+        else {
+            delete(storage['login']);
+            delete(storage['password']);
+            delete(storage['rememb']);
 
+        }
         var params = {};
         params.login = $scope.user.username;
         params.password = $scope.user.password;
