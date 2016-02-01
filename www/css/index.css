@@ -7,8 +7,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     margin: 0;
@@ -18,42 +18,52 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
 @font-face {
     font-family: "MuseoSansLight";
     src: url("fonts/MuseoSansLight/MuseoSansLight.eot");
     src: url("fonts/MuseoSansLight/MuseoSansLight.woff") format("woff"), url("fonts/MuseoSansLight/MuseoSansLight.ttf") format("truetype");
     font-style: normal;
-    font-weight: normal; }
+    font-weight: normal;
+}
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
 body {
     line-height: 1;
     font-family: "MuseoSansLight";
 }
+
 ol, ul {
     list-style: none;
 }
-input:focus{
+
+input:focus {
     outline: none;
     /*-webkit-user-select:none;*/
 }
+
 blockquote, q {
     quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 /* login form*/
-body.input{
+body.input {
     /*padding: 0 10px 0 10px;*/
     text-align: center;
     height: 100vh;
@@ -67,17 +77,19 @@ body.input{
         background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(247,247,247,1) 74%, rgba(134,100,170,1) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#8664aa', GradientType=0 );*/
 }
-.input .container-enot{
+
+.input .container-enot {
     margin: 0 auto;
     /*width: 238px;*/
     height: 100%;
 }
+
 /*.input img{
     margin: 25px 0 40px;
     width: 240px;
     height: 37px;
 }*/
-.loginForm input{
+.loginForm input {
     width: 100%;
     padding: 0 0 0 5px;
     margin-bottom: 13px;
@@ -88,23 +100,36 @@ body.input{
     border: 1px solid #a9dab0;
     outline: none;
 }
-.loginForm div input{
 
+.loginForm textarea {
+    width: 100%;
+    padding: 0 0 0 5px;
+    margin-bottom: 13px;
+    background-color: #a9dab0;
+    border-radius: 2px;
+    height: 145px;
+    font-size: 20px;
+    border: 1px solid #a9dab0;
+    outline: none;
+}
+
+.loginForm div input {
 
     width: 6%;
 }
+
 .loginForm div {
     text-align: left;
     position: relative;
 }
-.loginForm div span{
+
+.loginForm div span {
     position: absolute;
     top: 18px;
 
 }
 
 /*Sections*/
-
 
 .mobile-menu {
     float: none;
@@ -116,10 +141,12 @@ body.input{
     background: #495677;
     display: none;
 }
-.mobile-menu ul{
+
+.mobile-menu ul {
     padding: 0 0 15px 0;
     text-align: center;
 }
+
 .mobile-menu li a {
     font-size: 1.3em;
     /*padding-left: 15px;*/
@@ -129,9 +156,8 @@ body.input{
 }
 
 .mobile-menu li {
-    line-height: 40px; 
+    line-height: 40px;
     padding: 0 0 5px 0px;
-
 
 }
 
@@ -144,8 +170,9 @@ header {
     height: 44px;
     z-index: 5000;
 }
-header a i{
-    font-size: 30px!important;
+
+header a i {
+    font-size: 30px !important;
     color: #dbe7ea;
     float: left;
 }
@@ -192,25 +219,29 @@ header a i{
 }
 
 /*MY*/
-.list{
+.list {
     margin: 0 auto;
     overflow: hidden;
     width: 90%;
     display: block;
     padding: 10px 5px 0px 5px;
 }
-.list li{
+
+.list li {
     /*padding: 0 0 0px 20px;*/
     /*background: rgb(173, 151, 196);*/
     /*margin: 0 0 10px 0;*/
 }
-.list li img{
+
+.list li img {
     padding: 5px 20px 0 0px;
 }
-.list li:nth-child(2n) a{
-    color:rgb(131, 62, 202);
+
+.list li:nth-child(2n) a {
+    color: rgb(131, 62, 202);
 }
-.list span a{
+
+.list span a {
     display: block;
     width: 100%;
     height: 100%;
@@ -219,7 +250,8 @@ header a i{
     font-weight: 800;
     font-size: 20px;
 }
-.question{
+
+.question {
     position: relative;
     font-size: 27px;
     font-weight: 800;
@@ -227,23 +259,27 @@ header a i{
     text-align: left;
     padding: 15px 10px 25px 10px;
 }
-.answeres{
+
+.answeres {
     text-align: left;
     padding: 0 10px 0 10px;
 }
-.answeres li{
+
+.answeres li {
     position: relative;
     font-size: 16px;
     padding: 0 0 10px 0px;
     /* background: rgb(173, 151, 196); */
     margin: 0 0 10px 0;
 }
-.answeres li img{
+
+.answeres li img {
     position: absolute;
     top: 0;
     width: 30px;
 }
-.answeres li a{
+
+.answeres li a {
     display: block;
     width: 100%;
     height: 100%;
@@ -251,34 +287,39 @@ header a i{
     font-weight: 800;
     padding: 0 0 0 60px;
 }
-.green{
-    color: green!Important;
+
+.green {
+    color: green !Important;
     font-size: 25px;
     font-weight: 800;
 
 }
-.red{
-    color:red!Important;
+
+.red {
+    color: red !Important;
     font-size: 25px;
     font-weight: 800;
 }
-.loginForm{
+
+.loginForm {
     padding: 0 10px 0px 10px;
 }
+
 /*.menuOff{
      display: none;
 }
 .menuOn{
     display: block;
 }*/
-.btn{
+.btn {
     background: #805CA5;
     border: 0;
     font-size: 16px;
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     padding: 10px 20px 10px 20px;
     outline: 0;
 }
+
 /*Footer*/
 footer {
     position: fixed;
@@ -308,7 +349,7 @@ footer {
 .search-block {
     position: relative;
     margin: 0 0 0 10px;
-    text-align: left; 
+    text-align: left;
 }
 
 .back-block span {
@@ -322,54 +363,64 @@ footer {
     font-size: 22px;
     color: #dbe7ea;
 }
-.list li a{
+
+.list li a {
     font-size: 25px;
-    color:rgb(60, 127, 69);
+    color: rgb(60, 127, 69);
 
 }
+
 nav {
     padding: 0 0 100px 0;
 }
-.judgement{
+
+.judgement {
     font-size: 16px;
     line-height: 1.5;
-    padding:  15px 10px 15px 10px;
+    padding: 15px 10px 15px 10px;
     text-align: left;
 }
-.nameVideo{
+
+.nameVideo {
     font-weight: 800;
     font-size: 19px;
     line-height: 1.5;
     padding: 0 0 15px 0;
 }
 
-.historylinks{
+.historylinks {
     font-size: 22px;
     text-align: left;
     padding: 0 0 20px 20px;
 }
-.historylinks a{
+
+.historylinks a {
     text-decoration: none;
     color: rgb(128, 92, 165);
 }
-.view{
+
+.view {
     /*padding: 0 0 60px 0;*/
 }
-.question img{
+
+.question img {
     position: absolute;
     /*    top: 10px;
         width: 30px;*/
 }
-.question span{
+
+.question span {
     display: block;
     padding: 0 0 0 60px;
 }
-.incorrectAutho{
-    color:red;
+
+.incorrectAutho {
+    color: red;
     padding: 10px 0 10px 0;
 }
+
 /**/
-.sections.list li:nth-child(4n+1){
+.sections.list li:nth-child(4n+1) {
     vertical-align: middle;
     list-style: none;
     display: table;
@@ -379,10 +430,11 @@ nav {
     height: 135px;
     margin: 0 5px 30px 5px;
     overflow: hidden;
-    background: url('../img/_1.png')no-repeat center;
+    background: url('../img/_1.png') no-repeat center;
     background-size: 100%;
 }
-.sections.list li:nth-child(4n+2){
+
+.sections.list li:nth-child(4n+2) {
     vertical-align: middle;
     list-style: none;
     display: table;
@@ -392,10 +444,11 @@ nav {
     height: 135px;
     margin: 0 5px 30px 5px;
     overflow: hidden;
-    background: url('../img/_3.png')no-repeat center;
+    background: url('../img/_3.png') no-repeat center;
     background-size: 100%;
 }
-.sections.list li:nth-child(4n+3){
+
+.sections.list li:nth-child(4n+3) {
     vertical-align: middle;
     list-style: none;
     display: table;
@@ -405,10 +458,11 @@ nav {
     height: 135px;
     margin: 0 5px 30px 5px;
     overflow: hidden;
-    background: url('../img/_2.png')no-repeat center;
+    background: url('../img/_2.png') no-repeat center;
     background-size: 100%;
 }
-.sections.list li:nth-child(4n+4){
+
+.sections.list li:nth-child(4n+4) {
     vertical-align: middle;
     list-style: none;
     display: table;
@@ -418,10 +472,11 @@ nav {
     height: 135px;
     margin: 0 5px 30px 5px;
     overflow: hidden;
-    background: url('../img/_2.png')no-repeat center;
+    background: url('../img/_2.png') no-repeat center;
     background-size: 100%;
 }
-.sections.list li a{
+
+.sections.list li a {
     position: relative;
     display: table-cell;
     font-size: 1.7em;
@@ -435,37 +490,44 @@ nav {
     color: #fff;
     text-decoration: none;
 }
-.sections.list li a img{
+
+.sections.list li a img {
     position: absolute;
     top: 7px;
     left: 34px;
 }
-.noCms{
+
+.noCms {
     display: none;
 }
-.sectionsTitle{
+
+.sectionsTitle {
     display: block;
     font-size: 2.2em;
     color: #666;
     padding-bottom: 20px;
 }
-.titleContainer{
+
+.titleContainer {
     overflow: hidden;
     /*text-align: left;*/
     /*padding: 0 0 30px 0;*/
 }
-.titleContainer div{
+
+.titleContainer div {
     text-align: left;
     padding: 0 10px 0 0;
 
 }
-.titleContainer :nth-child(2n+1){
+
+.titleContainer :nth-child(2n+1) {
     background: rgb(131, 62, 202);
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
 }
-.titleContainer a{
+
+.titleContainer a {
     background: rgb(112, 193, 123);
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 16px;
     padding: 15px 10px 15px 10px;
@@ -474,35 +536,40 @@ nav {
     font-weight: 800;
     height: 46px;
 }
-.titleContainer a i{
+
+.titleContainer a i {
     font-size: 22px;
     padding: 0px 5px 0 5px;
     margin: -1px 0 0 0;
 }
 
-.titleContainer span{
+.titleContainer span {
     font-size: 16px;
-    color: rgb(102,102,102);
+    color: rgb(102, 102, 102);
 }
-.topicList{
+
+.topicList {
     margin: 30px 10px 0 10px;
     text-align: left;
 }
-.topicList li{
+
+.topicList li {
     position: relative;
     border-bottom: 1px rgb(131, 62, 202) solid;
     line-height: 2.9;
 }
-.topicList li a{
+
+.topicList li a {
     display: block;
     /* width: 209px; */
     position: relative;
     text-decoration: none;
-    color: rgb(102,102,102);
+    color: rgb(102, 102, 102);
     z-index: 1;
     font-size: 20px;
 }
-.topicList li  i{
+
+.topicList li i {
     position: absolute;
     right: 0;
     top: 13px;
@@ -510,7 +577,8 @@ nav {
     padding: 10px 0 0 0;
     z-index: 0;
 }
-.search-block label{
+
+.search-block label {
     height: 46px;
     display: block;
     /* position: absolute; */
@@ -520,32 +588,36 @@ nav {
     /* margin: 0 8px 0 0; */
     /*transform: rotate(90deg);*/
 }
-.search-block input{
+
+.search-block input {
     -webkit-border-radius: 0;
     width: 70%;
     padding: 10px 0 10px 5px;
-    background-color: rgb(255,255,255);
+    background-color: rgb(255, 255, 255);
     height: 46px;
     border: 2px solid rgb(112, 193, 123);
     outline: none;
     font-size: 22px;
 }
-.search-block  button{
+
+.search-block button {
     background: rgb(112, 193, 123);
     border: 0;
     height: 46px;
     width: 20%;
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     position: relative;
     /* padding: 0 10px 0 24px; */
     outline: none;
     font-size: 22px;
     padding: 10px 0 10px 0;
 }
-.search-block  button span{
+
+.search-block button span {
     margin: 0;
     font-size: inherit;
 }
+
 /*.search-block  button i{
     transform: rotate(180deg);
     color: rgb(121,121,121);
@@ -555,7 +627,7 @@ nav {
     margin: 0 0 0 0;
     font-size: 24px;
 }*/
-.search-block  button span{
+.search-block button span {
     /*    transform: rotate(180deg);
         color: rgb(121,121,121);
          position: absolute; 
@@ -564,11 +636,12 @@ nav {
         margin: 0 0 0 0;*/
     /*    font-size: 24px;*/
 }
-.search-block .fBtn{
+
+.search-block .fBtn {
     border: 0;
     height: 30px;
     float: right;
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     position: relative;
     padding: 9px 5px 9px 5px;
     margin: 0 10px 0 0;
@@ -577,23 +650,28 @@ nav {
     text-decoration: none;
     font-size: 14px;
 }
-.currTitle{
+
+.currTitle {
     display: block;
     padding: 0 10px 0 0;
 }
-.qublock{
+
+.qublock {
     margin: 10px 0 0 0;
 }
-.accessFalse{
+
+.accessFalse {
     padding: 0;
 }
-.accessFalse div{
+
+.accessFalse div {
     position: relative;
     /*overflow: hidden;*/
     display: inline-block;
     padding: 0 0 55px 0;
 }
-nav.accessFalse a:nth-child(3n+1){
+
+nav.accessFalse a:nth-child(3n+1) {
     vertical-align: middle;
     list-style: none;
     display: table;
@@ -603,16 +681,17 @@ nav.accessFalse a:nth-child(3n+1){
     height: 151px;
     margin: 0 5px;
     overflow: hidden;
-    background: url('../img/_1.png')no-repeat center;
+    background: url('../img/_1.png') no-repeat center;
     background-size: 100%;
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 25px;
     padding: 34px 0 0 0px;
     position: relative;
     z-index: 5;
 }
-nav.accessFalse a:nth-child(3n+2){
+
+nav.accessFalse a:nth-child(3n+2) {
     vertical-align: middle;
     list-style: none;
     display: table;
@@ -622,9 +701,9 @@ nav.accessFalse a:nth-child(3n+2){
     height: 151px;
     margin: 0 5px;
     overflow: hidden;
-    background: url('../img/_3.png')no-repeat center;
+    background: url('../img/_3.png') no-repeat center;
     background-size: 100%;
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 25px;
     padding: 34px 0 0 0px;
@@ -633,7 +712,8 @@ nav.accessFalse a:nth-child(3n+2){
     left: 82px;
     top: 48px;
 }
-nav.accessFalse a:nth-child(3n+3){
+
+nav.accessFalse a:nth-child(3n+3) {
     vertical-align: middle;
     list-style: none;
     display: inline-block;
@@ -643,9 +723,9 @@ nav.accessFalse a:nth-child(3n+3){
     height: 151px;
     margin: 0 5px;
     overflow: hidden;
-    background: url('../img/_2.png')no-repeat center;
+    background: url('../img/_2.png') no-repeat center;
     background-size: 100%;
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 25px;
     padding: 34px 0 0 0px;
@@ -653,7 +733,8 @@ nav.accessFalse a:nth-child(3n+3){
     z-index: 5;
 
 }
-.accessFalse img.leftarrow{
+
+.accessFalse img.leftarrow {
     position: absolute;
     top: 136px;
     left: 13px;
@@ -661,7 +742,8 @@ nav.accessFalse a:nth-child(3n+3){
     height: 113px;
     width: 79px;
 }
-.accessFalse img.rightarrow{
+
+.accessFalse img.rightarrow {
     position: absolute;
     top: 136px;
     right: 13px;
@@ -669,73 +751,98 @@ nav.accessFalse a:nth-child(3n+3){
     height: 113px;
     width: 79px;
 }
-nav a span{
+
+nav a span {
     font-size: 20px;
 }
-.timeBuy{
+
+.timeBuy {
     font-size: 15px;
 }
-.aboutUs span{
+
+.aboutUs span {
     font-size: 20px;
 }
-.aboutUs h1{
+
+.aboutUs h1 {
     font-size: 25px;
     font-weight: 800;
     padding: 0 0 10px 0;
 }
-.contactUs h1{
+
+.contactUs h1 {
     font-size: 25px;
     font-weight: 800;
 }
-.contactUs h2{
+
+.contactUs > .incorrectContact {
+    color: red;
+    font-size: 16px;
+    padding: 10px 0 10px 0;
+}
+
+.contactUs > .correctContact {
+    color: green;
+    font-size: 16px;
+    padding: 10px 0 10px 0;
+}
+
+.contactUs h2 {
     padding: 20px 0 21px 0px;
     font-size: 20px;
     font-weight: 600;
 }
-.videoList{
+
+.videoList {
     width: 100%;
     padding: 10px 10px 0 10px;
 }
 
-.videoList li a{
+.videoList li a {
     font-size: 25px;
     color: rgb(60, 127, 69);
     text-decoration: none;
 }
-.videoList li img{
+
+.videoList li img {
     padding: 10px 0 0 0;
 }
-.invisibleBlock{
+
+.invisibleBlock {
     position: absolute;
     width: 100%;
     overflow: hidden;
     height: 100%;
     z-index: 1000;
 }
-.topicContent{
+
+.topicContent {
     padding: 0 0 70px 0;
 
 }
+
 /**/
-.homeContainer{
+.homeContainer {
     float: left;
     padding: 0 10px 10px 10px;
     overflow: hidden;
 }
-.homeContainer a{
+
+.homeContainer a {
     background: rgb(131, 62, 202);
     padding: 35px 0 25px 0;
     width: 50%;
     display: block;
     float: left;
     text-decoration: none;
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     font-size: 27px;
     font-weight: 800;
     height: 90px;
 }
-.homeContainer span{
-    color: rgb(255,255,255);
+
+.homeContainer span {
+    color: rgb(255, 255, 255);
     background: rgb(112, 193, 123);
     display: block;
     height: 90px;
@@ -743,34 +850,44 @@ nav a span{
     font-size: 17px;
     font-weight: 600;
 }
-.homeHightContainer{
+
+.homeHightContainer {
     overflow: hidden;
     padding: 0 0 90px 0;
 }
-.homeFooter{
+
+.homeFooter {
     position: fixed;
     bottom: 0;
     background: rgb(131, 62, 202);
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     font-size: 19px;
     padding: 5px 30px 9px 14px;
     z-index: 1000;
 }
-.homeFooter h1{
+
+.homeFooter h1 {
     font-weight: 900;
     font-size: 20px;
 }
+
 /**/
-.accessFalseContainer{
+.accessFalseContainer {
     padding: 0 0 120px 0;
 }
-.accessFalseContainer h1{
+
+.accessFalseContainer h1 {
     color: rgb(112, 193, 123);
     font-weight: 900;
     font-size: 20px;
 }
+
 .acessFalseSubTitle {
     display: block;
     font-size: 18px;
     padding: 10px 30px 10px 20px;
+}
+
+.pad {
+    margin-bottom: 13px;
 }
