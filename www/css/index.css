@@ -88,6 +88,16 @@ body.input{
     border: 1px solid #a9dab0;
     outline: none;
 }
+.loginForm textarea {
+    width: 100%;
+    padding: 0 0 0 5px;
+    background-color: #a9dab0;
+    border-radius: 2px;
+    height: 145px;
+    font-size: 20px;
+    border: 1px solid #a9dab0;
+    outline: none;
+}
 .loginForm div input{
 
 
@@ -368,6 +378,7 @@ nav {
     color:red;
     padding: 10px 0 10px 0;
 }
+
 /**/
 .sections.list li:nth-child(4n+1){
     vertical-align: middle;
@@ -695,6 +706,17 @@ nav a span{
     font-size: 20px;
     font-weight: 600;
 }
+.contactUs > .incorrectContact {
+    color: red;
+    font-size: 16px;
+    padding: 10px 0 10px 0;
+}
+
+.contactUs > .correctContact {
+     color: green;
+     font-size: 16px;
+     padding: 10px 0 10px 0;
+ }
 .videoList{
     width: 100%;
     padding: 10px 10px 0 10px;
@@ -812,4 +834,7 @@ nav a span{
     font-size: 25px;
     color: rgb(60, 127, 69);
     text-decoration: none;
+}
+.pad {
+    margin: 13px 0;
 }

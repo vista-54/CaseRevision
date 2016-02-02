@@ -1,6 +1,15 @@
 <div class="contactUs"><h1>Contact </h1>
     <h2>Lorem ipsum</h2>
-<!--    <div ng-map center="[51.5, -0.12]">
+    <h1 class="incorrectContact" ng-class="{'correctContact':notError}" ng-show="isError">{{errorMessage}}</h1>
+    <form name="contactUs" class="loginForm" role="form">
+        <input type="email" name="email" placeholder="E-mail" ng-model="contact.email"
+               ng-pattern="/^\w+.+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" required>
+        <input type="text" name="first_name" placeholder="First name" ng-model="contact.first_name" required>
+        <input type="text" name="last_name" placeholder="Last name" ng-model="contact.last_name" required>
+        <textarea name="message" placeholder="Write your message..." ng-model="contact.message" required></textarea>
+    </form>
+    <button type="button" ng-click="sendContact(contact)" class="btn btn-primary pad" name="send-button">Send</button>
+    <div ng-map center="[51.5, -0.12]">
 
-    </div>-->
+</div>
 </div>

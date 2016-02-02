@@ -95,9 +95,7 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
             setTimeout(function () {
                 $scope.videoPart1 = true;
                 $scope.isAnswerResult = true;
-                if ($scope.$root.$$phase !== '$apply' && $scope.$root.$$phase !== '$digest') {
-                    $scope.$apply();
-                }
+                if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') $scope.$apply();
 
             }, 1500);
         }
@@ -110,9 +108,7 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
             setTimeout(function () {
                 $scope.videoPart1 = true;
                 $scope.isAnswerResult = false;
-                if ($scope.$root.$$phase !== '$apply' && $scope.$root.$$phase !== '$digest') {
-                    $scope.$apply();
-                }
+                if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') $scope.$apply();
             }, 1500);
 
         }
