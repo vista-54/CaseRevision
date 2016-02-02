@@ -6,27 +6,29 @@
 
 //var topicModule = angular.module('topicModule', []);
 app.controller('topicController', topicController);
-
-function topicController($scope, $routeParams, $http, $rootScope, $location) {
+function topicController($scope, $routeParams, $window, $http, $rootScope, $location) {
 //    $rootScope.Search.isSearch=true;
     window.scroll(0, 0);
+    window.addEventListener('native.keyboardhide', $rootScope.keyboardHideHandler);
+    window.addEventListener('native.keyboardshow', $rootScope.keyboardShowHandler);
+//    $scope.inputIsActive = true;
     $rootScope.pages = {
         isSectionPage: true,
         isTopicPage: false,
         isVideoPage: false
     };
+
+
     $scope.isSectionPage = $rootScope.pages.isSectionPage;
     $scope.isTopicPage = $rootScope.pages.isTopicPage;
     $scope.isVideoPage = $rootScope.pages.isVideoPage;
     console.log("topicController");
     $scope.sectionId = $routeParams.sectionId;
     $scope.page = $location.url();
-
     $scope.$on('$routeChangeSuccess', function (event, current, previous) {
         console.log(event);
         console.log(current);
         console.log(previous);
-
 //        console.log(oldUrl);
     });
 //    $scope.getSectionName = function () {
@@ -42,24 +44,39 @@ function topicController($scope, $routeParams, $http, $rootScope, $location) {
             }
         }
     };
-    $scope.search = function () {
-        
-        var req = $http.get("http://caserevision.com/api/find?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId + "&query=" + $scope.term);
-        req.success(function (data, status, headers, config) {
-            for (var i in data.videos) {
-                var obj = data.videos[i];
-                console.log(obj.topic_id);
-                console.log(obj.id);
-                $rootScope.Search = {
-                    sectionId: $scope.sectionId,
-                    topic_id: obj.topic_id,
-                    video_id: obj.id,
-                    isSearch: true
-                };
+    $rootScope.search = function (term) {
 
-                window.location = "#/section/" + $rootScope.Search.sectionId + '/' + obj.topic_id;
-                console.log("#/section/" + $scope.sectionId + '/' + obj.topic_id + '/' + obj.id);
+        var req = $http.get("http://caserevision.com/api/find?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId + "&query=" + term);
+        req.success(function (data, status, headers, config) {
+            $rootScope.videos = data.videos;
+            $rootScope.searchResult = $rootScope.videos.length > 0 ? true : false;
+//            $scope.$apply();
+//            window.location.reload();
+            if ($rootScope.isSearch) {
+                $rootScope.isSearch = false;
+                $scope.$apply();
             }
+            else {
+                window.location = "#/search";
+            }
+
+
+//            return data.videos;
+//            for (var i in data.videos) {
+//                
+//                var obj = data.videos[i];
+//                console.log(obj.topic_id);
+//                console.log(obj.id);
+//                $rootScope.Search = {
+//                    sectionId: $scope.sectionId,
+//                    topic_id: obj.topic_id,
+//                    video_id: obj.id,
+//                    isSearch: true
+//                };
+//
+//                window.location = "#/section/" + $rootScope.Search.sectionId + '/' + obj.topic_id;
+//                console.log("#/section/" + $scope.sectionId + '/' + obj.topic_id + '/' + obj.id);
+//            }
 
 
         });
@@ -67,7 +84,9 @@ function topicController($scope, $routeParams, $http, $rootScope, $location) {
             console.log(data);
         });
         console.log($scope.term);
-
+    };
+    $scope.search = function () {
+        $rootScope.search($scope.term);
     };
     $rootScope.sectionName = $rootScope.sections[$scope.getSectionById($scope.sectionId)].name;
     $rootScope.sectionLink = '#' + $scope.page;

@@ -111,9 +111,9 @@ body.input{
     position: fixed;
     width: 100%;
     left: 0;
-    top: 44px;
+    top: 43px;
     z-index: 9999;
-    background: #495677;
+    background: rgb(128, 92, 165);
     display: none;
 }
 .mobile-menu ul{
@@ -138,7 +138,7 @@ body.input{
 header {
     width: 100%;
     padding: 10px 15px 34px 15px;
-    background-color: #495677;
+    background-color:rgb(128, 92, 165);
     position: fixed;
     top: 0;
     height: 44px;
@@ -197,7 +197,7 @@ header a i{
     overflow: hidden;
     width: 90%;
     display: block;
-    padding: 10px 5px 0px 5px;
+    padding: 0 5px 0px 5px;
 }
 .list li{
     /*padding: 0 0 0px 20px;*/
@@ -289,7 +289,7 @@ footer {
     background: #495677;
     /* height: 44px; */
     overflow: hidden;
-    border-top: 1px solid rgb(112, 193, 123);
+    /*border-top: 1px solid rgb(112, 193, 123);*/
 }
 
 .back-block {
@@ -307,7 +307,7 @@ footer {
 
 .search-block {
     position: relative;
-    margin: 0 0 0 10px;
+    padding: 0 10px 0 10px;
     text-align: left; 
 }
 
@@ -377,7 +377,7 @@ nav {
     text-align: center;
     width: 127px;
     height: 135px;
-    margin: 0 5px 30px 5px;
+    margin: 0 5px 10px 5px;
     overflow: hidden;
     background: url('../img/_1.png')no-repeat center;
     background-size: 100%;
@@ -390,7 +390,7 @@ nav {
     text-align: center;
     width: 127px;
     height: 135px;
-    margin: 0 5px 30px 5px;
+    margin: 0 5px 10px 5px;
     overflow: hidden;
     background: url('../img/_3.png')no-repeat center;
     background-size: 100%;
@@ -403,7 +403,7 @@ nav {
     text-align: center;
     width: 127px;
     height: 135px;
-    margin: 0 5px 30px 5px;
+    margin: 0 5px 10px 5px;
     overflow: hidden;
     background: url('../img/_2.png')no-repeat center;
     background-size: 100%;
@@ -416,7 +416,7 @@ nav {
     text-align: center;
     width: 127px;
     height: 135px;
-    margin: 0 5px 30px 5px;
+    margin: 0 5px 10px 5px;
     overflow: hidden;
     background: url('../img/_2.png')no-repeat center;
     background-size: 100%;
@@ -460,7 +460,7 @@ nav {
 
 }
 .titleContainer :nth-child(2n+1){
-    background: rgb(131, 62, 202);
+    background: rgb(128, 92, 165);
     color: rgb(255,255,255);
 }
 .titleContainer a{
@@ -513,6 +513,7 @@ nav {
 .search-block label{
     height: 46px;
     display: block;
+    width: 100%;
     /* position: absolute; */
     /*font-size: 22px;*/
     /* width: 30px; */
@@ -522,13 +523,14 @@ nav {
 }
 .search-block input{
     -webkit-border-radius: 0;
-    width: 70%;
+    width: 80%;
     padding: 10px 0 10px 5px;
     background-color: rgb(255,255,255);
     height: 46px;
     border: 2px solid rgb(112, 193, 123);
     outline: none;
-    font-size: 22px;
+    /*font-size: 22px;*/
+    font-size: inherit;
 }
 .search-block  button{
     background: rgb(112, 193, 123);
@@ -539,7 +541,8 @@ nav {
     position: relative;
     /* padding: 0 10px 0 24px; */
     outline: none;
-    font-size: 22px;
+    /*font-size: 22px;*/
+    font-size: inherit;
     padding: 10px 0 10px 0;
 }
 .search-block  button span{
@@ -696,7 +699,9 @@ nav a span{
     width: 100%;
     padding: 10px 10px 0 10px;
 }
-
+.videoList li{
+    padding: 0 0 15px 0;
+}
 .videoList li a{
     font-size: 25px;
     color: rgb(60, 127, 69);
@@ -723,8 +728,8 @@ nav a span{
     overflow: hidden;
 }
 .homeContainer a{
-    background: rgb(131, 62, 202);
-    padding: 35px 0 25px 0;
+    background: rgb(128, 92, 165);
+    padding: 44px 0 25px 0;
     width: 50%;
     display: block;
     float: left;
@@ -732,16 +737,17 @@ nav a span{
     color: rgb(255,255,255);
     font-size: 27px;
     font-weight: 800;
-    height: 90px;
+    height: 115px;
 }
 .homeContainer span{
     color: rgb(255,255,255);
     background: rgb(112, 193, 123);
     display: block;
-    height: 90px;
-    padding: 10px 0px 0 0px;
+    height: 115px;
+    padding: 10px 5px 0 5px;
     font-size: 17px;
     font-weight: 600;
+    overflow: hidden;
 }
 .homeHightContainer{
     overflow: hidden;
@@ -750,10 +756,10 @@ nav a span{
 .homeFooter{
     position: fixed;
     bottom: 0;
-    background: rgb(131, 62, 202);
+    background: rgb(128, 92, 165);
     color: rgb(255,255,255);
     font-size: 19px;
-    padding: 5px 30px 9px 14px;
+    padding: 5px 14px 9px 14px;
     z-index: 1000;
 }
 .homeFooter h1{
@@ -762,7 +768,7 @@ nav a span{
 }
 /**/
 .accessFalseContainer{
-    padding: 0 0 120px 0;
+    padding: 0 0 130px 0;
 }
 .accessFalseContainer h1{
     color: rgb(112, 193, 123);
@@ -773,4 +779,37 @@ nav a span{
     display: block;
     font-size: 18px;
     padding: 10px 30px 10px 20px;
+}
+.aboutUs {
+    padding: 0 10px 0 10px; 
+}
+.aboutUs ul li:nth-child(2n+1){
+    background: url('../img/check_green.png')no-repeat;
+
+}
+.aboutUs ul li:nth-child(2n+2){
+    background: url('../img/check_purple.png')no-repeat;
+}
+.aboutUs ul li span{
+    padding: 0 0 0 33px;
+    display: block;
+    text-align: left;
+}
+.aboutUs ul li{
+    margin: 10px 0 10px 0;
+}
+.aboutUs h1 span:nth-child(2n+1){
+    color: #805CA5;
+}
+.aboutUs h1 span:nth-child(2n+2){
+    color: rgb(112, 193, 123);
+}
+.SearchContainer{
+    padding: 0 0 70px 0;
+}
+.SearchContainer h1{
+    padding: 13px 0 0 0;
+    font-size: 25px;
+    color: rgb(60, 127, 69);
+    text-decoration: none;
 }

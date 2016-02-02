@@ -6,11 +6,12 @@
 
 
 app.controller('videoDetailController', videoDetailController);
-function videoDetailController($location, $scope, $sce, $routeParams,$cookies, $http, $rootScope) {
-    if(typeof($rootScope.Search)!=='undefined'){
-        $rootScope.Search.isSearch=false;
+function videoDetailController($location, $scope, $sce, $routeParams, $cookies, $http, $rootScope) {
+    $scope.isAnswerGet = false;
+    if (typeof ($rootScope.Search) !== 'undefined') {
+        $rootScope.Search.isSearch = false;
     }
-    
+
     $rootScope.pages.isVideoPage = true;
     $scope.isSectionPage = $rootScope.pages.isSectionPage;
     $scope.isTopicPage = $rootScope.pages.isTopicPage;
@@ -81,7 +82,8 @@ function videoDetailController($location, $scope, $sce, $routeParams,$cookies, $
         });
     };
     $scope.isCorrectAnswer = function (ob) {
-          window.scroll(0, 0);
+        $scope.isAnswerGet = true;
+        window.scroll(0, 0);
         if (parseInt(ob.answer.status) === 1) {
             console.log("Answer is correct");
             $scope.isCorrect = 'green';
@@ -89,7 +91,7 @@ function videoDetailController($location, $scope, $sce, $routeParams,$cookies, $
             $scope.CurrentVideoLink = $scope.video.video2_part;
             $scope.CurrentVideoName = $scope.video.video2_name;
             $scope.numberVideo = 2;
-            
+
             setTimeout(function () {
                 $scope.videoPart1 = true;
                 $scope.isAnswerResult = true;
@@ -119,7 +121,12 @@ function videoDetailController($location, $scope, $sce, $routeParams,$cookies, $
 //        return $sce.trustAsResourceUrl(name);
         $cookies.put('username', $rootScope.username);
         $cookies.put('auth_key', $rootScope.auth_key);
-        return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-s-link/" + $scope.videoId);
+        if ($scope.isAnswerGet) {
+            return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-s-link/" + $scope.videoId);
+        }
+        else {
+            return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId);
+        }
 
     };
 

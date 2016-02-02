@@ -1,16 +1,24 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div>
+    <div class="SearchContainer">
+        <div class="titleContainer" breadcrumbs>
+        </div>
+        <h1 ng-hide="searchResult">Video not found</h1>
+        <ul class="videoList" ng-show="searchResult">
+
+            <li  ng-repeat="video in videos">
+                <!--{{count=parseInt(count)+1}}-->
+
+                <span ><a href="#/section/{{video.topic.section_id}}/{{video.topic.id}}/{{video.id}}">{{video.name}}<br><img width="100%" alt="video_prew" src="{{video.image}}"></a></span>
+
+            </li>
+        </ul>
+    </div>
+    <footer>
+        <div class="search-block">
+
+            <label><input placeholder="Search"  ng-model="term"><button ng-click="search()"><i class="fa fa-search"></i></button></label>
+            <!--<a class="fBtn" href="#/sections" >BACK</a>-->
+        </div>
+
+    </footer>
+</div>
