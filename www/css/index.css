@@ -745,7 +745,8 @@ nav a span{
 }
 /**/
 .homeContainer{
-    float: left;
+    width:100%;
+    float: none;
     padding: 0 10px 10px 10px;
     overflow: hidden;
 }
@@ -770,6 +771,7 @@ nav a span{
     font-size: 17px;
     font-weight: 600;
     overflow: hidden;
+    width:50%;
 }
 .homeHightContainer{
     overflow: hidden;
@@ -837,4 +839,24 @@ nav a span{
 }
 .pad {
     margin: 13px 0;
+}
+.text{
+    margin:0 0 10px 0;
+    padding:0;
+    text-align: justify;
+}
+.text> video{
+    padding:10px 0 0 0 ;
+}
+#iframe {
+    text-align: center;
+    background: white;
+    width: 100%;
+    height: calc(100% - 42px);
+    top: 42px;
+    left: 0;
+    bottom:91px;
+    position: fixed;
+    z-index: 1001;
+    overflow: scroll;
 }

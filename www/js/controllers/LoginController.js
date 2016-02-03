@@ -9,6 +9,7 @@
 
 app.controller('loginController', loginController);
 function loginController($scope, $http, $rootScope) {
+    $rootScope.username = false;
     $scope.user = {};
     var storage = window.localStorage;
     $scope.user.username = storage['login'];
@@ -50,6 +51,7 @@ function loginController($scope, $http, $rootScope) {
 //                $scope.loginSuccess=false;
                 $rootScope.auth_key = data.auth_key;
                 $rootScope.username = data.username;
+                $rootScope.user_id = data.id;
                 window.location = "#/sections";
             }
             else {

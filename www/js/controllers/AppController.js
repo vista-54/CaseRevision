@@ -74,6 +74,8 @@ app.directive("topMenu", topMenu);
 app.directive("breadcrumbs", breadcrumbs);
 
 function AppController($scope, $rootScope) {
+    $("iframe").css({'display':'none'});
+
     $rootScope.keyboardShowHandler = function (e) {
 //     setTimeout(function(){
 //       $('header').hide(); 
