@@ -7,5 +7,6 @@
 
 app.controller('aboutUsController', aboutUsController);
 function aboutUsController() {
+    $("iframe").css({'display':'none'});
     console.log("aboutUsController");
 }

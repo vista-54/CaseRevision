@@ -5,6 +5,7 @@
  */
 
 app.controller('contactController', ['$scope', '$http', function ($scope, $http) {
+    $("iframe").css({'display':'none'});
     $scope.contact = {};
     $scope.isError = false;
     $scope.errorMessage = '';

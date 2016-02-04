@@ -13,7 +13,7 @@
 
     </head>
     <body class="input">
-        <div class="head-wrapper"  >
+        <div class="head-wrapper">
             <div class="mobile-menu" ng-click="menuLinkClick()" top-menu>
 
             </div>
@@ -22,7 +22,7 @@
                 <a href="#/"><i class="fa fa-home"></i></a> 
                 <div class="menu-button" ng-click="menuOpen()"></div>
             </header>
-            <div ng-show="isOpenMenu" ng-click="invisiBlockStatus()" class="invisibleBlock"></div>
+            <div ng-show="isOpenMenu" ng-click="invisiBlockStatus()" class="invisibleBlock" ng-cloak></div>
             <img class="logotype" src="img/logo.png" alt="Logo">
             <div class="view" ng-view>
             </div>

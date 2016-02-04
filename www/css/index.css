@@ -792,12 +792,14 @@ nav a span{
 }
 /**/
 .accessFalseContainer{
+    overflow: hidden;
     padding: 0 0 130px 0;
 }
 .accessFalseContainer h1{
     color: rgb(112, 193, 123);
     font-weight: 900;
     font-size: 20px;
+    overflow: hidden;
 }
 .acessFalseSubTitle {
     display: block;
@@ -858,5 +860,8 @@ nav a span{
     bottom:91px;
     position: fixed;
     z-index: 1001;
-    overflow: scroll;
+    overflow: hidden;
+}
+.grey{
+    background: url('../img/_11.png')no-repeat center !important;
 }
