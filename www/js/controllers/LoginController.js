@@ -9,7 +9,7 @@
 
 app.controller('loginController', loginController);
 function loginController($scope, $http, $rootScope) {
-    $("iframe").css({'display':'none'});
+    $('#iframe').remove();
     $rootScope.username = false;
     $scope.user = {};
     var storage = window.localStorage;
@@ -25,7 +25,8 @@ function loginController($scope, $http, $rootScope) {
 //    $scope.TopMenuClass = 'menuOff';
     $scope.login = function () {
         if (!$scope.loginForm.$valid) {
-            console.log("Form Invalid");
+            $scope.loginSuccess = true;
+            $scope.textError = 'Fields are not filled';
             return false;
         }
         console.log($scope.user.remember);
@@ -48,8 +49,9 @@ function loginController($scope, $http, $rootScope) {
         req.success(function (data, status, headers, config) {
             console.log(status, data);
             if (data.success) {
+
                 $rootScope.isLogged = true;
-//                $scope.loginSuccess=false;
+                $scope.loginSuccess = false;
                 $rootScope.auth_key = data.auth_key;
                 $rootScope.username = data.username;
                 $rootScope.user_id = data.id;
@@ -57,6 +59,7 @@ function loginController($scope, $http, $rootScope) {
             }
             else {
                 $scope.loginSuccess = true;
+                $scope.textError = 'Invalid login or password';
                 window.location = "#/login";
             }
         });

@@ -3,21 +3,25 @@
     <div class="historylinks">
         <!--<a href="#/sections">Sections</a> > <a href="{{sectionLink}}">{{sectionName}}</a> > <a href="#{{page}}/{{video.id}}">{{getTopicName()}}</a>-->
     </div>
-        <div class="titleContainer" breadcrumbs>
-<!--            <a href="#/sections"><i class="fa fa-home"></i></a>
-            <a href="{{sectionLink}}">{{sectionName}}</a>
-            <a>{{topicName}}</a>-->
-<!--            <span class="currTitle">
-                {{topicName}}
-            </span>-->
-        
-      </div>
+    <div class="titleContainer" breadcrumbs>
+        <!--            <a href="#/sections"><i class="fa fa-home"></i></a>
+                    <a href="{{sectionLink}}">{{sectionName}}</a>
+                    <a>{{topicName}}</a>-->
+        <!--            <span class="currTitle">
+                        {{topicName}}
+                    </span>-->
+
+    </div>
     <ul class="videoList">
         <li ng-repeat="video in videos">
             <!--{{count=parseInt(count)+1}}-->
-             
-            <span ><a href="#{{page}}/{{video.id}}">{{video.name}}<br><img width="100%" alt="video_prew" src="{{video.image}}"></a></span>
-            
+            <a href="#{{page}}/{{video.id}}">
+                <div class="prevision">
+                    {{video.name}}
+                    <br>
+                    <img width="100%" alt="video_prew" src="{{video.image}}">
+                </div>
+            </a>
         </li>
     </ul>
 </div>

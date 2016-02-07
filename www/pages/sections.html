@@ -4,7 +4,7 @@
 <label class="sectionsTitle">Revolutionise your case law training</label>
 <ul class="list sections">
     <li ng-if="section.id!=5" ng-repeat="section in sections" >
-        <a  href="#/section/{{section.id}}">{{section.name}}<img alt="img" src="{{getComingSoon(section.coming_soon)}}" class="{{isCms}}"  ></a>
+        <a ng-disabled="section.coming_soon==1" href="#/section/{{section.id}}">{{section.name}}<img alt="img" src="{{getComingSoon(section.coming_soon)}}" class="{{isCms}}"  ></a>
 
     </li>
 

@@ -48,13 +48,14 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
                 }
             );
     };
+
     $scope.clickLaw = function (data) {
         if (!$rootScope.username || $rootScope.username == '' || $rootScope.username == 'undefined') {
             window.location = "#/login";
         } else {
 
             console.info(data.id);
-            if (($scope.buyed.length != 0)&&($scope.buyed.indexOf($scope.annual.id)==-1)) {
+            if (($scope.buyed.length != 0) && ($scope.buyed.indexOf($scope.annual.id) == -1)) {
                 $scope.buyed.push($scope.annual.id);
             }
             $scope.id = parseInt(data.id);
@@ -66,7 +67,8 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
                     "cartId": data.id,
                     "amount": data.price,
                     "currency": "GBP",
-                    "MC_customerId": $rootScope.user_id
+                    "MC_customerId": $rootScope.user_id,
+                    "MC_mobile": true
                 };
                 console.info($scope.obj);
 
@@ -80,9 +82,24 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
                 }
 
                 createIframe();
+                var timer = setInterval(function(){
+                    var iframe = document.getElementsByTagName('iframe')[0];
+                    var res = iframe.contentWindow.location.href;
+                    console.info(res);
+                    if(res=='http://caserevision.com/section/mobile?status=Y'){
+                        setTimeout(function () {
+                            $("#iframe").remove();
+                            clearInterval(timer);
+                        },5500);
+                    }
+                },1000);
             }
         }
     };
+
+    //if() {
+    //
+    //}
     //$scope.data = {
     //    "testMode": "100",
     //    "instId": "1091282",
