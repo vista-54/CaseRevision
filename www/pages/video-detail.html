@@ -35,7 +35,7 @@
         <h1 class="question"><img src="img/question.png" alt="q"><span>{{video.question}}</span></h1>
         <ul class="answeres" >
             <li ng-repeat="(key,answer) in answers">
-                <img alt="answer img" src="img/answer{{key + 1}}.png"><a  ng-click="isCorrectAnswer(this)">{{answer.text}}</a>
+                <img alt="answer img" src="img/answer{{key + 1}}.png"><a  ng-click="isCorrectAnswer(answer)">{{answer.text}}</a>
             </li>
             <audio preload="auto" src="media/sound1.mp3" type="audio/mp3">
 

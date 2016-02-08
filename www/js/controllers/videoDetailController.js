@@ -35,7 +35,7 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
             $scope.backPage = previous.scope.backPage;
         }
     });
-    console.log(window.location)
+    console.log(window.location);
 
     videoBlock.onended = function () {
         console.log("Video END");
@@ -69,10 +69,12 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
     $scope.isAnswerResult = false;
     $scope.videoPart1 = true;
     $scope.getAnswers = function () {
+        console.info($rootScope.username+" "+$rootScope.auth_key+" "+$scope.videoId);
         var req = $http.get("http://caserevision.com/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
         req.success(function (data, status, headers, config) {
             console.log(data);
             $scope.answers = data.videos;
+            console.info("answers " + $scope.answers);
             $scope.videoPart1 = false;
             videoBlock.webkitExitFullScreen();
             audio.play();
@@ -81,24 +83,21 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
             console.log(data);
         });
     };
-    $scope.isCorrectAnswer = function (ob) {
+    $scope.isCorrectAnswer = function (answer) {
         $scope.isAnswerGet = true;
         window.scroll(0, 0);
-        if (parseInt(ob.answer.status) === 1) {
+        if (parseInt(answer.status) === 1) {
             console.log("Answer is correct");
             $scope.isCorrect = 'green';
             $scope.result = "You are correct";
             $scope.CurrentVideoLink = $scope.video.video2_part;
             $scope.CurrentVideoName = $scope.video.video2_name;
             $scope.numberVideo = 2;
-
+            $scope.isAnswerResult = true;
             setTimeout(function () {
                 $scope.videoPart1 = true;
-                $scope.isAnswerResult = true;
-                if ($scope.$root.$$phase !== '$apply' && $scope.$root.$$phase !== '$digest') {
-                    $scope.$apply();
-                }
 
+                if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') $scope.$apply();
             }, 1500);
         }
         else {
@@ -107,13 +106,13 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
             $scope.result = "You are incorrect";
             $scope.CurrentVideoLink = $scope.video.video1_part;
             $scope.numberVideo = 1;
+            $scope.isAnswerResult = false;
             setTimeout(function () {
                 $scope.videoPart1 = true;
-                $scope.isAnswerResult = false;
-                if ($scope.$root.$$phase !== '$apply' && $scope.$root.$$phase !== '$digest') {
-                    $scope.$apply();
-                }
+
+                if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') $scope.$apply();
             }, 1500);
+
 
         }
     };
@@ -122,9 +121,13 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
         $cookies.put('username', $rootScope.username);
         $cookies.put('auth_key', $rootScope.auth_key);
         if ($scope.isAnswerGet) {
-            return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-s-link/" + $scope.videoId);
-        }
-        else {
+            if ($scope.isAnswerResult) {
+                return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-s-link/" + $scope.videoId);
+            }
+            else {
+                return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId);
+            }
+        } else {
             return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId);
         }
 
@@ -148,7 +151,6 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
         }
 
     };
-
 
 
 }

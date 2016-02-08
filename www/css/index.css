@@ -84,7 +84,17 @@ body.input{
     background-color: #a9dab0;
     border-radius: 2px;
     height: 45px;
-    font-size: 20px;
+    font: 20px "MuseoSansLight";
+    border: 1px solid #a9dab0;
+    outline: none;
+}
+.loginForm textarea {
+    width: 100%;
+    padding: 0 0 0 5px;
+    background-color: #a9dab0;
+    border-radius: 2px;
+    height: 145px;
+    font: 20px "MuseoSansLight";
     border: 1px solid #a9dab0;
     outline: none;
 }
@@ -137,12 +147,21 @@ body.input{
 
 header {
     width: 100%;
-    padding: 10px 15px 34px 15px;
+    padding: 8px 15px 34px 15px;
     background-color:rgb(128, 92, 165);
     position: fixed;
     top: 0;
     height: 44px;
     z-index: 5000;
+}
+.headerIsIOS {
+    /*width: 100%;*/
+    padding: 20px 15px 34px 15px;
+    /*background-color:rgb(128, 92, 165);*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*height: 44px;*/
+    /*z-index: 5000;*/
 }
 header a i{
     font-size: 30px!important;
@@ -164,7 +183,12 @@ header a i{
 }
 
 .logotype {
-    padding: 10px;
+    padding: 5px 10px 0 10px;
+    width: 100%;
+    margin: 44px 0 0 0;
+}
+.logotypeIsIOS {
+    padding: 13px 10px 0 10px;
     width: 100%;
     margin: 44px 0 0 0;
 }
@@ -368,6 +392,7 @@ nav {
     color:red;
     padding: 10px 0 10px 0;
 }
+
 /**/
 .sections.list li:nth-child(4n+1){
     vertical-align: middle;
@@ -682,19 +707,31 @@ nav a span{
     font-size: 20px;
 }
 .aboutUs h1{
-    font-size: 25px;
-    font-weight: 800;
-    padding: 0 0 10px 0;
+    font-size: 2em;
+    /*text-align: justify;*/
+    /* font-weight: 800; */
+    padding: 20px 0 10px 0;
 }
 .contactUs h1{
     font-size: 25px;
-    font-weight: 800;
+    padding: 10px;
 }
 .contactUs h2{
     padding: 20px 0 21px 0px;
     font-size: 20px;
     font-weight: 600;
 }
+.contactUs > .incorrectContact {
+    color: red;
+    font-size: 16px;
+    padding: 10px 0 10px 0;
+}
+
+.contactUs > .correctContact {
+     color: green;
+     font-size: 16px;
+     padding: 10px 0 10px 0;
+ }
 .videoList{
     width: 100%;
     padding: 10px 10px 0 10px;
@@ -723,7 +760,8 @@ nav a span{
 }
 /**/
 .homeContainer{
-    float: left;
+    width:100%;
+    float: none;
     padding: 0 10px 10px 10px;
     overflow: hidden;
 }
@@ -748,6 +786,7 @@ nav a span{
     font-size: 17px;
     font-weight: 600;
     overflow: hidden;
+    width:50%;
 }
 .homeHightContainer{
     overflow: hidden;
@@ -768,12 +807,14 @@ nav a span{
 }
 /**/
 .accessFalseContainer{
+    overflow: hidden;
     padding: 0 0 130px 0;
 }
 .accessFalseContainer h1{
     color: rgb(112, 193, 123);
     font-weight: 900;
     font-size: 20px;
+    overflow: hidden;
 }
 .acessFalseSubTitle {
     display: block;
@@ -812,4 +853,46 @@ nav a span{
     font-size: 25px;
     color: rgb(60, 127, 69);
     text-decoration: none;
+}
+.pad {
+    margin: 13px 0;
+}
+.text{
+    margin:0 0 10px 0;
+    font-size: 1.4em;
+    padding:0;
+    line-height: 1.5em;
+    text-align: left;
+}
+.text> video, .text>img{
+    width:100%;
+    padding:10px 0 0 0 ;
+}
+#iframe {
+    background: white;
+    width: 100%;
+    height: calc(100% - 42px);
+    top: 42px;
+    left: 0;
+    bottom:91px;
+    position: fixed;
+    z-index: 3001;
+    -webkit-overflow-scrolling: touch;
+    overflow: scroll;
+}
+.grey{
+    background: url('../img/_11.png')no-repeat center !important;
+}
+.prevision:after{
+    position: absolute;
+    display: block;
+    content: url("../img/play.png");
+    top: 50%;
+    /*top: calc(50% - 10px);*/
+    left: -webkit-calc(50% - 18px);
+    left: calc(50% - 18px);
+    z-index: 999999;
+}
+.prevision{
+    position: relative;
 }

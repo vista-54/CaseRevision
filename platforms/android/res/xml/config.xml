@@ -24,4 +24,10 @@
     <gap:splash gap:platform="ios" src="res/screen/splash.png" />
     <splash src="res/screen/splash.png" />
     <gap:splash src="res/screen/splash.png" />
+    <feature name="WebIntent">
+        <param name="android-package" value="com.borismus.webintent.WebIntent" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
 </widget>
