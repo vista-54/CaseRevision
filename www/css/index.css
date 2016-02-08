@@ -712,8 +712,8 @@ nav a span{
     padding: 20px 0 10px 0;
 }
 .aboutUs img{
-    height: 90px;
-    margin: -20px 0;
+    height: 80px;
+    margin: -22px 0;
 }
 .aboutUs .img_r{
     text-align: right;
@@ -885,7 +885,7 @@ nav a span{
     top: 42px;
     left: 0;
     bottom:91px;
-    position: fixed;
+    position: absolute;
     z-index: 3001;
     -webkit-overflow-scrolling: touch;
     overflow: scroll;
