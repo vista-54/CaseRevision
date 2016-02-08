@@ -75,7 +75,7 @@ app.directive("breadcrumbs", breadcrumbs);
 
 function AppController($scope, $rootScope, $cordovaDevice) {
     $("#iframe").remove();
-    $rootScope.isLogged = true;
+//    $rootScope.isLogged = true;
     $scope.platform = $cordovaDevice.getPlatform();
     if ($scope.platform === "Android") {
         console.info($scope.platform);
