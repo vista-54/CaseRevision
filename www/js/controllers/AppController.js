@@ -63,6 +63,10 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvide, $httpPro
                     templateUrl: 'pages/search.html',
                     controller: 'searchController'
                 })
+//                .when('/actionIframe', {
+//                    templateUrl: 'pages/action.html',
+//                    controller: 'searchController'
+//                })
                 .otherwise({
                     redirectTo: '/'
                 });
@@ -76,14 +80,14 @@ app.directive("breadcrumbs", breadcrumbs);
 function AppController($scope, $rootScope, $cordovaDevice) {
     $("#iframe").remove();
 //    $rootScope.isLogged = true;
-    $scope.platform = $cordovaDevice.getPlatform();
-    if ($scope.platform === "Android") {
-        console.info($scope.platform);
-        $rootScope.isIOS = false;
-    }
-    if ($scope.platform === "IOS") {
-        $rootScope.isIOS = true;
-    }
+//    $scope.platform = $cordovaDevice.getPlatform();
+//    if ($scope.platform === "Android") {
+//        console.info($scope.platform);
+//        $rootScope.isIOS = false;
+//    }
+//    if ($scope.platform === "IOS") {
+//        $rootScope.isIOS = true;
+//    }
     $rootScope.keyboardShowHandler = function (e) {
 //     setTimeout(function(){
 //       $('header').hide(); 

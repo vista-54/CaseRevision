@@ -7,7 +7,7 @@
 
 app.controller('accessController', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
     console.log("no_access || user_name: " + $rootScope.username + " || auth_key: " + $rootScope.auth_key);
-    if (!$rootScope.username || $rootScope.username == '' || $rootScope.username == 'undefined') {
+    if (!$rootScope.username || $rootScope.username === '' || $rootScope.username === 'undefined') {
         $http.get("http://caserevision.com/api/joinus")
             .then(function (response) {
                 $scope.response = response.data;
@@ -76,11 +76,13 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
 
                 function createIframe() {
                     var el = document.createElement("iframe");
-                    document.body.appendChild(el);
+                    var bodyForFrame=$('.view');
+                    
+//                    bodyForFrame.appendChild(el);
+                    bodyForFrame.append(el);
                     el.id = 'iframe';
                     el.src = 'pages/action.html';
                 }
-
                 createIframe();
                 var timer = setInterval(function(){
                     var iframe = document.getElementsByTagName('iframe')[0];

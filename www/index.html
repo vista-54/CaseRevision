@@ -16,12 +16,14 @@
         <div class="head-wrapper">
             <div class="mobile-menu" ng-click="menuLinkClick()" top-menu>
             </div>
-            <header ng-class="{'headerIsIOS':(isIOS)}">
+            <header >
+            <!--<header ng-class="{'headerIsIOS':(isIOS)}">-->
                 <a href="#/"><i class="fa fa-home"></i></a> 
                 <div class="menu-button" ng-click="menuOpen()"></div>
             </header>
             <div ng-show="isOpenMenu" ng-click="invisiBlockStatus()" class="invisibleBlock" ng-cloak></div>
-            <img class="logotype" ng-class="{'logotypeIsIOS':(isIOS)}" src="img/logo.png" alt="Logo">
+            <!--<img class="logotype" ng-class="{'logotypeIsIOS':(isIOS)}" src="img/logo.png" alt="Logo">-->
+            <img class="logotype"  src="img/logo.png" alt="Logo">
             <div class="view" ng-view>
             </div>
             <!--            <footer>
