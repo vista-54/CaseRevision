@@ -13,7 +13,7 @@ var auth_key = '';
 
 document.addEventListener("deviceready", function () {
     console.log("Device Is ready!!!");
-    payment.initialize();
+//    payment.initialize();
     StatusBar.overlaysWebView(false);
 
 }, false);
@@ -73,15 +73,15 @@ app.controller('AppController', AppController);
 app.directive("topMenu", topMenu);
 app.directive("breadcrumbs", breadcrumbs);
 
-function AppController($scope, $rootScope,$cordovaDevice) {
+function AppController($scope, $rootScope, $cordovaDevice) {
     $("#iframe").remove();
     $rootScope.isLogged = true;
     $scope.platform = $cordovaDevice.getPlatform();
-    if($scope.platform=="Android"){
+    if ($scope.platform === "Android") {
         console.info($scope.platform);
         $rootScope.isIOS = false;
     }
-    if($scope.platform=="IOS"){
+    if ($scope.platform === "IOS") {
         $rootScope.isIOS = true;
     }
     $rootScope.keyboardShowHandler = function (e) {
