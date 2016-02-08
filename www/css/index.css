@@ -139,7 +139,7 @@ body.input{
 }
 
 .mobile-menu li {
-    line-height: 40px; 
+    line-height: 40px;
     padding: 0 0 5px 0px;
 
 
@@ -147,11 +147,11 @@ body.input{
 
 header {
     width: 100%;
-    padding: 8px 15px 34px 15px;
-    background-color:rgb(128, 92, 165);
+    padding: 12px 15px;
+    background-color: rgb(128, 92, 165);
     position: fixed;
     top: 0;
-    height: 44px;
+    height: 51px;
     z-index: 5000;
 }
 .headerIsIOS {
@@ -178,17 +178,18 @@ header a i{
 
 .head-wrapper {
     background-color: #dbe7ea;
+    /*background-color: white;*/
     height: 100vh;
 
 }
 
 .logotype {
-    padding: 5px 10px 0 10px;
+    padding: 20px 10px 0 10px;
     width: 100%;
     margin: 44px 0 0 0;
 }
 .logotypeIsIOS {
-    padding: 13px 10px 0 10px;
+    padding: 10px 10px 0 10px;
     width: 100%;
     margin: 44px 0 0 0;
 }
@@ -276,13 +277,13 @@ header a i{
     padding: 0 0 0 60px;
 }
 .green{
-    color: green!Important;
+    color: green !Important;
     font-size: 25px;
-    font-weight: 800;
+    font-weight: bolder;
 
 }
 .red{
-    color:red!Important;
+    color:red !Important;
     font-size: 25px;
     font-weight: 800;
 }
@@ -332,7 +333,7 @@ footer {
 .search-block {
     position: relative;
     padding: 0 10px 0 10px;
-    text-align: left; 
+    text-align: left;
 }
 
 .back-block span {
@@ -685,17 +686,15 @@ nav.accessFalse a:nth-child(3n+3){
     position: absolute;
     top: 136px;
     left: 13px;
-    z-index: 10;
-    height: 113px;
-    width: 79px;
+    z-index: 4;
+    height: 109px;
 }
 .accessFalse img.rightarrow{
     position: absolute;
     top: 136px;
     right: 13px;
-    z-index: 10;
-    height: 113px;
-    width: 79px;
+    z-index: 4;
+    height: 109px;
 }
 nav a span{
     font-size: 20px;
@@ -708,9 +707,19 @@ nav a span{
 }
 .aboutUs h1{
     font-size: 2em;
-    /*text-align: justify;*/
+    text-align: left;
     /* font-weight: 800; */
     padding: 20px 0 10px 0;
+}
+.aboutUs img{
+    height: 90px;
+    margin: -20px 0;
+}
+.aboutUs .img_r{
+    text-align: right;
+}
+.aboutUs .img_l{
+    text-align: left;
 }
 .contactUs h1{
     font-size: 25px;
@@ -860,6 +869,7 @@ nav a span{
 .text{
     margin:0 0 10px 0;
     font-size: 1.4em;
+    font-weight: 400;
     padding:0;
     line-height: 1.5em;
     text-align: left;
@@ -895,4 +905,9 @@ nav a span{
 }
 .prevision{
     position: relative;
+}
+.purple{
+    color: rgb(128, 92, 165);
+    font-size: 25px;
+    font-weight: bolder;
 }

@@ -13,7 +13,7 @@ var auth_key = '';
 
 document.addEventListener("deviceready", function () {
     console.log("Device Is ready!!!");
-    payment.initialize();
+    //payment.initialize();
     StatusBar.overlaysWebView(false);
 
 }, false);
@@ -74,16 +74,17 @@ app.directive("topMenu", topMenu);
 app.directive("breadcrumbs", breadcrumbs);
 
 function AppController($scope, $rootScope,$cordovaDevice) {
-    $("#iframe").remove();
-    $rootScope.isLogged = true;
-    $scope.platform = $cordovaDevice.getPlatform();
-    if($scope.platform=="Android"){
-        console.info($scope.platform);
-        $rootScope.isIOS = false;
-    }
-    if($scope.platform=="IOS"){
-        $rootScope.isIOS = true;
-    }
+    $("#iframe").remove();// удаляет iframe
+    clearInterval($rootScope.timer); //выключает счетчик считывания Url фрейма. Сам счетчик в accessController
+    //$rootScope.isLogged = false;
+    //$scope.platform = $cordovaDevice.getPlatform();
+    //if($scope.platform=="Android"){
+    //    console.info($scope.platform);
+    //    $rootScope.isIOS = false;
+    //}
+    //if($scope.platform=="IOS"){
+    //    $rootScope.isIOS = true;
+    //}
     $rootScope.keyboardShowHandler = function (e) {
 //     setTimeout(function(){
 //       $('header').hide(); 
@@ -127,19 +128,19 @@ function topMenu() {
         link: function ($scope, element, attrs) {
             var count = 0;
             $scope.menuOpen = function () {
-                console.log("menuClicked");
+                //console.log("menuClicked");
 
 
                 $('.mobile-menu').slideToggle('.mobile-menu');
                 if (count === 0) {
                     $scope.isOpenMenu = true;
                     count++;
-                    console.log("menu open");
+                    //console.log("menu open");
                 }
                 else {
                     $scope.isOpenMenu = false;
                     count = 0;
-                    console.log("menu clothed");
+                    //console.log("menu clothed");
                 }
 
 
@@ -148,7 +149,7 @@ function topMenu() {
                 $scope.menuOpen();
             };
             $scope.invisiBlockStatus = function () {
-                console.log("block clicked");
+                //console.log("block clicked");
                 $scope.isOpenMenu = false;
                 $scope.menuOpen();
             };

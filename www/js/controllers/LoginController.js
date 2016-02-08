@@ -9,7 +9,8 @@
 
 app.controller('loginController', loginController);
 function loginController($scope, $http, $rootScope) {
-    $('#iframe').remove();
+    $('#iframe').remove(); // удаляет iframe
+    clearInterval($rootScope.timer); //выключает счетчик считывания Url фрейма. Сам счетчик в accessController
     $rootScope.username = false;
     $scope.user = {};
     var storage = window.localStorage;
@@ -26,11 +27,11 @@ function loginController($scope, $http, $rootScope) {
     $scope.login = function () {
         if (!$scope.loginForm.$valid) {
             $scope.loginSuccess = true;
-            $scope.textError = 'Fields are not filled';
+            $scope.textError = 'Fields are not filled'; // Ошибка пустых полей
             return false;
         }
-        console.log($scope.user.remember);
-        console.log("Login button click");
+        //console.log($scope.user.remember);
+        //console.log("Login button click");
         if ($scope.user.remember) {
             storage['login'] = $scope.user.username;
             storage['password'] = $scope.user.password;

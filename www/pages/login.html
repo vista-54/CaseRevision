@@ -1,7 +1,7 @@
 
 
 
-<h1 class="incorrectAutho" ng-show="loginSuccess">{{textError}}</h1>
+<h1 ng-if="loginSuccess" class="incorrectAutho">{{textError}}</h1>
 <form  name="loginForm" class="loginForm" role="form">
     <input type="text" name="login" placeholder="username" ng-model="user.username" required>
     <input type="password" name="password" placeholder="password" ng-model="user.password"  required>
