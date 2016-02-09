@@ -5,7 +5,7 @@
  */
 
 
-var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova', 'ngMap','ngMaterial']);
+var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova', 'ngMap']);
 var username = '';
 var auth_key = '';
 
