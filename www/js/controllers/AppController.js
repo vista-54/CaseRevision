@@ -78,8 +78,8 @@ app.directive("breadcrumbs", breadcrumbs);
 function AppController($scope, $rootScope, $cordovaDevice) {
     $rootScope.delFrame = function () { // Функция, видима всеми контроллерами, удаляет созданый фрейм и останавливает
         // счетчик проверки Url фрейма
-        $("#iframe").remove();
         clearInterval($rootScope.timer);
+        $("#iframe").remove();
     };
 
     $rootScope.delFrame();
@@ -129,7 +129,6 @@ function AppController($scope, $rootScope, $cordovaDevice) {
     window.location = "#/";
     $scope.message = "HomeController";
     //console.log($scope.message);
-
 }
 
 function topMenu() {
@@ -152,8 +151,6 @@ function topMenu() {
                     count = 0;
                     //console.log("menu clothed");
                 }
-
-
             };
             $scope.menuLinkClick = function () {
                 $scope.menuOpen();
