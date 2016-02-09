@@ -9,8 +9,7 @@
 
 app.controller('sectionController', sectionController);
 function sectionController($scope, $http, $rootScope, $location) {
-    $("#iframe").remove(); // удаляет iframe
-    clearInterval($rootScope.timer); //выключает счетчик считывания Url фрейма. Сам счетчик в accessController
+    $rootScope.delFrame();
 //    $scope.linkTree = $location.url();
     $scope.TopMenuClass = 'menuOn';
     console.log("sectionController");

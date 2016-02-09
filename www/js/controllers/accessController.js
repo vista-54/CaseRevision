@@ -6,6 +6,9 @@
 
 
 app.controller('accessController', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
+    $scope.verif = $rootScope.verif;
+    $scope.email = $rootScope.email;
+
     //console.log("no_access || user_name: " + $rootScope.username + " || auth_key: " + $rootScope.auth_key);
     if (!$rootScope.username || $rootScope.username == '' || $rootScope.username == 'undefined') {// проверка на то, авторизированый
         // пользоваьтель или нет. Если нет, то ему отображаются просто цены.
@@ -76,24 +79,34 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
 
                 global_data = $scope.obj;
 
+                $scope.scrollHeight = Math.max(
+                    document.body.scrollHeight, document.documentElement.scrollHeight,
+                    document.body.offsetHeight, document.documentElement.offsetHeight,
+                    document.body.clientHeight, document.documentElement.clientHeight
+                );
+
                 function createIframe() { // объявление функции создание фрейма
                     var el = document.createElement("iframe");
-                    document.body.appendChild(el);
+                    var place = document.getElementById('access');
+                    place.appendChild(el);
                     el.id = 'iframe';
                     el.src = 'pages/action.html';
+                    el.height = $scope.scrollHeight;
                 }
 
                 createIframe(); // создание фрейма
+
+                //console.info( 'Высота с учетом прокрутки: ' + scrollHeight );
+
+
+
                 $rootScope.timer = setInterval(function(){ // После создания фрейма запускается циклическая функция на проверку
                     // iframe.contentWindow.location.href и закрывает фрейм, если мы попали на caserevision.com через 5,5 секунд
                     var iframe = document.getElementsByTagName('iframe')[0];
                     var res = iframe.contentWindow.location.href;
                     console.info(res);
                     if(res=='http://caserevision.com/section/mobile?status=Y'){
-                        setTimeout(function () {
-                            $("#iframe").remove();
-                            clearInterval($rootScope.timer);
-                        },5500);
+                        setTimeout($rootScope.delFrame(),5500);
                     }
                 },1000);
             }

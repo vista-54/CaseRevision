@@ -1,6 +1,8 @@
-<div>
+<div id="access">
     <div class="accessFalseContainer">
+        <span class="green_yu" ng-if="verif">Message to verify your account have been sent to your E-mail {{email}} (Pleace, check your E-mail)</span>
         <nav class="accessFalse" >
+
             <div>
                 <a ng-class="{'grey':(buyed.indexOf(1)>-1)}" target="_blank" ng-click="clickLaw(contract)">Contract Law
                     <h3>£ {{contract.price}}<br><span class="timeBuy">1 Year</span></h3>
@@ -18,12 +20,12 @@
                 <h3>£ {{annual.price}}<br><span class="timeBuy">for both</span></h3>
             </a>
         </nav>
-        <div  ng-show="isLogged&&!response.promo">
-            <form class="loginForm">
-                <input type="text" ng-model="promo" placeholder="Enter promo-code to get discount" class="loginForm">
-            </form>
-            <input type="button" class="btn" value="Ok" ng-click="SendPromo(promo)">
-        </div>
+        <!--<div  ng-show="isLogged&&!response.promo">-->
+            <!--<form class="loginForm">-->
+                <!--<input type="text" ng-model="promo" placeholder="Enter promo-code to get discount" class="loginForm">-->
+            <!--</form>-->
+            <!--<input type="button" class="btn" value="Ok" ng-click="SendPromo(promo)">-->
+        <!--</div>-->
         <span class="acessFalseSubTitle">
             View ALL the case law videos for a full year as many times as you like. Join now to get your personal and secure login for one year.
         </span>

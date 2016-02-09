@@ -7,7 +7,6 @@
 
 app.controller('aboutUsController', aboutUsController);
 function aboutUsController($rootScope) {
-    $("#iframe").remove();
-    clearInterval($rootScope.timer);
+    $rootScope.delFrame();
     console.log("aboutUsController");
 }

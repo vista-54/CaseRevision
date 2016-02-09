@@ -7,8 +7,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     margin: 0;
@@ -25,7 +25,7 @@ time, mark, audio, video {
     font-style: normal;
     font-weight: normal; }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
@@ -88,6 +88,11 @@ body.input{
     border: 1px solid #a9dab0;
     outline: none;
 }
+.loginForm input::-webkit-input-placeholder {color:#fff;}
+.loginForm input::-moz-placeholder          {color:#fff;}/* Firefox 19+ */
+.loginForm input:-moz-placeholder           {color:#fff;}/* Firefox 18- */
+.loginForm input:-ms-input-placeholder      {color:#fff;}
+
 .loginForm textarea {
     width: 100%;
     padding: 0 0 0 5px;
@@ -98,8 +103,12 @@ body.input{
     border: 1px solid #a9dab0;
     outline: none;
 }
-.loginForm div input{
+.loginForm textarea::-webkit-input-placeholder {color:#fff;}
+.loginForm textarea::-moz-placeholder          {color:#fff;}/* Firefox 19+ */
+.loginForm textarea:-moz-placeholder           {color:#fff;}/* Firefox 18- */
+.loginForm textarea:-ms-input-placeholder      {color:#fff;}
 
+.loginForm div input{
 
     width: 6%;
 }
@@ -281,6 +290,10 @@ header a i{
     font-size: 25px;
     font-weight: bolder;
 
+}
+.green_yu{
+    font-size: 20px;
+    color: green !Important;
 }
 .red{
     color:red !Important;
@@ -713,7 +726,7 @@ nav a span{
 }
 .aboutUs img{
     height: 80px;
-    margin: -22px 0;
+    margin: -15px 0;
 }
 .aboutUs .img_r{
     text-align: right;
@@ -774,6 +787,12 @@ nav a span{
     padding: 0 10px 10px 10px;
     overflow: hidden;
 }
+.homeContainer#first{
+    width:100%;
+    float: none;
+    padding: 11px 10px 10px 10px;
+    overflow: hidden;
+}
 .homeContainer a{
     background: rgb(128, 92, 165);
     padding: 44px 0 25px 0;
@@ -796,6 +815,8 @@ nav a span{
     font-weight: 600;
     overflow: hidden;
     width:50%;
+    display: table-cell;
+    vertical-align: middle;
 }
 .homeHightContainer{
     overflow: hidden;
@@ -831,7 +852,7 @@ nav a span{
     padding: 10px 30px 10px 20px;
 }
 .aboutUs {
-    padding: 0 10px 0 10px; 
+    padding: 0 10px 0 10px;
 }
 .aboutUs ul li:nth-child(2n+1){
     background: url('../img/check_green.png')no-repeat;
@@ -881,10 +902,9 @@ nav a span{
 #iframe {
     background: white;
     width: 100%;
-    height: calc(100% - 42px);
-    top: 42px;
+    /*height: 125%;*/
+    top: 44px;
     left: 0;
-    bottom:91px;
     position: absolute;
     z-index: 3001;
     -webkit-overflow-scrolling: touch;
@@ -910,4 +930,69 @@ nav a span{
     color: rgb(128, 92, 165);
     font-size: 25px;
     font-weight: bolder;
+}
+.signUp{
+
+}
+.signUp h1{
+     font-size: 2em;
+     line-height: 1.5em;
+ }
+.signUp p{
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+#second_video{
+    margin:0 0 200px 0;
+}
+#first_input{
+    margin-top:8px;
+}
+div .terms {
+    height: 200px;
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+    margin-top: 25px;
+    padding: 6px;
+    overflow: auto;
+}
+div .terms h3{
+    font-size: 30px;
+    line-height: 1.5em;
+    margin: 0 0 10px 0;
+}
+div .terms ul{
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin: 0 0 10px 0;
+}
+div .terms h4{
+     font-size: 25px;
+    line-height: 1.5em;
+ }
+div .terms h5{
+    font-size: 20px;
+    line-height: 1.5em;
+}
+#check{
+    line-height: 2em;
+    margin: 22px 0 0;
+    float: left;
+    width: 6%;
+    height: 20px;
+}
+.ui{
+    margin: 15px 0 0;
+}
+.error_true{
+    color:red;
+    font-size:18px;
+}
+.padid{
+    text-align: left;
+    left: 20px;
+    padding: 0 0 11px 15px;
+}
+.padid a{
+    text-decoration: none;
 }

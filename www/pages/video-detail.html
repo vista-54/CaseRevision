@@ -6,7 +6,7 @@
 <!--        <a href="#/sections">{{sectionName}}</a>
         <a href="{{sectionLink}}">{{topicName}}</a>
         <a href="{{topicLink}}">{{video.name}}</a>-->
-        
+
 <!--        <span class="currTitle">
             {{video.name}}
         </span>-->
@@ -15,7 +15,7 @@
     <h1 class="nameVideo" ng-show="videoPart1">{{video.name}}</h1>
 
     <section   ng-show="videoPart1">
-        <video  width="100%" id="video"  data-number-video="{{numberVideo}}"  autoplay src="{{getUrlVideo(CurrentVideoLink)}}" controls></video>
+        <video  width="100%" id="video" poster="{{video.image}}"  data-number-video="{{numberVideo}}" src="{{getUrlVideo(CurrentVideoLink)}}" controls autoplay></video>
 
         <!--<video vi-screen></video>-->
         <!--        <div >

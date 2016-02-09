@@ -5,8 +5,7 @@
  */
 
 app.controller('contactController', ['$scope', '$http','$rootScope', function ($scope, $http,$rootScope) {
-    $("#iframe").remove(); // удаляет iframe
-    clearInterval($rootScope.timer); //выключает счетчик считывания Url фрейма. Сам счетчик в accessController
+    $rootScope.delFrame();
     $scope.contact = {};
     $scope.isError = false;
     $scope.errorMessage = '';

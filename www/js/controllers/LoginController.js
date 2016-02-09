@@ -9,8 +9,7 @@
 
 app.controller('loginController', loginController);
 function loginController($scope, $http, $rootScope) {
-    $('#iframe').remove(); // удаляет iframe
-    clearInterval($rootScope.timer); //выключает счетчик считывания Url фрейма. Сам счетчик в accessController
+    $rootScope.delFrame();
     $rootScope.username = false;
     $scope.user = {};
     var storage = window.localStorage;
