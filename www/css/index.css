@@ -750,10 +750,10 @@ nav a span{
 }
 
 .contactUs > .correctContact {
-    color: green;
-    font-size: 16px;
-    padding: 10px 0 10px 0;
-}
+     color: green;
+     font-size: 16px;
+     padding: 10px 0 10px 0;
+ }
 .videoList{
     width: 100%;
     padding: 10px 10px 0 10px;
@@ -902,10 +902,9 @@ nav a span{
 #iframe {
     background: white;
     width: 100%;
-    height: 100%;
+    /*height: 125%;*/
     top: 44px;
     left: 0;
-    /*bottom:91px;*/
     position: absolute;
     z-index: 3001;
     -webkit-overflow-scrolling: touch;
@@ -996,4 +995,9 @@ div .terms h5{
 }
 .padid a{
     text-decoration: none;
+}
+a.disabled{
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default;  /* устанавливаем курсор в виде стрелки */
+    color: #999; /* цвет текста для нективной ссылки */
 }
