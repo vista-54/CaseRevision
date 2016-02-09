@@ -127,14 +127,14 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
 //        return $sce.trustAsResourceUrl(name);
         $cookies.put('username', $rootScope.username);
         $cookies.put('auth_key', $rootScope.auth_key);
-        if ($scope.isAnswerGet) {
-            if ($scope.isAnswerResult) {
+        if ($scope.isAnswerGet) { // Если ответ плоучен
+            if ($scope.isAnswerResult) { // и он правильный откроется второе видео
                 return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-s-link/" + $scope.videoId);
             }
-            else {
+            else { // ответ неправильный - первое видео
                 return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId);
             }
-        } else {
+        } else { // ответ не получен - первое видео
             return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId);
         }
 
@@ -158,6 +158,5 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
         }
 
     };
-
 
 }

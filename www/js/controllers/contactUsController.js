@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-app.controller('contactController', ['$scope', '$http', function ($scope, $http) {
-    $("#iframe").remove();
+app.controller('contactController', ['$scope', '$http','$rootScope', function ($scope, $http,$rootScope) {
+    $rootScope.delFrame();
     $scope.contact = {};
     $scope.isError = false;
     $scope.errorMessage = '';
-    $scope.sendContact = function (contact) {
-        if ($scope.contactUs.$invalid) {
+    $scope.sendContact = function (contact) { //функция отправки данных контактной формы
+        if ($scope.contactUs.$invalid) { // проверка на валидность полей
             if ($scope.contactUs.$error.required) {
                 $scope.errorMessage = "All fields are required";
             } else {
@@ -23,7 +23,7 @@ app.controller('contactController', ['$scope', '$http', function ($scope, $http)
             .success(function (data, status) {
                 if (status == 200)
                     $scope.notError = true;
-                else{
+                else{ // выведет ошибку в случае 500 ответа от сервера
                     $scope.notError = false;
                     $scope.errorMessage = "Server is not available!";
                     $scope.isError = true;
@@ -34,7 +34,7 @@ app.controller('contactController', ['$scope', '$http', function ($scope, $http)
                 $scope.errorMessage = data.status;
                 console.info('status: ' + data, status);
             })
-            .error(function () {
+            .error(function () { // выведет ошибку интернет соединения
                 $scope.notError = false;
                 $scope.isError = true;
                 $scope.errorMessage = "Error connection to the Internet";

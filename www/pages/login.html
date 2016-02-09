@@ -1,12 +1,13 @@
 
 
 
-<h1 class="incorrectAutho" ng-show="loginSuccess">{{textError}}</h1>
+<h1 ng-if="loginSuccess" class="incorrectAutho">{{textError}}</h1>
 <form  name="loginForm" class="loginForm" role="form">
-    <input type="text" name="login" placeholder="username" ng-model="user.username" required>
-    <input type="password" name="password" placeholder="password" ng-model="user.password"  required>
+    <input id="first_input" type="text" name="login" placeholder="User Name" ng-model="user.username" required>
+    <input type="password" name="password" placeholder="Password" ng-model="user.password"  required>
     <div><label><input ng-model="user.remember" ng-checked="user.rememb" type="checkbox" ><span>Remember me</span></label></div>
 </form>
+<div class="padid">Please <a href="#/signUp">Sing Up</a> if you have no account</div>
 <button type="button" ng-click="login()" class="btn btn-primary" name="login-button">Login</button> 
 
 

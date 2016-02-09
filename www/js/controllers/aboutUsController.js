@@ -6,7 +6,7 @@
 
 
 app.controller('aboutUsController', aboutUsController);
-function aboutUsController() {
-    $("#iframe").remove();
+function aboutUsController($rootScope) {
+    $rootScope.delFrame();
     console.log("aboutUsController");
 }

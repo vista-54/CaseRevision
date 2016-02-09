@@ -5,72 +5,70 @@
  */
 
 
-
-
 var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova', 'ngMap']);
 var username = '';
 var auth_key = '';
 
+
 document.addEventListener("deviceready", function () {
     console.log("Device Is ready!!!");
-//    payment.initialize();
+    //payment.initialize();
     StatusBar.overlaysWebView(false);
     screen.lockOrientation('portrait');
 }, false);
 
 
-
 app.config(['$routeProvider', '$httpProvider', function ($routeProvide, $httpProvider) {
-        $httpProvider.defaults.withCredentials = true;
-        $routeProvide
-                .when('/', {
-                    templateUrl: 'pages/homepage.html',
-                    controller: 'AppController'
-                })
-                .when('/about_us', {
-                    templateUrl: 'pages/aboutus.html',
-                    controller: 'aboutUsController'
-                })
-                .when('/contact', {
-                    templateUrl: 'pages/contact.html',
-                    controller: 'contactController'
-                })
-                .when('/login', {
-                    templateUrl: 'pages/login.html',
-                    controller: 'loginController'
-                })
-                .when('/sections', {
-                    templateUrl: 'pages/sections.html',
-                    controller: 'sectionController'
-                })
-                .when('/section/:sectionId', {
-                    templateUrl: 'pages/topic.html',
-                    controller: 'topicController'
-                })
-                .when('/section/:sectionId/:topicId', {
-                    templateUrl: 'pages/videoList.html',
-                    controller: 'videoController'
-                })
-                .when('/section/:sectionId/:topicId/:videoId', {
-                    templateUrl: 'pages/video-detail.html',
-                    controller: 'videoDetailController'
-                })
-                .when('/noaccess', {
-                    templateUrl: 'pages/not_access.html',
-                    controller: 'accessController'
-                })
-                .when('/search', {
-                    templateUrl: 'pages/search.html',
-                    controller: 'searchController'
-                })
-//                .when('/actionIframe', {
-//                    templateUrl: 'pages/action.html',
-//                    controller: 'searchController'
-//                })
-                .otherwise({
-                    redirectTo: '/'
-                });
-    }]);
+    $httpProvider.defaults.withCredentials = true;
+    $routeProvide
+        .when('/', {
+            templateUrl: 'pages/homepage.html',
+            controller: 'AppController'
+        })
+        .when('/signUp', {
+            templateUrl: 'pages/signUp.html',
+            controller: 'signUpCtrl'
+        })
+        .when('/about_us', {
+            templateUrl: 'pages/aboutus.html',
+            controller: 'aboutUsController'
+        })
+        .when('/contact', {
+            templateUrl: 'pages/contact.html',
+            controller: 'contactController'
+        })
+        .when('/login', {
+            templateUrl: 'pages/login.html',
+            controller: 'loginController'
+        })
+        .when('/sections', {
+            templateUrl: 'pages/sections.html',
+            controller: 'sectionController'
+        })
+        .when('/section/:sectionId', {
+            templateUrl: 'pages/topic.html',
+            controller: 'topicController'
+        })
+        .when('/section/:sectionId/:topicId', {
+            templateUrl: 'pages/videoList.html',
+            controller: 'videoController'
+        })
+        .when('/section/:sectionId/:topicId/:videoId', {
+            templateUrl: 'pages/video-detail.html',
+            controller: 'videoDetailController'
+        })
+        .when('/noaccess', {
+            templateUrl: 'pages/not_access.html',
+            controller: 'accessController'
+        })
+        .when('/search', {
+            templateUrl: 'pages/search.html',
+            controller: 'searchController'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+}]);
 
 
 app.controller('AppController', AppController);
@@ -78,23 +76,32 @@ app.directive("topMenu", topMenu);
 app.directive("breadcrumbs", breadcrumbs);
 
 function AppController($scope, $rootScope, $cordovaDevice) {
-    $("#iframe").remove();
-//    $rootScope.isLogged = true;
-//    $scope.platform = $cordovaDevice.getPlatform();
-//    if ($scope.platform === "Android") {
-//        console.info($scope.platform);
-//        $rootScope.isIOS = false;
-//    }
-//    if ($scope.platform === "IOS") {
-//        $rootScope.isIOS = true;
-//    }
+    $rootScope.delFrame = function () { // Функция, видима всеми контроллерами, удаляет созданый фрейм и останавливает
+        // счетчик проверки Url фрейма
+        $("#iframe").remove();
+        clearInterval($rootScope.timer);
+    };
+
+    $rootScope.delFrame();
+    $rootScope.verif = false;
+    //$("#iframe").remove();// удаляет iframe
+    //clearInterval($rootScope.timer); //выключает счетчик считывания Url фрейма. Сам счетчик в accessController
+    //$rootScope.isLogged = false;
+    //$scope.platform = $cordovaDevice.getPlatform();
+    //if($scope.platform=="Android"){
+    //    console.info($scope.platform);
+    //    $rootScope.isIOS = false;
+    //}
+    //if($scope.platform=="IOS"){
+    //    $rootScope.isIOS = true;
+    //}
     $rootScope.keyboardShowHandler = function (e) {
 //     setTimeout(function(){
 //       $('header').hide(); 
 //    },400);
         if (device.platform.indexOf("iOS") !== -1) {
             $('body').css({'overflow': 'hidden', 'height': $(window).height()});
-            console.log("focused");
+            //console.log("focused");
 //            $('header').css({'position': 'static'});
 //            $('footer').css({'position': 'static'});
 //            $('.topicContent').css({'padding-bottom': 0});
@@ -109,7 +116,7 @@ function AppController($scope, $rootScope, $cordovaDevice) {
 //    },400);
         if (device.platform.indexOf("iOS") !== -1) {
             $('body').css({'overflow': 'visible', 'height': '100%'});
-            console.log("blur");
+            //console.log("blur");
 //            $('footer').css({'position': 'fixed'});
 //            $('header').css({'position': 'fixed'});
 //            $('.topicContent').css({'padding-bottom': '70px'});
@@ -121,29 +128,29 @@ function AppController($scope, $rootScope, $cordovaDevice) {
 //    $scope.inputIsActive = true;
     window.location = "#/";
     $scope.message = "HomeController";
-    console.log($scope.message);
+    //console.log($scope.message);
 
 }
 
 function topMenu() {
 
-    return{
+    return {
         link: function ($scope, element, attrs) {
             var count = 0;
             $scope.menuOpen = function () {
-                console.log("menuClicked");
+                //console.log("menuClicked");
 
 
                 $('.mobile-menu').slideToggle('.mobile-menu');
                 if (count === 0) {
                     $scope.isOpenMenu = true;
                     count++;
-                    console.log("menu open");
+                    //console.log("menu open");
                 }
                 else {
                     $scope.isOpenMenu = false;
                     count = 0;
-                    console.log("menu clothed");
+                    //console.log("menu clothed");
                 }
 
 
@@ -152,7 +159,7 @@ function topMenu() {
                 $scope.menuOpen();
             };
             $scope.invisiBlockStatus = function () {
-                console.log("block clicked");
+                //console.log("block clicked");
                 $scope.isOpenMenu = false;
                 $scope.menuOpen();
             };
@@ -161,11 +168,11 @@ function topMenu() {
     };
 }
 function breadcrumbs() {
-    return{
+    return {
         link: function ($scope, element, attrs) {
             $scope.$watch('$location', function () {
 //                $scope.isLogged = $scope.isLogged;
-                console.log('location changed');
+//                console.log('location changed');
             });
         },
         templateUrl: 'templates/breadcrumbs.html'

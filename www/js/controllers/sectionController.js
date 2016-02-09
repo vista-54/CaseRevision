@@ -9,7 +9,7 @@
 
 app.controller('sectionController', sectionController);
 function sectionController($scope, $http, $rootScope, $location) {
-    $("#iframe").remove();
+    $rootScope.delFrame();
 //    $scope.linkTree = $location.url();
     $scope.TopMenuClass = 'menuOn';
     console.log("sectionController");
