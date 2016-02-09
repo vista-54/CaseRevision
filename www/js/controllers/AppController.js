@@ -15,7 +15,7 @@ document.addEventListener("deviceready", function () {
     console.log("Device Is ready!!!");
 //    payment.initialize();
     StatusBar.overlaysWebView(false);
-
+    screen.lockOrientation('portrait');
 }, false);
 
 

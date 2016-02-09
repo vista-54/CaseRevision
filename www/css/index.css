@@ -728,10 +728,10 @@ nav a span{
 }
 
 .contactUs > .correctContact {
-     color: green;
-     font-size: 16px;
-     padding: 10px 0 10px 0;
- }
+    color: green;
+    font-size: 16px;
+    padding: 10px 0 10px 0;
+}
 .videoList{
     width: 100%;
     padding: 10px 10px 0 10px;
@@ -896,3 +896,13 @@ nav a span{
 .prevision{
     position: relative;
 }
+/*#video{
+    position:fixed;
+    margin-top:32%;
+    margin-left:-39%;
+    -moz-transform:scale(1) rotate(90deg);
+    -webkit-transform:scale(1) rotate(90deg);
+    -o-transform:scale(1) rotate(90deg);
+    -ms-transform:scale(1) rotate(90deg);
+    transform:scale(1) rotate(90deg);
+}*/
