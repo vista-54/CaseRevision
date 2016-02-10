@@ -534,7 +534,7 @@ nav {
 }
 .topicList li a{
     display: block;
-    /* width: 209px; */
+     width: 95%;
     position: relative;
     text-decoration: none;
     color: rgb(102,102,102);
@@ -571,11 +571,11 @@ nav {
     /*font-size: 22px;*/
     font-size: inherit;
 }
-.search-block  button{
+.search-block button{
     background: rgb(112, 193, 123);
     border: 0;
     height: 46px;
-    width: 20%;
+    width: 18%;
     color: rgb(255,255,255);
     position: relative;
     /* padding: 0 10px 0 24px; */
@@ -921,7 +921,7 @@ nav a span{
     /*top: calc(50% - 10px);*/
     left: -webkit-calc(50% - 18px);
     left: calc(50% - 18px);
-    z-index: 999999;
+    z-index: 4800;
 }
 .prevision{
     position: relative;
