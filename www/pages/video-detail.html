@@ -1,47 +1,34 @@
 <div>
-    <div class="historylinks"   >
+    <div class="historylinks"  ng-cloak>
         <!--<a href="#/sections">Sections</a> > <a href="{{sectionLink}}">{{sectionName}}</a> > <a href="{{topicLink}}">{{topicName}}</a> > <a href="{{topicLink}}">{{getVideoName()}}</a>-->
     </div>
     <div class="titleContainer" breadcrumbs>
-<!--        <a href="#/sections">{{sectionName}}</a>
-        <a href="{{sectionLink}}">{{topicName}}</a>
-        <a href="{{topicLink}}">{{video.name}}</a>-->
-
-<!--        <span class="currTitle">
-            {{video.name}}
-        </span>-->
-
     </div><br>
+
     <h1 class="nameVideo" ng-show="videoPart1">{{video.name}}</h1>
 
     <section   ng-show="videoPart1">
         <video  width="100%" id="video" poster="{{video.image}}"  data-number-video="{{numberVideo}}" src="{{getUrlVideo(CurrentVideoLink)}}" controls autoplay></video>
-
-        <!--<video vi-screen></video>-->
-        <!--        <div >
-                    <div ui-view class="video-container">
-                        <jw-plangular watch-me="watchMe" player-id="playTest"  options="playerOptions"></jw-plangular>
-                    </div>
-                </div>-->
     </section>
-    <div class="judgement" ng-show="isAnswerResult">{{video.judgement}}</div>
-    <nav ng-show="isAnswerResult">
 
+    <div class="judgement" ng-show="isAnswerResult">{{video.judgement}}</div>
+
+    <nav ng-show="isAnswerResult">
         <button class="btn" ng-click="backBtn()">Back</button>
         <button class="btn" ng-click="continueBtn()" ng-show="IsNextContinue(video.id)">Continue</button>
     </nav>
+
     <div class="qublock" ng-hide="videoPart1">
         <div ng-class="isCorrect">{{result}}</div>
         <h1 class="question"><img src="img/question.png" alt="q"><span>{{video.question}}</span></h1>
         <ul class="answeres" >
             <li ng-repeat="(key,answer) in answers">
-                <img alt="answer img" src="img/answer{{key + 1}}.png"><a  ng-click="isCorrectAnswer(answer)">{{answer.text}}</a>
+                <img alt="answer img" src="img/answer{{key + 1}}.png"><a ng-click="isCorrectAnswer(answer)">{{answer.text}}</a>
             </li>
             <audio preload="auto" src="media/sound1.mp3" type="audio/mp3">
 
             </audio>
         </ul>
-
     </div>
 
 

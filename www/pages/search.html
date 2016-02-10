@@ -8,7 +8,14 @@
             <li  ng-repeat="video in videos">
                 <!--{{count=parseInt(count)+1}}-->
 
-                <span ><a href="#/section/{{video.topic.section_id}}/{{video.topic.id}}/{{video.id}}">{{video.name}}<br><img width="100%" alt="video_prew" src="{{video.image}}"></a></span>
+                <span >
+                    <a href="#/section/{{video.topic.section_id}}/{{video.topic.id}}/{{video.id}}">{{video.name}}
+                        <br>
+                        <div class="for_after">
+                            <img width="100%" alt="video_prew" src="{{video.image}}">
+                        </div>
+                    </a>
+                </span>
 
             </li>
         </ul>
@@ -16,7 +23,12 @@
     <footer>
         <div class="search-block">
 
-            <label><input placeholder="Search"  ng-model="term"><button ng-click="search()"><i class="fa fa-search"></i></button></label>
+            <label>
+                <input placeholder="Search" ng-model="term">
+                <button ng-click="search()">
+                    <i class="fa fa-search"></i>
+                </button>
+            </label>
             <!--<a class="fBtn" href="#/sections" >BACK</a>-->
         </div>
 

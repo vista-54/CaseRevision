@@ -6,7 +6,27 @@
 
 
 app.controller('aboutUsController', aboutUsController);
-function aboutUsController($rootScope) {
+function aboutUsController($scope,$rootScope) {
     $rootScope.delFrame();
+    var first_video = document.getElementById("first_video");
+    first_video.onplay = function () {
+        screen.unlockOrientation();
+    };
+    first_video.onended = function () {
+        screen.lockOrientation('portrait');
+        first_video.webkitExitFullScreen();
+    };
+    var second_video = document.getElementById("second_video");
+    second_video.onplay = function () {
+        screen.unlockOrientation();
+    };
+    second_video.onended = function () {
+        screen.lockOrientation('portrait');
+        second_video.webkitExitFullScreen();
+    };
     console.log("aboutUsController");
+
+    $scope.$on('$routeChangeStart', function (next, current) {
+        screen.lockOrientation('portrait');
+    });
 }

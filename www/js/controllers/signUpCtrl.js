@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('signUpCtrl', ['$scope', '$http','$rootScope', function ($scope, $http,$rootScope) {
-    console.info('signUpCtrl');
+    window.scroll(0, 0);
     $scope.newUser = {};
 
     $scope.signUp = function (newUser) {

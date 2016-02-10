@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,9 +6,9 @@
 
 
 app.controller('accessController', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
+    window.scroll(0, 0);
     $scope.verif = $rootScope.verif;
     $scope.email = $rootScope.email;
-
     //console.log("no_access || user_name: " + $rootScope.username + " || auth_key: " + $rootScope.auth_key);
     if (!$rootScope.username || $rootScope.username == '' || $rootScope.username == 'undefined') {// проверка на то, авторизированый
         // пользоваьтель или нет. Если нет, то ему отображаются просто цены.

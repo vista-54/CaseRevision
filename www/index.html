@@ -16,12 +16,14 @@
         <div class="head-wrapper">
             <div class="mobile-menu" ng-click="menuLinkClick()" top-menu>
             </div>
-            <header ng-class="{'headerIsIOS':(isIOS)}">
+            <header >
+            <!--<header ng-class="{'headerIsIOS':(isIOS)}">-->
                 <a href="#/"><i class="fa fa-home"></i></a> 
                 <div class="menu-button" ng-click="menuOpen()"></div>
             </header>
             <div ng-show="isOpenMenu" ng-click="invisiBlockStatus()" class="invisibleBlock" ng-cloak></div>
-            <img class="logotype" ng-class="{'logotypeIsIOS':(isIOS)}" src="img/logo.png" alt="Logo">
+            <!--<img class="logotype" ng-class="{'logotypeIsIOS':(isIOS)}" src="img/logo.png" alt="Logo">-->
+            <img class="logotype"  src="img/logo.png" alt="Logo">
             <div class="view" ng-view>
             </div>
             <!--            <footer>
@@ -43,10 +45,6 @@
                 </div>-->
             <script src="cordova.js"></script>
             <script src="js/libs/angular/angular.min.js"></script>
-            <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>-->
-            <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>-->
-            <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>-->
-            <!--<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>-->
             <script src="js/libs/jq/jquery-2.1.4.min.js"></script>
             <script src="js/libs/ngmap/build/scripts/ng-map.min.js"></script>
             <!--<script src="js/libs/ngvideo/dist/ng-video.min.js"></script>-->
