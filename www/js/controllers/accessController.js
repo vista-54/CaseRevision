@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,9 +6,9 @@
 
 
 app.controller('accessController', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
+    window.scroll(0, 0);
     $scope.verif = $rootScope.verif;
     $scope.email = $rootScope.email;
-
     //console.log("no_access || user_name: " + $rootScope.username + " || auth_key: " + $rootScope.auth_key);
     if (!$rootScope.username || $rootScope.username == '' || $rootScope.username == 'undefined') {// проверка на то, авторизированый
         // пользоваьтель или нет. Если нет, то ему отображаются просто цены.
@@ -44,15 +44,15 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
             });
     }
 
-    $scope.SendPromo = function (promo) { // функция отправки промо-кода на сайт
-        $http.get("http://caserevision.com/api/joinus?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&promo=" + promo)
-            .then(function (response) {
-                    console.info(response);
-                    window.location = "#/"; // втулил для "перезагрузки" страници и отображения цен сразу с действием промокода
-                    window.location = "#/noaccess";
-                }
-            );
-    };
+    //$scope.SendPromo = function (promo) { // функция отправки промо-кода на сайт
+    //    $http.get("http://caserevision.com/api/joinus?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&promo=" + promo)
+    //        .then(function (response) {
+    //                console.info(response);
+    //                window.location = "#/"; // втулил для "перезагрузки" страници и отображения цен сразу с действием промокода
+    //                window.location = "#/noaccess";
+    //            }
+    //        );
+    //};
 
     $scope.clickLaw = function (data) {
         if (!$rootScope.username || $rootScope.username == '' || $rootScope.username == 'undefined') {
@@ -87,10 +87,8 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
 
                 function createIframe() { // объявление функции создание фрейма
                     var el = document.createElement("iframe");
-                    var bodyForFrame=$('.view');
-                    
-//                    bodyForFrame.appendChild(el);
-                    bodyForFrame.append(el);
+                    var place = document.getElementById('access');
+                    place.appendChild(el);
                     el.id = 'iframe';
                     el.src = 'pages/action.html';
                     el.height = $scope.scrollHeight;
@@ -100,17 +98,17 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
 
                 //console.info( 'Высота с учетом прокрутки: ' + scrollHeight );
 
-
-
-                $rootScope.timer = setInterval(function(){ // После создания фрейма запускается циклическая функция на проверку
+                $rootScope.timer = setInterval(function () { // После создания фрейма запускается циклическая функция на проверку
                     // iframe.contentWindow.location.href и закрывает фрейм, если мы попали на caserevision.com через 5,5 секунд
                     var iframe = document.getElementsByTagName('iframe')[0];
                     var res = iframe.contentWindow.location.href;
                     console.info(res);
-                    if(res=='http://caserevision.com/section/mobile?status=Y'){
-                        setTimeout($rootScope.delFrame(),5500);
+                    if (res == 'http://caserevision.com/section/mobile?status=Y') {
+                        setTimeout(function () {
+                            window.location = "#/sections";
+                        }, 5500);
                     }
-                },1000);
+                }, 1000);
             }
         }
     };

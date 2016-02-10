@@ -14,6 +14,7 @@ document.addEventListener("deviceready", function () {
     console.log("Device Is ready!!!");
     //payment.initialize();
     StatusBar.overlaysWebView(false);
+    screen.lockOrientation('portrait');
 
 }, false);
 
@@ -76,13 +77,15 @@ app.directive("topMenu", topMenu);
 app.directive("breadcrumbs", breadcrumbs);
 
 function AppController($scope, $rootScope, $cordovaDevice) {
+    $scope.isLogged = $rootScope.isLogged;
+    window.scroll(0, 0);
     $rootScope.delFrame = function () { // Функция, видима всеми контроллерами, удаляет созданый фрейм и останавливает
         // счетчик проверки Url фрейма
-        $("#iframe").remove();
         clearInterval($rootScope.timer);
+        $("#iframe").remove();
     };
-
     $rootScope.delFrame();
+
     $rootScope.verif = false;
     //$("#iframe").remove();// удаляет iframe
     //clearInterval($rootScope.timer); //выключает счетчик считывания Url фрейма. Сам счетчик в accessController
@@ -135,7 +138,6 @@ function AppController($scope, $rootScope, $cordovaDevice) {
     window.location = "#/";
     $scope.message = "HomeController";
     //console.log($scope.message);
-
 }
 
 function topMenu() {
@@ -158,8 +160,6 @@ function topMenu() {
                     count = 0;
                     //console.log("menu clothed");
                 }
-
-
             };
             $scope.menuLinkClick = function () {
                 $scope.menuOpen();

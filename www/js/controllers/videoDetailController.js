@@ -12,7 +12,7 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
     if (typeof ($rootScope.Search) !== 'undefined') {
         $rootScope.Search.isSearch = false;
     }
-//    screen.unlockOrientation();
+    screen.unlockOrientation();
     $rootScope.pages.isVideoPage = true;
     $scope.isSectionPage = $rootScope.pages.isSectionPage;
     $scope.isTopicPage = $rootScope.pages.isTopicPage;
@@ -40,7 +40,7 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
 
     videoBlock.onended = function () {
         console.log("Video END");
-        screen.lockOrientation('portrait');
+        //screen.lockOrientation('portrait');
         $scope.result = "";
         if (videoBlock.getAttribute("data-number-video") === "1") {
             $scope.getAnswers();
@@ -50,7 +50,7 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
         }
     };
     videoBlock.onplay = function () {
-        screen.unlockOrientation();
+        //screen.unlockOrientation();
     };
     console.log("videoDetailController");
     $scope.videoId = $routeParams.videoId;
@@ -98,22 +98,21 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
             $scope.CurrentVideoLink = $scope.video.video2_part;
             $scope.CurrentVideoName = $scope.video.video2_name;
             $scope.numberVideo = 2;
-            $scope.isAnswerResult = true;
             setTimeout(function () {
+                $scope.isAnswerResult = true;
                 $scope.videoPart1 = true;
 
                 if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
                     $scope.$apply();
             }, 1500);
-        }
-        else {
+        }else {
             console.log("Answer is INcorrect");
             $scope.isCorrect = 'red';
             $scope.result = "You are incorrect";
             $scope.CurrentVideoLink = $scope.video.video1_part;
             $scope.numberVideo = 1;
-            $scope.isAnswerResult = false;
             setTimeout(function () {
+                $scope.isAnswerResult = false;
                 $scope.videoPart1 = true;
 
                 if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
@@ -162,5 +161,8 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
         }
 
     };
+    $scope.$on('$routeChangeStart', function(next, current) {
+        screen.lockOrientation('portrait');
+    });
 
 }

@@ -6,7 +6,7 @@
 
 
 app.controller('aboutUsController', aboutUsController);
-function aboutUsController($rootScope) {
+function aboutUsController($scope,$rootScope) {
     $rootScope.delFrame();
     var first_video = document.getElementById("first_video");
     first_video.onplay = function () {
@@ -25,4 +25,8 @@ function aboutUsController($rootScope) {
         second_video.webkitExitFullScreen();
     };
     console.log("aboutUsController");
+
+    $scope.$on('$routeChangeStart', function (next, current) {
+        screen.lockOrientation('portrait');
+    });
 }

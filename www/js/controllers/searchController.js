@@ -7,6 +7,7 @@
 
 app.controller('searchController', searchController);
 function searchController($scope, $rootScope, $window) {
+    window.scroll(0, 0);
 //    window.addEventListener('native.keyboardhide', $rootScope.keyboardHideHandler);
 //    window.addEventListener('native.keyboardshow', $rootScope.keyboardShowHandler);
 //    $window.onfocus = function () {

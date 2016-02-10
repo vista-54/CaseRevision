@@ -45,13 +45,13 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
         }
     };
     $rootScope.search = function (term) {
-
         var req = $http.get("http://caserevision.com/api/find?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId + "&query=" + term);
         req.success(function (data, status, headers, config) {
             $rootScope.videos = data.videos;
+            console.info($rootScope.videos);
             $rootScope.searchResult = $rootScope.videos.length > 0 ? true : false;
-//            $scope.$apply();
-//            window.location.reload();
+            //$scope.$apply();
+            //window.location.reload();
             if ($rootScope.isSearch) {
                 $rootScope.isSearch = false;
                 $scope.$apply();
@@ -83,7 +83,7 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
         req.error(function (data, status, headers, config) {
             console.log(data);
         });
-        console.log($scope.term);
+        //console.log($scope.term);
     };
     $scope.search = function () {
         $rootScope.search($scope.term);

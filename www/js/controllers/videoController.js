@@ -6,7 +6,7 @@
 
 //var videoModule = angular.module('videoModule', []);
 app.controller('videoController', videoController);
-function videoController($scope, $routeParams, $http,$cookies, $location, $rootScope, $location) {
+function videoController($scope, $routeParams, $http,$cookies, $location, $rootScope) {
     window.scroll(0, 0);
     $rootScope.pages.isTopicPage = true;
     $rootScope.pages.isVideoPage = false;
