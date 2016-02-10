@@ -131,15 +131,15 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
             if ($scope.isAnswerResult) { // и он правильный откроется второе видео
 
 //                return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-s-link/" + $scope.videoId);
-                return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-s-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+                return $sce.trustAsResourceUrl("http://caserevision.com/api/secure-s-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
             else { // ответ неправильный - первое видео
 //                return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId);
-                return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+                return $sce.trustAsResourceUrl("http://caserevision.com/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
         } else { // ответ не получен - первое видео
 //            return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId);
-            return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+            return $sce.trustAsResourceUrl("http://caserevision.com/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
         }
 
     };
