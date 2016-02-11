@@ -87,17 +87,6 @@ function AppController($scope, $rootScope, $cordovaDevice) {
     $rootScope.delFrame();
 
     $rootScope.verif = false;
-    //$("#iframe").remove();// удаляет iframe
-    //clearInterval($rootScope.timer); //выключает счетчик считывания Url фрейма. Сам счетчик в accessController
-    //$rootScope.isLogged = false;
-    //$scope.platform = $cordovaDevice.getPlatform();
-    //if($scope.platform=="Android"){
-    //    console.info($scope.platform);
-    //    $rootScope.isIOS = false;
-    //}
-    //if($scope.platform=="IOS"){
-    //    $rootScope.isIOS = true;
-    //}
     $rootScope.keyboardShowHandler = function (e) {
 //     setTimeout(function(){
 //       $('header').hide(); 
