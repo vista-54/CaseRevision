@@ -45,7 +45,7 @@ function loginController($scope, $http, $rootScope) {
         var params = {};
         params.login = $scope.user.username;
         params.password = $scope.user.password;
-        var req = $http.get("http://caserevision.com/api/login?login=" + params.login + "&password=" + params.password);
+        var req = $http.get("http://caserevision.co.uk/api/login?login=" + params.login + "&password=" + params.password);
         req.success(function (data, status, headers, config) {
             console.log(status, data);
             if (data.success) {

@@ -12,7 +12,7 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
     //console.log("no_access || user_name: " + $rootScope.username + " || auth_key: " + $rootScope.auth_key);
     if (!$rootScope.username || $rootScope.username == '' || $rootScope.username == 'undefined') {// проверка на то, авторизированый
         // пользоваьтель или нет. Если нет, то ему отображаются просто цены.
-        $http.get("http://caserevision.com/api/joinus")
+        $http.get("http://caserevision.co.uk/api/joinus")
             .then(function (response) {
                 $scope.response = response.data;
                 console.info($scope.response);
@@ -27,7 +27,7 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
             });
     } else {
         // если авторизирован, ему отображается поле для промокода и показано какие секции куплены, а какие нет
-        $http.get("http://caserevision.com/api/joinus?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key)
+        $http.get("http://caserevision.co.uk/api/joinus?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key)
             .then(function (response) {
                 console.info(response);
                 $scope.response = response.data;
@@ -45,7 +45,7 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
     }
 
     //$scope.SendPromo = function (promo) { // функция отправки промо-кода на сайт
-    //    $http.get("http://caserevision.com/api/joinus?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&promo=" + promo)
+    //    $http.get("http://caserevision.co.uk/api/joinus?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&promo=" + promo)
     //        .then(function (response) {
     //                console.info(response);
     //                window.location = "#/"; // втулил для "перезагрузки" страници и отображения цен сразу с действием промокода
@@ -99,11 +99,11 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
                 //console.info( 'Высота с учетом прокрутки: ' + scrollHeight );
 
                 $rootScope.timer = setInterval(function () { // После создания фрейма запускается циклическая функция на проверку
-                    // iframe.contentWindow.location.href и закрывает фрейм, если мы попали на caserevision.com через 5,5 секунд
+                    // iframe.contentWindow.location.href и закрывает фрейм, если мы попали на caserevision.co.uk через 5,5 секунд
                     var iframe = document.getElementsByTagName('iframe')[0];
                     var res = iframe.contentWindow.location.href;
                     console.info(res);
-                    if (res == 'http://caserevision.com/section/mobile?status=Y') {
+                    if (res == 'http://caserevision.co.uk/section/mobile?status=Y') {
                         setTimeout(function () {
                             window.location = "#/sections";
                         }, 5500);
