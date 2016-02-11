@@ -88,9 +88,7 @@ function AppController($scope, $rootScope, $cordovaDevice) {
 
     $rootScope.verif = false;
     $rootScope.keyboardShowHandler = function (e) {
-//     setTimeout(function(){
-//       $('header').hide(); 
-//    },400);
+
         if (device.platform.indexOf("iOS") !== -1) {
 
 //            $('body').css({'overflow': 'hidden', 'height': $(window).height()});
