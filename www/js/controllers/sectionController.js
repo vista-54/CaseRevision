@@ -28,7 +28,7 @@ function sectionController($scope, $http, $rootScope, $location) {
     };
     
     
-    var req = $http.get("http://caserevision.com/api/get-sections?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key);
+    var req = $http.get("http://caserevision.co.uk/api/get-sections?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key);
     req.success(function (data, status, headers, config) {
         console.log(data);
         $scope.sections = data.sections;

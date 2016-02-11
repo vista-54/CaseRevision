@@ -36,8 +36,8 @@ function videoController($scope, $routeParams, $http,$cookies, $location, $rootS
     $scope.topicLink = $rootScope.topicLink;
     $cookies.put('username', $rootScope.username);
     $cookies.put('auth_key', $rootScope.auth_key);
-//    $http.default.headers["RefererFullUrl"]="http://caserevision.com/topic/"+$scope.topicId;
-    var req = $http.get("http://caserevision.com/api/get-videos?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&topic_id=" + $scope.topicId);
+//    $http.default.headers["RefererFullUrl"]="http://caserevision.co.uk/topic/"+$scope.topicId;
+    var req = $http.get("http://caserevision.co.uk/api/get-videos?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&topic_id=" + $scope.topicId);
     req.success(function (data, status, headers, config) {
         console.log(data);
         $scope.videos = data.videos;

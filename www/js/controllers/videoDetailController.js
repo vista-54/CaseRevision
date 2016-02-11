@@ -75,7 +75,7 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
     $scope.videoPart1 = true;
     $scope.getAnswers = function () {
         console.info($rootScope.username + " " + $rootScope.auth_key + " " + $scope.videoId);
-        var req = $http.get("http://caserevision.com/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
+        var req = $http.get("http://caserevision.co.uk/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
         req.success(function (data, status, headers, config) {
             console.log(data);
             $scope.answers = data.videos;
