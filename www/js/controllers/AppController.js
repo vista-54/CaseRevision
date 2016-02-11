@@ -107,14 +107,14 @@ function AppController($scope, $rootScope, $cordovaDevice) {
 //            $('body').css({'overflow': 'hidden', 'height': $(window).height()});
             //console.log("focused");
 //            $('header').css({'position': 'static'});
+            $('.topicContent').css({'padding-bottom': 0});
+            $('.logotype').css({'margin-top': 0});
             setTimeout(function () {
                 $('header').css({'position': 'static'});
                 $('footer').css({'position': 'static'});
+
                 window.scroll(0, $('.view').height());
             }, 100);
-
-//            $('.topicContent').css({'padding-bottom': 0});
-//            $('.logotype').css({'margin-top': 0});
 //           
         }
     };
