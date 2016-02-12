@@ -5,17 +5,16 @@
  */
 
 
-var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova', 'ngMap']);
+var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova']);
 var username = '';
 var auth_key = '';
 
 
 document.addEventListener("deviceready", function () {
-    console.log("Device Is ready!!!");
-    //payment.initialize();
     StatusBar.overlaysWebView(false);
     screen.lockOrientation('portrait');
 
+    //payment.initialize();
 }, false);
 
 
@@ -76,7 +75,7 @@ app.controller('AppController', AppController);
 app.directive("topMenu", topMenu);
 app.directive("breadcrumbs", breadcrumbs);
 
-function AppController($scope, $rootScope, $cordovaDevice) {
+function AppController($scope, $rootScope) {
     $scope.isLogged = $rootScope.isLogged;
     window.scroll(0, 0);
     $rootScope.delFrame = function () { // Функция, видима всеми контроллерами, удаляет созданый фрейм и останавливает
@@ -87,43 +86,38 @@ function AppController($scope, $rootScope, $cordovaDevice) {
     $rootScope.delFrame();
 
     $rootScope.verif = false;
-    //$("#iframe").remove();// удаляет iframe
-    //clearInterval($rootScope.timer); //выключает счетчик считывания Url фрейма. Сам счетчик в accessController
-    //$rootScope.isLogged = false;
-    //$scope.platform = $cordovaDevice.getPlatform();
-    //if($scope.platform=="Android"){
-    //    console.info($scope.platform);
-    //    $rootScope.isIOS = false;
-    //}
-    //if($scope.platform=="IOS"){
-    //    $rootScope.isIOS = true;
-    //}
     $rootScope.keyboardShowHandler = function (e) {
 //     setTimeout(function(){
 //       $('header').hide(); 
 //    },400);
         if (device.platform.indexOf("iOS") !== -1) {
-            $('body').css({'overflow': 'hidden', 'height': $(window).height()});
+
+//            $('body').css({'overflow': 'hidden', 'height': $(window).height()});
             //console.log("focused");
 //            $('header').css({'position': 'static'});
-//            $('footer').css({'position': 'static'});
+            setTimeout(function () {
+                $('header').css({'position': 'static'});
+                $('footer').css({'position': 'static'});
+                window.scroll(0, $('.view').height());
+            }, 100);
+
 //            $('.topicContent').css({'padding-bottom': 0});
 //            $('.logotype').css({'margin-top': 0});
-//    window.scroll(0, $(window).height());
+//
         }
     };
     $rootScope.keyboardHideHandler = function (e) {
 //    var header=angular.element(document.querySelector('header'));
 //    setTimeout(function(){
-//       $('header').show(); 
+//       $('header').show();
 //    },400);
         if (device.platform.indexOf("iOS") !== -1) {
-            $('body').css({'overflow': 'visible', 'height': '100%'});
+//            $('body').css({'overflow': 'visible', 'height': '100%'});
             //console.log("blur");
-//            $('footer').css({'position': 'fixed'});
-//            $('header').css({'position': 'fixed'});
-//            $('.topicContent').css({'padding-bottom': '70px'});
-//            $('.logotype').css({'margin-top': '44px'});
+            $('footer').css({'position': 'fixed'});
+            $('header').css({'position': 'fixed'});
+            $('.topicContent').css({'padding-bottom': '70px'});
+            $('.logotype').css({'margin-top': '44px'});
         }
     };
 

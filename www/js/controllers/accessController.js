@@ -44,16 +44,6 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
             });
     }
 
-    //$scope.SendPromo = function (promo) { // функция отправки промо-кода на сайт
-    //    $http.get("http://caserevision.co.uk/api/joinus?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&promo=" + promo)
-    //        .then(function (response) {
-    //                console.info(response);
-    //                window.location = "#/"; // втулил для "перезагрузки" страници и отображения цен сразу с действием промокода
-    //                window.location = "#/noaccess";
-    //            }
-    //        );
-    //};
-
     $scope.clickLaw = function (data) {
         if (!$rootScope.username || $rootScope.username == '' || $rootScope.username == 'undefined') {
             window.location = "#/login"; // если пользователь не авторизирован, его перекидает на страницу авторизации
@@ -96,8 +86,6 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
 
                 createIframe(); // создание фрейма
 
-                //console.info( 'Высота с учетом прокрутки: ' + scrollHeight );
-
                 $rootScope.timer = setInterval(function () { // После создания фрейма запускается циклическая функция на проверку
                     // iframe.contentWindow.location.href и закрывает фрейм, если мы попали на caserevision.co.uk через 5,5 секунд
                     var iframe = document.getElementsByTagName('iframe')[0];
@@ -112,111 +100,4 @@ app.controller('accessController', ['$scope', '$http', '$rootScope', function ($
             }
         }
     };
-
-    //if() {
-    //
-    //}
-    //$scope.data = {
-    //    "testMode": "100",
-    //    "instId": "1091282",
-    //    "cartId": name.id,
-    //    "amount": name.price,
-    //    "currency": "GBP",
-    //    "MC_customerId": $rootScope.user_id
-    //};
-    //var options = {
-    //    location: 'yes',
-    //    clearcache: 'no',
-    //    toolbar: 'yes',
-    //    closebuttoncaption: 'Done'
-    //}
-    //run: function (event) {
-    //    var form = document.createElement("form");
-    //    form.action = "https://secure-test.worldpay.com/wcc/purchase";
-    //    form.method = "POST";
-    //    form.target = "_system";
-    //    for (var key in $scope.data) {
-    //        var input = document.createElement("input");
-    //        input.name = key;
-    //        input.value = $scope.data[key];
-    //        form.appendChild(input);
-    //    }
-    //    form.style.display = 'none';
-    //    document.body.appendChild(form);
-    //    form.submit();
-    //}
-    //};
-
-    //$cordovaInAppBrowser.open('https://secure-test.worldpay.com/wcc/purchase', '_system', options);
-
-    //$cordovaInAppBrowser.close();
-    //window.open = $cordovaInAppBrowser.open;
-
-
-    //var options = {
-    //    location: 'yes',
-    //    clearcache: 'no',
-    //    toolbar: 'yes',
-    //    closebuttoncaption: 'Done'
-    //};
-    //var form = document.createElement("form");
-    //form.action = "https://secure-test.worldpay.com/wcc/purchase";
-    //form.method = "POST";
-    ////form.target = "_self";
-    //for (var key in $scope.data) {
-    //    var input = document.createElement("input");
-    //    input.name = key;
-    //    input.value = $scope.data[key];
-    //    form.appendChild(input);
-    //}
-    //form.style.display = 'none';
-    //document.body.appendChild(form);
-    ////$cordovaInAppBrowser.open('', 'map', options);
-    ////window.open('', 'map', 'location=yes,toolbar=yes,hardwareback=no');
-    //form.submit();
-
-
-    //console.info($scope.cartId,"    ",$scope.amount);
-//        payment.onPayPalMobileInit();
-//        setTimeout(function () {
-//            $('#sbmbtn').click();
-//        }, 300);
-
-
-//    $scope.BuyLaw = function (arg) {
-//        var params = {};
-//        var outArr = [];
-//        if (arg === 'contract') {
-//
-////                params.desc='contractlaw';
-//            params.testMode = '100';
-//            params.instId = '1091282';
-//            params.cartId = 'contractlaw';
-//            params.amount = '13.99';
-//            params.currency = 'GBP';
-////                params.name='CAPTURED';
-//
-//        }
-//        for (var i in params) {
-//            outArr.push(i + '=' + params[i]);
-//
-//        }
-////        params = outArr.join('&');
-//        params = 'testMode=100&instId=1091282&cartId=contractlaw&amount=13.99&currency=GBP';
-//        console.log(arg);
-//        var config={
-//            'mail_send': true
-//        };
-//
-//        var req = $http.post("https://secure-test.worldpay.com/wcc/purchase", params,config);
-//        req.success(function (data, status, headers, config) {
-//
-//            console.log(data);
-//
-//
-//        });
-//        req.error(function (data, status, headers, config) {
-//            console.log(data);
-//        });
-//    };
 }]);

@@ -8,7 +8,7 @@
     <h1 class="nameVideo" ng-show="videoPart1">{{video.name}}</h1>
 
     <section   ng-show="videoPart1">
-        <video  width="100%" id="video" poster="{{video.image}}"  data-number-video="{{numberVideo}}" src="{{getUrlVideo(CurrentVideoLink)}}" controls autoplay></video>
+        <video  width="100%" id="video" poster="{{video.image}}"  data-number-video="{{numberVideo}}" ng-src="{{getUrlVideo(CurrentVideoLink)}}" controls autoplay></video>
     </section>
 
     <div class="judgement" ng-show="isAnswerResult">{{video.judgement}}</div>
@@ -25,8 +25,7 @@
             <li ng-repeat="(key,answer) in answers">
                 <img alt="answer img" src="img/answer{{key + 1}}.png"><a ng-click="isCorrectAnswer(answer)">{{answer.text}}</a>
             </li>
-            <audio preload="auto" src="media/sound1.mp3" type="audio/mp3">
-
+            <audio preload="auto" ng-src="media/sound1.mp3" type="audio/mp3">
             </audio>
         </ul>
     </div>
