@@ -5,7 +5,6 @@
  */
 
 app.controller('contactController', ['$scope', '$http','$rootScope', function ($scope, $http,$rootScope) {
-    $rootScope.delFrame();
     $scope.contact = {};
     $scope.isError = false;
     $scope.errorMessage = '';
@@ -32,7 +31,6 @@ app.controller('contactController', ['$scope', '$http','$rootScope', function ($
                 $scope.contact = {};
                 $scope.isError = true;
                 $scope.errorMessage = data.status;
-                console.info('status: ' + data, status);
             })
             .error(function () { // выведет ошибку интернет соединения
                 $scope.notError = false;

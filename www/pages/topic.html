@@ -1,34 +1,22 @@
 <div>
     <div class="topicContent">
-        <!--<h1>Topics lists</h1>-->
         <div class="historylinks">
-            <!--<a href="#/sections">Sections</a> > <a href="#{{page}}/{{topic.id}}">{{getSectionName()}}</a>-->
         </div>
         <div class="titleContainer" breadcrumbs>
-            <!--        <a href="#/sections"><i class="fa fa-home"></i></a>
-                    <a>{{sectionName}}</a>
-                    <div >
-                        <span>Select the case law from the menu below to view a range of videos</span>
-                    </div>-->
         </div>
         <ul class="topicList">
             <li ng-repeat="topic in topics">
                 <a href="#{{page}}/{{topic.id}}">{{topic.name}}</a><i class="fa fa-play"></i>
                 <div layout="row" layout-sm="column" layout-align="space-around">
-                    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
                 </div>
             </li>
         </ul>
     </div>
     <footer>
         <div class="search-block">
-
             <label><input placeholder="Search" ng-model="term">
                 <button ng-click="search()"><i class="fa fa-search"></i></button>
             </label>
-            <!--<a class="fBtn" href="#/sections" >BACK</a>-->
         </div>
-
     </footer>
-    <!--<div class="footer"> </div>-->
 </div>

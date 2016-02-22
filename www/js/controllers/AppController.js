@@ -5,7 +5,7 @@
  */
 
 
-var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova']);
+var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova','ngMaterial']);
 var username = '';
 var auth_key = '';
 
@@ -13,8 +13,6 @@ var auth_key = '';
 document.addEventListener("deviceready", function () {
     StatusBar.overlaysWebView(false);
     screen.lockOrientation('portrait');
-
-    //payment.initialize();
 }, false);
 
 
@@ -78,42 +76,20 @@ app.directive("breadcrumbs", breadcrumbs);
 function AppController($scope, $rootScope) {
     $scope.isLogged = $rootScope.isLogged;
     window.scroll(0, 0);
-    $rootScope.delFrame = function () { // Функция, видима всеми контроллерами, удаляет созданый фрейм и останавливает
-        // счетчик проверки Url фрейма
-        clearInterval($rootScope.timer);
-        $("#iframe").remove();
-    };
-    $rootScope.delFrame();
 
     $rootScope.verif = false;
     $rootScope.keyboardShowHandler = function (e) {
-//     setTimeout(function(){
-//       $('header').hide(); 
-//    },400);
         if (device.platform.indexOf("iOS") !== -1) {
 
-//            $('body').css({'overflow': 'hidden', 'height': $(window).height()});
-            //console.log("focused");
-//            $('header').css({'position': 'static'});
             setTimeout(function () {
                 $('header').css({'position': 'static'});
                 $('footer').css({'position': 'static'});
                 window.scroll(0, $('.view').height());
             }, 100);
-
-//            $('.topicContent').css({'padding-bottom': 0});
-//            $('.logotype').css({'margin-top': 0});
-//
         }
     };
     $rootScope.keyboardHideHandler = function (e) {
-//    var header=angular.element(document.querySelector('header'));
-//    setTimeout(function(){
-//       $('header').show();
-//    },400);
         if (device.platform.indexOf("iOS") !== -1) {
-//            $('body').css({'overflow': 'visible', 'height': '100%'});
-            //console.log("blur");
             $('footer').css({'position': 'fixed'});
             $('header').css({'position': 'fixed'});
             $('.topicContent').css({'padding-bottom': '70px'});
@@ -121,11 +97,8 @@ function AppController($scope, $rootScope) {
         }
     };
 
-//    $scope.inputIsActive = false;
-//    $scope.inputIsActive = true;
     window.location = "#/";
     $scope.message = "HomeController";
-    //console.log($scope.message);
 }
 
 function topMenu() {
@@ -134,26 +107,21 @@ function topMenu() {
         link: function ($scope, element, attrs) {
             var count = 0;
             $scope.menuOpen = function () {
-                //console.log("menuClicked");
-
 
                 $('.mobile-menu').slideToggle('.mobile-menu');
                 if (count === 0) {
                     $scope.isOpenMenu = true;
                     count++;
-                    //console.log("menu open");
                 }
                 else {
                     $scope.isOpenMenu = false;
                     count = 0;
-                    //console.log("menu clothed");
                 }
             };
             $scope.menuLinkClick = function () {
                 $scope.menuOpen();
             };
             $scope.invisiBlockStatus = function () {
-                //console.log("block clicked");
                 $scope.isOpenMenu = false;
                 $scope.menuOpen();
             };
@@ -165,8 +133,6 @@ function breadcrumbs() {
     return {
         link: function ($scope, element, attrs) {
             $scope.$watch('$location', function () {
-//                $scope.isLogged = $scope.isLogged;
-//                console.log('location changed');
             });
         },
         templateUrl: 'templates/breadcrumbs.html'

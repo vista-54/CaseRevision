@@ -9,7 +9,6 @@
 
 app.controller('loginController', loginController);
 function loginController($scope, $http, $rootScope) {
-    $rootScope.delFrame();
     $rootScope.username = false;
     $scope.user = {};
     var storage = window.localStorage;
@@ -20,17 +19,13 @@ function loginController($scope, $http, $rootScope) {
         $scope.user.remember=true;
     }
     $rootScope.isLogged = false;
-//    $scope.isLogged = $rootScope.isLogged;
     $scope.loginSuccess = false;
-//    $scope.TopMenuClass = 'menuOff';
     $scope.login = function () {
         if (!$scope.loginForm.$valid) {
             $scope.loginSuccess = true;
             $scope.textError = 'Fields are not filled'; // Ошибка пустых полей
             return false;
         }
-        //console.log($scope.user.remember);
-        //console.log("Login button click");
         if ($scope.user.remember) {
             storage['login'] = $scope.user.username;
             storage['password'] = $scope.user.password;
@@ -47,7 +42,6 @@ function loginController($scope, $http, $rootScope) {
         params.password = $scope.user.password;
         var req = $http.get("http://caserevision.co.uk/api/login?login=" + params.login + "&password=" + params.password);
         req.success(function (data, status, headers, config) {
-            console.log(status, data);
             if (data.success) {
 
                 $rootScope.isLogged = true;
@@ -55,7 +49,7 @@ function loginController($scope, $http, $rootScope) {
                 $rootScope.auth_key = data.auth_key;
                 $rootScope.username = data.username;
                 $rootScope.user_id = data.id;
-                window.location = "#/sections";
+                window.location = "#/noaccess";
             }
             else {
                 $scope.loginSuccess = true;
@@ -64,8 +58,6 @@ function loginController($scope, $http, $rootScope) {
             }
         });
         req.error(function (data, status, headers, config) {
-            console.log(data);
         });
     };
-    console.log("loginController");
 }

@@ -1,10 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 app.controller('videoDetailController', videoDetailController);
 function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $rootScope) {
 
@@ -33,10 +26,8 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
             $scope.backPage = previous.scope.backPage;
         }
     });
-    console.log(window.location);
 
     videoBlock.onended = function () {
-        console.log("Video END");
         $scope.result = "";
         if (videoBlock.getAttribute("data-number-video") === "1") {
             $scope.getAnswers();
@@ -46,9 +37,8 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
         }
     };
     videoBlock.onplay = function () {
-        //screen.unlockOrientation();
+
     };
-    console.log("videoDetailController");
     $scope.videoId = $routeParams.videoId;
     $scope.getVideoById = function (id) {
         for (var i in  $scope.videos) {
@@ -61,7 +51,6 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
     $scope.video = $rootScope.videos[$scope.getVideoById($scope.videoId)];
     $scope.CurrentVideoLink = $scope.video.video1_part;
     if ($scope.CurrentVideoLink === "") {
-
         window.location = "#/noaccess";
         return false;
     }
@@ -70,12 +59,9 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
     $scope.isAnswerResult = false;
     $scope.videoPart1 = true;
     $scope.getAnswers = function () {
-        console.info($rootScope.username + " " + $rootScope.auth_key + " " + $scope.videoId);
         var req = $http.get("http://caserevision.co.uk/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
         req.success(function (data, status, headers, config) {
-            console.log(data);
             $scope.answers = data.videos;
-            console.info("answers " + $scope.answers);
             $scope.videoPart1 = false;
             videoBlock.webkitExitFullScreen();
             audio.play();
@@ -88,7 +74,6 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
         $scope.isAnswerGet = true;
         window.scroll(0, 0);
         if (parseInt(answer.status) === 1) {
-            console.log("Answer is correct");
             $scope.isCorrect = 'green';
             $scope.result = "You are correct";
             $scope.CurrentVideoLink = $scope.video.video2_part;
@@ -102,7 +87,6 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
                     $scope.$apply();
             }, 1500);
         }else {
-            console.log("Answer is INcorrect");
             $scope.isCorrect = 'red';
             $scope.result = "You are incorrect";
             $scope.CurrentVideoLink = $scope.video.video1_part;
@@ -117,26 +101,19 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
         }
     };
     $scope.getUrlVideo = function (name) {
-//        return $sce.trustAsResourceUrl(name);
         $cookies.put('username', $rootScope.username);
         $cookies.put('auth_key', $rootScope.auth_key);
         if ($scope.isAnswerGet) { // Если ответ получен
             if ($scope.isAnswerResult) { // и он правильный откроется второе видео
-
-//                return $sce.trustAsResourceUrl("http://caserevision.co.uk/video/secure-s-link/" + $scope.videoId);
                 return $sce.trustAsResourceUrl("http://caserevision.co.uk/api/secure-s-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
             else { // ответ неправильный - первое видео
-//                return $sce.trustAsResourceUrl("http://caserevision.co.uk/video/secure-f-link/" + $scope.videoId);
                 return $sce.trustAsResourceUrl("http://caserevision.co.uk/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
         } else { // ответ не получен - первое видео
-//            return $sce.trustAsResourceUrl("http://caserevision.co.uk/video/secure-f-link/" + $scope.videoId);
             return $sce.trustAsResourceUrl("http://caserevision.co.uk/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
         }
-
     };
-
     $scope.backBtn = function () {
         window.location = '#' + $scope.backPage;
     };
@@ -156,5 +133,4 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
     $scope.$on('$routeChangeStart', function(next, current) {
         screen.lockOrientation('portrait');
     });
-
 }

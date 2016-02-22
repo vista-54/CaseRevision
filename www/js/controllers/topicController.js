@@ -1,17 +1,8 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-//var topicModule = angular.module('topicModule', []);
 app.controller('topicController', topicController);
 function topicController($scope, $routeParams, $window, $http, $rootScope, $location) {
-//    $rootScope.Search.isSearch=true;
     window.scroll(0, 0);
     window.addEventListener('native.keyboardhide', $rootScope.keyboardHideHandler);
     window.addEventListener('native.keyboardshow', $rootScope.keyboardShowHandler);
-//    $scope.inputIsActive = true;
     $rootScope.pages = {
         isSectionPage: true,
         isTopicPage: false,
@@ -22,20 +13,12 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
     $scope.isSectionPage = $rootScope.pages.isSectionPage;
     $scope.isTopicPage = $rootScope.pages.isTopicPage;
     $scope.isVideoPage = $rootScope.pages.isVideoPage;
-    console.log("topicController");
     $scope.sectionId = $routeParams.sectionId;
     $scope.page = $location.url();
     $scope.$on('$routeChangeSuccess', function (event, current, previous) {
-        console.log(event);
-        console.log(current);
-        console.log(previous);
-//        console.log(oldUrl);
+
     });
-//    $scope.getSectionName = function () {
-////          $scope.getSectionById();
-//        
-//        return $rootScope.sectionName;
-//    };
+
     $scope.getSectionById = function (id) {
         for (var i in  $rootScope.sections) {
             var obj = $rootScope.sections[i];
@@ -48,10 +31,7 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
         var req = $http.get("http://caserevision.co.uk/api/find?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId + "&query=" + term);
         req.success(function (data, status, headers, config) {
             $rootScope.videos = data.videos;
-            console.info($rootScope.videos);
             $rootScope.searchResult = $rootScope.videos.length > 0 ? true : false;
-            //$scope.$apply();
-            //window.location.reload();
             if ($rootScope.isSearch) {
                 $rootScope.isSearch = false;
                 $scope.$apply();
@@ -59,31 +39,10 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
             else {
                 window.location = "#/search";
             }
-
-
-//            return data.videos;
-//            for (var i in data.videos) {
-//                
-//                var obj = data.videos[i];
-//                console.log(obj.topic_id);
-//                console.log(obj.id);
-//                $rootScope.Search = {
-//                    sectionId: $scope.sectionId,
-//                    topic_id: obj.topic_id,
-//                    video_id: obj.id,
-//                    isSearch: true
-//                };
-//
-//                window.location = "#/section/" + $rootScope.Search.sectionId + '/' + obj.topic_id;
-//                console.log("#/section/" + $scope.sectionId + '/' + obj.topic_id + '/' + obj.id);
-//            }
-
-
         });
         req.error(function (data, status, headers, config) {
             console.log(data);
         });
-        //console.log($scope.term);
     };
     $scope.search = function () {
         $rootScope.search($scope.term);
@@ -94,7 +53,7 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
     $scope.sectionName = $rootScope.sectionName;
     var req = $http.get("http://caserevision.co.uk/api/get-topics?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId);
     req.success(function (data, status, headers, config) {
-        console.log(data);
+
         $scope.access = data.access;
         $scope.topics = data.topics;
         $rootScope.topics = $scope.topics;
