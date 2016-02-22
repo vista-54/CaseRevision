@@ -49,13 +49,6 @@ app.controller('accessController', function ($scope, $http, $rootScope, $mdDialo
         if (!$rootScope.username || $rootScope.username == '' || $rootScope.username == 'undefined') {
             $rootScope.oneSection = one;
             $rootScope.all = all;
-            $mdDialog.show({
-                controller: 'modalCtrl',
-                templateUrl: 'pages/modal.html',
-                parent: angular.element(document.body),
-                preserveScope: true,
-                clickOutsideToClose: true
-            });
             window.location = "#/signUp"; // если пользователь не авторизирован, его перекидает на страницу авторизации
             return false;
         }

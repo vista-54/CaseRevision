@@ -4,10 +4,8 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
     window.scroll(0, 0);
     $scope.newUser = {};
     $scope.message = '';
-    $scope.payment = {
-        'payPall': 1,
-        'worldPay': 0
-    };
+    $rootScope.responce = {};
+    $rootScope.responce.data = {};
 
     $scope.signUp = function (newUser) {
 
@@ -32,6 +30,8 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
                 $rootScope.email = newUser.email;
                 $http.get("http://caserevision.co.uk/api/signup?User[username]=" + newUser.user_name + "&User[email]=" + newUser.email + "&User[first_name]=" + newUser.first_name + "&User[lastname]=" + newUser.last_name + "&User[university]=" + newUser.university + "&User[address1]=" + newUser.address1 + "&User[address2]=" + newUser.address2 + "&User[address3]=" + newUser.address3 + "&User[zip]=" + newUser.zip + "&User[country]=" + newUser.country + "&User[password]=" + newUser.password + "&User[code]=" + newUser.discount_code + "&User[sales]=" + newUser.friend_email)
                     .then(function (response) {
+                        console.info(response);
+                        $rootScope.responce.data.user_id = response.data.user_id;
                         if (response.data['errors'] != undefined) {
                             if (response.data.errors.length == 1) {
                                 $scope.message = response.data.errors[0];
@@ -45,12 +45,6 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
                         }
                         $rootScope.verif = true;
                         window.location = "#/noaccess";
-
-                        setTimeout(function () {
-                            $scope.url = 'http://caserevision.co.uk/paymentredirect?user_id='+response.data.user_id+'&payment='+$scope.payment[$rootScope.paySystem]+'&section_id='+$rootScope.section.id;
-
-                            window.open($scope.url, '_system', 'location=yes');
-                        },2500);
 
                     }, function (response) {
                         alert(response.status);
