@@ -4,14 +4,14 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
     window.scroll(0, 0);
     $scope.newUser = {};
     $scope.message = '';
-    $rootScope.responce = {};
-    $rootScope.responce.data = {};
+    $rootScope.responce = {
+        'data':{}
+    };
 
     $scope.signUp = function (newUser) {
-
         if (newUser.check) {
             if ($scope.signUpForm.$error.required) {
-                $scope.message = "Fields are not filled";
+                $scope.message = "Required fields are not filled";
                 return false;
             }
             if ($scope.signUpForm.$error.minlength) {
@@ -30,7 +30,6 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
                 $rootScope.email = newUser.email;
                 $http.get("http://caserevision.co.uk/api/signup?User[username]=" + newUser.user_name + "&User[email]=" + newUser.email + "&User[first_name]=" + newUser.first_name + "&User[lastname]=" + newUser.last_name + "&User[university]=" + newUser.university + "&User[address1]=" + newUser.address1 + "&User[address2]=" + newUser.address2 + "&User[address3]=" + newUser.address3 + "&User[zip]=" + newUser.zip + "&User[country]=" + newUser.country + "&User[password]=" + newUser.password + "&User[code]=" + newUser.discount_code + "&User[sales]=" + newUser.friend_email)
                     .then(function (response) {
-                        console.info(response);
                         $rootScope.responce.data.user_id = response.data.user_id;
                         if (response.data['errors'] != undefined) {
                             if (response.data.errors.length == 1) {
@@ -46,8 +45,7 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
                         $rootScope.verif = true;
                         window.location = "#/noaccess";
 
-                    }, function (response) {
-                        alert(response.status);
+                    }, function (error) {
                     });
             }
         } else {

@@ -1,6 +1,6 @@
 <div class="signUp">
     <h1>Sign up</h1>
-    <p>Please fill out the following fields to signup:</p>
+    <p class="else">Please fill out the following fields to signup:</p>
 
     <form name="signUpForm" class="loginForm" role="form">
         <input type="text" name="user_name" placeholder="User Name *" ng-model="newUser.user_name" required>
@@ -21,7 +21,7 @@
         <input type="email" name="friend_email" placeholder="Sales Person's Email" ng-model="newUser.friend_email"
                ng-pattern="/^\w+.+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/">
         <div class="terms">
-            <h3>Terms and Conditions & Privacy Policy</h3>
+            <h4>Terms and Conditions & Privacy Policy</h4>
 
             <h4>This privacy policy sets out how CaseRevision uses and protects any information that you provide to us
                 when you
@@ -219,9 +219,8 @@
 
             <p>We will promptly correct any information found to be incorrect.</p>
         </div>
-        <!--</textarea>-->
-        <input id="check" type="checkbox" ng-model="newUser.check">
-       <p class="ui"> Accept Terms and Conditions</p>
+
+       <p class="ui"><input id="check" type="checkbox" ng-model="newUser.check"> Accept Terms and Conditions</p>
     </form>
 
     <p class="error_true">{{message}}</p>

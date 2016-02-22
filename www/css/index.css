@@ -947,7 +947,7 @@ nav a span{
      line-height: 1.5em;
  }
 .signUp p{
-    font-size: 1.5em;
+    font-size: 20px;
     line-height: 1.5em;
 }
 #second_video{
@@ -960,14 +960,13 @@ div .terms {
     height: 200px;
     border: 1px solid #ccc;
     background: #f2f2f2;
-    margin-top: 25px;
+    /*margin-top: 25px;*/
     padding: 6px;
     overflow: auto;
 }
 div .terms h3{
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1.5em;
-    margin: 0 0 10px 0;
 }
 div .terms ul{
     font-size: 1.5em;
@@ -975,7 +974,7 @@ div .terms ul{
     margin: 0 0 10px 0;
 }
 div .terms h4{
-     font-size: 25px;
+     font-size: 20px;
     line-height: 1.5em;
  }
 div .terms h5{
@@ -983,8 +982,8 @@ div .terms h5{
     line-height: 1.5em;
 }
 #check{
-    line-height: 2em;
-    margin: 22px 0 0;
+    line-height: 1.5em;
+    margin: 5px 0 0;
     float: left;
     width: 6%;
     height: 20px;
@@ -1026,4 +1025,7 @@ a.disabled{
 .little_text{
     padding: 10px;
     font-size: 20px;
+}
+.else{
+    padding: 0 10px 5px 10px;
 }
