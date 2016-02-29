@@ -2,6 +2,8 @@
 
 app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
     window.scroll(0, 0);
+    window.addEventListener('native.keyboardhide', $rootScope.keyboardHideHandlerSign);
+    window.addEventListener('native.keyboardshow', $rootScope.keyboardShowHandlerSign);
     $scope.newUser = {};
     $scope.message = '';
     $rootScope.responce = {

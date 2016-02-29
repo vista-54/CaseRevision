@@ -210,8 +210,8 @@ header a i{
 
 .menu-button {
     position: relative;
-    /* width: 32px; */
-    /* height: 28px; */
+    width: 40px;
+    height: 40px;
     /* background-color: #495677; */
     /* border-radius: 50%; */
     float: right;

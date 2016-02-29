@@ -76,11 +76,27 @@ app.directive("breadcrumbs", breadcrumbs);
 function AppController($scope, $rootScope) {
     $scope.isLogged = $rootScope.isLogged;
     window.scroll(0, 0);
-
     $rootScope.verif = false;
+
+    $rootScope.keyboardShowHandlerSign = function (e) {
+        if (device.platform.indexOf("iOS") !== -1) {
+            setTimeout(function () {
+                $('header').css({'position': 'static'});
+                $('footer').css({'position': 'static'});
+            }, 100);
+        }
+    };
+    $rootScope.keyboardHideHandlerSign = function (e) {
+        if (device.platform.indexOf("iOS") !== -1) {
+            $('footer').css({'position': 'fixed'});
+            $('header').css({'position': 'fixed'});
+            $('.topicContent').css({'padding-bottom': '70px'});
+            $('.logotype').css({'margin-top': '44px'});
+        }
+    };
+
     $rootScope.keyboardShowHandler = function (e) {
         if (device.platform.indexOf("iOS") !== -1) {
-
             setTimeout(function () {
                 $('header').css({'position': 'static'});
                 $('footer').css({'position': 'static'});
