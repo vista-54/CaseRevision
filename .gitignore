@@ -1,5 +1,9 @@
-bower_components
-platforms
-hooks
-nbproject
-*.zip
+/hooks
+/nbproject
+/*.zip
+/cr_cer
+/res
+/.gitignore
+/npm-debug.log
+/.idea
+/www/js/libs
