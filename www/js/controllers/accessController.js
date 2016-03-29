@@ -26,11 +26,12 @@ app.controller('accessController', function ($scope, $http, $rootScope, $mdDialo
                 $scope.annual.id = parseInt($scope.annual.id);
                 $scope.buyed = $scope.response.buyed;
 
+                regInStore(response.data);
+
             }, function (response) {
             });
     }
     $scope.changePurchase = function (one, all) {
-
         $rootScope.section = {
             "id": parseInt(one.id)
         };
@@ -44,19 +45,29 @@ app.controller('accessController', function ($scope, $http, $rootScope, $mdDialo
                 }
                 if ($scope.buyed.indexOf($rootScope.section.id) == -1) { //если авторизирован, делается проверка, на купленную или не купленную секцию он кликает
 
-                    regInStore(all);
-
                     store.when(one.name).approved(function (product) {
-                        product.verify();
+                        $scope.verify = product.verify();
+                        console.info($scope.verify);
                     });
 
                     store.when(one.name).verified(function (product) {
-                        product.finish();
+                        $scope.finish = product.finish();
+                        console.info($scope.finish);
                     });
 
-                    store.when(one.name).owned(sendToServer($rootScope.username, $rootScope.auth_key, one.id));
+                    store.when(one.name).owned(function (product) {
+                        console.info(store.get(one.name));
+                        console.info(product);
+                        //sendToServer($rootScope.username, $rootScope.auth_key, one.id);
+                    });
+                    store.refresh();
 
-                    $scope.order = store.order(one.name);
+                    //store.when(one.name).updated(function (product) {
+                    store.order(one.name);
+                    store.refresh();
+                    //});
+
+                    console.info(store.get(one.name));
 
                     //$scope.url = 'http://www.caserevision.co.uk/providemethods?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key + '&section_id=' + $rootScope.section.id;
                     //window.open($scope.url, '_system', 'location=yes');
