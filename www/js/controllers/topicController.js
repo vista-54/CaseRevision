@@ -28,7 +28,7 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
         }
     };
     $rootScope.search = function (term) {
-        var req = $http.get("http://caserevision.co.uk/api/find?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId + "&query=" + term);
+        var req = $http.get("http://www.caserevision.co.uk/api/find?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId + "&query=" + term);
         req.success(function (data, status, headers, config) {
             $rootScope.videos = data.videos;
             $rootScope.searchResult = $rootScope.videos.length > 0 ? true : false;
@@ -51,7 +51,7 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
     $rootScope.sectionLink = '#' + $scope.page;
     $scope.sectionLink = $rootScope.sectionLink;
     $scope.sectionName = $rootScope.sectionName;
-    var req = $http.get("http://caserevision.co.uk/api/get-topics?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId);
+    var req = $http.get("http://www.caserevision.co.uk/api/get-topics?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId);
     req.success(function (data, status, headers, config) {
 
         $scope.access = data.access;

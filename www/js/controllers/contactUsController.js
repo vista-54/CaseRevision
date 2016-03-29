@@ -5,6 +5,7 @@
  */
 
 app.controller('contactController', ['$scope', '$http','$rootScope', function ($scope, $http,$rootScope) {
+    window.scroll(0, 0);
     $scope.contact = {};
     $scope.isError = false;
     $scope.errorMessage = '';
@@ -18,7 +19,7 @@ app.controller('contactController', ['$scope', '$http','$rootScope', function ($
             $scope.isError = true;
             return false;
         }
-        $http.get("http://caserevision.co.uk/api/academic?email=" + contact.email + "&first_name=" + contact.first_name + "&last_name=" + contact.last_name + "&message=" + contact.message)
+        $http.get("http://www.caserevision.co.uk/api/academic?email=" + contact.email + "&first_name=" + contact.first_name + "&last_name=" + contact.last_name + "&message=" + contact.message)
             .success(function (data, status) {
                 if (status == 200)
                     $scope.notError = true;

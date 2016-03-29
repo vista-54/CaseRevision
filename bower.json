@@ -10,10 +10,11 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.4.8",
-    "angular-material": "^1.0.6",
     "font-awesome": "^4.5.0",
     "angular-cookies": "1.4.9",
     "angular-route": "1.5.0-build.4478+sha.8955cfb",
-    "ngCordova": "0.1.23-alpha"
+    "ngCordova": "0.1.23-alpha",
+    "angular-ui-router": "0.2.15",
+    "angular-material": "^1.0.6"
   }
 }

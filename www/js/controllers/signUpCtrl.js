@@ -7,8 +7,9 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
     $scope.newUser = {};
     $scope.message = '';
     $rootScope.responce = {
-        'data':{}
+        'data': {}
     };
+    var storage = window.localStorage;
 
     $scope.signUp = function (newUser) {
         if (newUser.check) {
@@ -30,7 +31,7 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
             } else {
                 $scope.message = '';
                 $rootScope.email = newUser.email;
-                $http.get("http://caserevision.co.uk/api/signup?User[username]=" + newUser.user_name + "&User[email]=" + newUser.email + "&User[first_name]=" + newUser.first_name + "&User[lastname]=" + newUser.last_name + "&User[university]=" + newUser.university + "&User[address1]=" + newUser.address1 + "&User[address2]=" + newUser.address2 + "&User[address3]=" + newUser.address3 + "&User[zip]=" + newUser.zip + "&User[country]=" + newUser.country + "&User[password]=" + newUser.password + "&User[code]=" + newUser.discount_code + "&User[sales]=" + newUser.friend_email)
+                $http.get("http://www.caserevision.co.uk/api/signup?User[username]=" + newUser.user_name + "&User[email]=" + newUser.email + "&User[first_name]=" + newUser.first_name + "&User[lastname]=" + newUser.last_name + "&User[university]=" + newUser.university + "&User[address1]=" + newUser.address1 + "&User[address2]=" + newUser.address2 + "&User[address3]=" + newUser.address3 + "&User[zip]=" + newUser.zip + "&User[country]=" + newUser.country + "&User[password]=" + newUser.password + "&User[code]=" + newUser.discount_code + "&User[sales]=" + newUser.friend_email)
                     .then(function (response) {
                         $rootScope.responce.data.user_id = response.data.user_id;
                         if (response.data['errors'] != undefined) {
@@ -44,8 +45,33 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
                             }
                             return false;
                         }
-                        $rootScope.verif = true;
-                        window.location = "#/noaccess";
+
+                        storage['login'] = newUser.user_name;
+                        storage['password'] = newUser.password;
+                        storage['rememb'] = true;
+
+                        $http.get("http://www.caserevision.co.uk/api/login?login=" + newUser.user_name + "&password=" + newUser.password)
+                            .then(function success(data, status, headers, config) {
+                                    if (data.success) {
+                                        //    console.info(data);
+
+                                        $rootScope.email = data.email;
+                                        $rootScope.verify = data.verify;
+                                        $rootScope.isLogged = true;
+                                        $rootScope.auth_key = data.auth_key;
+                                        $rootScope.username = data.username;
+                                        $rootScope.user_id = data.id;
+                                        window.location = "#/noaccess";
+                                    }
+                                    else {
+                                        window.location = "#/login";
+                                        $scope.loginSuccess = true;
+                                        $scope.textError = 'Invalid login or password';
+                                    }
+                                },
+                                function error(data, status, headers, config) {
+                                    console.info(data);
+                                });
 
                     }, function (error) {
                     });

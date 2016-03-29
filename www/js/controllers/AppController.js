@@ -1,11 +1,11 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
 
-var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova','ngMaterial']);
+var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova', 'ngMaterial', 'purchase']);
 var username = '';
 var auth_key = '';
 
@@ -17,7 +17,6 @@ document.addEventListener("deviceready", function () {
 
 
 app.config(['$routeProvider', '$httpProvider', function ($routeProvide, $httpProvider) {
-    $httpProvider.defaults.withCredentials = true;
     $routeProvide
         .when('/', {
             templateUrl: 'pages/homepage.html',
@@ -67,7 +66,6 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvide, $httpPro
             redirectTo: '/'
         });
 }]);
-
 
 app.controller('AppController', AppController);
 app.directive("topMenu", topMenu);
@@ -121,24 +119,24 @@ function topMenu() {
 
     return {
         link: function ($scope, element, attrs) {
-            var count = 0;
+            $scope.isOpenMenu = false;
             $scope.menuOpen = function () {
-
                 $('.mobile-menu').slideToggle('.mobile-menu');
-                if (count === 0) {
+
+                if (!$scope.isOpenMenu) {
                     $scope.isOpenMenu = true;
-                    count++;
-                }
-                else {
+                    $('.invisibleBlock').show();
+                } else {
                     $scope.isOpenMenu = false;
-                    count = 0;
+                    $('.invisibleBlock').hide();
                 }
             };
             $scope.menuLinkClick = function () {
                 $scope.menuOpen();
             };
+
             $scope.invisiBlockStatus = function () {
-                $scope.isOpenMenu = false;
+                $('.invisibleBlock').hide();
                 $scope.menuOpen();
             };
         },

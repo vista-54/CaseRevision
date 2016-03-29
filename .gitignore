@@ -3,7 +3,6 @@
 /*.zip
 /cr_cer
 /res
-/.gitignore
 /npm-debug.log
 /.idea
 /www/js/libs

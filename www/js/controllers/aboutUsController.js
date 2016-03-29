@@ -7,6 +7,7 @@
 
 app.controller('aboutUsController', aboutUsController);
 function aboutUsController($scope) {
+    window.scroll(0, 0);
     var first_video = document.getElementById("first_video");
     first_video.onplay = function () {
         screen.unlockOrientation();

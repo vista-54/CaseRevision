@@ -59,7 +59,7 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
     $scope.isAnswerResult = false;
     $scope.videoPart1 = true;
     $scope.getAnswers = function () {
-        var req = $http.get("http://caserevision.co.uk/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
+        var req = $http.get("http://www.caserevision.co.uk/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
         req.success(function (data, status, headers, config) {
             $scope.answers = data.videos;
             $scope.videoPart1 = false;
@@ -105,13 +105,13 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
         $cookies.put('auth_key', $rootScope.auth_key);
         if ($scope.isAnswerGet) { // Если ответ получен
             if ($scope.isAnswerResult) { // и он правильный откроется второе видео
-                return $sce.trustAsResourceUrl("http://caserevision.co.uk/api/secure-s-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+                return $sce.trustAsResourceUrl("http://www.caserevision.co.uk/api/secure-s-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
             else { // ответ неправильный - первое видео
-                return $sce.trustAsResourceUrl("http://caserevision.co.uk/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+                return $sce.trustAsResourceUrl("http://www.caserevision.co.uk/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
         } else { // ответ не получен - первое видео
-            return $sce.trustAsResourceUrl("http://caserevision.co.uk/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+            return $sce.trustAsResourceUrl("http://www.caserevision.co.uk/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
         }
     };
     $scope.backBtn = function () {

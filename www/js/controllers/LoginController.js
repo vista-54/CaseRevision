@@ -9,6 +9,7 @@
 
 app.controller('loginController', loginController);
 function loginController($scope, $http, $rootScope) {
+    window.scroll(0, 0);
     $rootScope.username = false;
     $scope.user = {};
     var storage = window.localStorage;
@@ -40,16 +41,18 @@ function loginController($scope, $http, $rootScope) {
         var params = {};
         params.login = $scope.user.username;
         params.password = $scope.user.password;
-        var req = $http.get("http://caserevision.co.uk/api/login?login=" + params.login + "&password=" + params.password);
+        var req = $http.get("http://www.caserevision.co.uk/api/login?login=" + params.login + "&password=" + params.password);
         req.success(function (data, status, headers, config) {
             if (data.success) {
-
+                //console.info(data);
+                $rootScope.email = data.email;
                 $rootScope.isLogged = true;
                 $scope.loginSuccess = false;
                 $rootScope.auth_key = data.auth_key;
                 $rootScope.username = data.username;
                 $rootScope.user_id = data.id;
-                window.location = "#/noaccess";
+                $rootScope.verify = data.verify;
+                window.location = "#/sections";
             }
             else {
                 $scope.loginSuccess = true;
