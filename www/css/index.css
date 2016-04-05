@@ -1080,6 +1080,7 @@ nav a span {
     padding: 34px 0 0 0px;
     position: relative;
     z-index: 5;
+    pointer-events: none;
 }
 
 .for_after {

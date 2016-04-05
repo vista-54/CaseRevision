@@ -3,19 +3,19 @@
         <nav class="accessFalse" >
 
             <div>
-                <a ng-class="{'grey':(buyed.indexOf(1)>-1)}" ng-click="changePurchase(response['contract'],response)">Contract Law
+                <a ng-class="{'grey':(buyed.indexOf(1)>-1)}" ng-click="changePurchase(response.sections['contract'],response)">Contract Law
                     <h3>£ {{contract.price}}<br><span class="timeBuy">1 Year</span></h3>
                 </a>
                 <img class="leftarrow" alt="imgArrow" src="img/arrow1.png">
             </div>
             <div>
-                <a ng-class="{'grey':(buyed.indexOf(2)>-1)}" ng-click="changePurchase(response['criminal'],response)">Criminal Law
+                <a ng-class="{'grey':(buyed.indexOf(2)>-1)}" ng-click="changePurchase(response.sections['criminal'],response)">Criminal Law
                     <h3>£ {{criminal.price}}<br><span
                             class="timeBuy">1 Year</span></h3>
                 </a>
                 <img class="rightarrow" alt="imgArrow" src="img/arrow2.png">
             </div>
-            <a ng-class="{'grey':(buyed.length>0)}" ng-click="changePurchase(response['annual'],response)">Annual <span>Subscription</span>
+            <a ng-class="{'grey':(buyed.length>0)}" ng-click="changePurchase(response.sections['annual'],response)">Annual <span>Subscription</span>
                 <h3>£ {{annual.price}}<br><span class="timeBuy">for both</span></h3>
             </a>
         </nav>

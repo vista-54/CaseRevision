@@ -15,9 +15,9 @@ function loginController($scope, $http, $rootScope) {
     var storage = window.localStorage;
     $scope.user.username = storage['login'];
     $scope.user.password = storage['password'];
-    $scope.user.rememb=storage['rememb'];
-    if(storage['rememb']){
-        $scope.user.remember=true;
+    $scope.user.rememb = storage['rememb'];
+    if (storage['rememb']) {
+        $scope.user.remember = true;
     }
     $rootScope.isLogged = false;
     $scope.loginSuccess = false;
@@ -53,8 +53,7 @@ function loginController($scope, $http, $rootScope) {
                 $rootScope.user_id = data.id;
                 $rootScope.verify = data.verify;
                 window.location = "#/sections";
-            }
-            else {
+            } else {
                 $scope.loginSuccess = true;
                 $scope.textError = 'Invalid login or password';
                 window.location = "#/login";

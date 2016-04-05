@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
-        xmlns:gap="http://phonegap.com/ns/1.0" id="co.uk.caserevision" version="1.0.4">
+        xmlns:gap="http://phonegap.com/ns/1.0" id="co.uk.caserevision" version="1.0.7">
     <name>CaseReVision</name>
     <description>
         CaseReVision Limited.
@@ -10,13 +10,24 @@
     </author>
     <content src="index.html"/>
     <plugin name="cordova-plugin-whitelist" spec="1" />
+
+    <allow-navigation href="http://example.com/*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
+
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="*://*.example.com/*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="geo:*" />
+
     <access origin="*" browserOnly="true"/>
-    <allow-intent href="http://*/*"/>
-    <allow-intent href="https://*/*"/>
-    <allow-intent href="tel:*"/>
-    <allow-intent href="sms:*"/>
-    <allow-intent href="mailto:*"/>
-    <allow-intent href="geo:*"/>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *"/>
+
     <!--<preference name="orientation" value="default"/>-->
     <preference name="phonegap-version" value="cli-5.2.0" />
     <preference name="target-device" value="universal" />

@@ -1,85 +1,134 @@
 angular.module('purchase', [])
-    .factory('sendToServer', function ($http) {
-        return function (username, auth_key, section_id) {
-            //$http.get("http://www.caserevision.co.uk/api/joinus?username=" + username + "&auth_key=" + auth_key + "&section_id=" + section_id)
-            //    .then(function success(response) {
-            //        console.info(response);
-            //             console.info(username, auth_key, section_id);
-            //}, function error(error) {
+    .factory('sendToServer', function ($http, $mdDialog) {
+        return function (user_id, username, auth_key, section_id, price, callback) {
+            var link = 'http://www.caserevision.co.uk//api/get-subscription?';
+            var data = {};
 
-            //});
+            $http.get(link + "user_id=" + user_id + "&auth_key=" + auth_key + "&section_id=" + section_id + "&price=" + price)
+                .then(function (response) {
+                    if (response.data.success) {
+                        data = {
+                            "username": response.data.username,
+                            "section": response.data.section
+                        };
+                        $mdDialog.show({
+                            clickOutsideToClose: false,
+                            template: "<div class='modal'><p class='little_text'>User " + data.username + " was subscribed to the section " + data.section + "</p><button class='btn' ng-click='close()'>Ok</button></div>",
+                            controller: 'successCtrl'
+                        });
+                    }
+                }, function (error) {
+                });
+            $http.get("http://www.caserevision.co.uk/api/joinus?username=" + username + "&auth_key=" + auth_key)
+                .then(function (response) {
+                    console.info(response.data);
+                    callback(response.data);
+
+                }, function (response) {
+                });
         };
     })
+    .factory('inArray', function () {
+        return function (value, array) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] == value) return true;
+            }
+            return false;
+        }
+    })
     .factory('regInStore', function () {
-        var keys = {
-            "contract": false,
-            "criminal": false,
-            "annual": false
-            //"tort": false,
-            //"property": false,
-            //"eu": false,
-            //"private": false
-        };
+        return function (res) {
+            var alias = {};
+            for (var j in res) {
+                if (res[j].percent == undefined) {
+                    store.register({
+                        id: "co.uk.caserevision." + j + "_in",
+                        alias: res[j].name,
+                        type: store.PAID_SUBSCRIPTION
+                    });
+                    alias[res[j].name] = res[j].name;
+                } else if (res[j].percent == 10) {
+                    store.register({
+                        id: "co.uk.caserevision." + j + "_id1",
+                        alias: res[j].name + ' Discount 10%',
+                        type: store.PAID_SUBSCRIPTION
+                    });
+                    alias[res[j].name] = res[j].name + ' Discount 10%';
+                } else if (res[j].percent == 30) {
+                    store.register({
+                        id: "co.uk.caserevision." + j + "_id3",
+                        alias: res[j].name + ' Discount 30%',
+                        type: store.PAID_SUBSCRIPTION
+                    });
+                    alias[res[j].name] = res[j].name + ' Discount 30%';
+                }
+                store.when(res[j].name).approved(function (product) {
+                    product.verify();
+                });
+                store.when(res[j].name).verified(function (product) {
+                    product.finish();
+                });
+            }
+            return alias;
+        }
+    })
+    .factory('regInMarket', function () {
+        return function (res) {
+            var alias = {};
+            for (var j in res) {
+                console.info(j);
+                if (res[j].percent == undefined) {
+                    store.register({
+                        id: "co.uk.caserevision." + j + "_n",
+                        alias: res[j].name,
+                        type: store.PAID_SUBSCRIPTION
+                    });
+                    alias[res[j].name] = res[j].name;
+                } else if (res[j].percent == 10) {
+                    store.register({
+                        id: "co.uk.caserevision." + j + "_d1",
+                        alias: res[j].name + ' Discount 10%',
+                        type: store.PAID_SUBSCRIPTION
+                    });
+                    alias[res[j].name] = res[j].name + ' Discount 10%';
+                } else if (res[j].percent == 30) {
+                    store.register({
+                        id: "co.uk.caserevision." + j + "_d3",
+                        alias: res[j].name + ' Discount 30%',
+                        type: store.PAID_SUBSCRIPTION
+                    });
+                    alias[res[j].name] = res[j].name + ' Discount 30%';
+                }
+                store.when(res[j].name).approved(function (product) {
+                    product.verify();
+                });
+                store.when(res[j].name).verified(function (product) {
+                    product.finish();
+                });
+            }
+            return alias;
+        }
+    })
+    .factory('sortSection', function ($http, inArray, regInStore, regInMarket) {
+        var platform = device.platform;
+        console.info(platform);
         return function (obj) {
+            var res = obj.sections;
 
-            if(obj.buyed.length!=0){
+            for (var i in res) {
+                if (inArray(res[i].id, obj.buyed)) {
+                    delete res[i];
+                }
+            }
+            if (res.length == 2)
+                res.push(obj.annual);
 
-                for (var i in obj.buyed) {
-                    switch (obj.buyed[i]) {
-                        case 1:
-                            keys.contract = true;
-                            keys.annual = true;
-                            break;
-                        case 2:
-                            keys.criminal = true;
-                            keys.annual = true;
-                            break;
-                        //case 3:
-                        //    keys.tort = true;
-                        //    keys.annual = true;
-                        //    break;
-                        //case 4:
-                        //    keys.property = true;
-                        //    keys.annual = true;
-                        //    break;
-                        //case 8:
-                        //    keys.eu = true;
-                        //    keys.annual = true;
-                        //    break;
-                        //case 9:
-                        //    keys.private = true;
-                        //    keys.annual = true;
-                        //    break;
-                    }
-                }
-                for (var j in keys) {
-                    if (keys[j] == false) {
-                        store.register({
-                            id: "co.uk.caserevision." ,
-                            alias: obj[j].name,
-                            type: store.PAID_SUBSCRIPTION
-                        });
-                        store.register({
-                            id: "co.uk.caserevision." + j + "_d",
-                            alias: obj[j].name + ' Discount',
-                            type: store.PAID_SUBSCRIPTION
-                        });
-                    }
-                }
-            }else{
-                delete keys.annual;
-                for (var j in keys) {
-                    store.register({
-                        id: "co.uk.caserevision."+j,
-                        alias: obj[j].name,
-                        type: store.PAID_SUBSCRIPTION
-                    });
-                    store.register({
-                        id: "co.uk.caserevision." + j + "_d",
-                        alias: obj[j].name + ' Discount',
-                        type: store.PAID_SUBSCRIPTION
-                    });
-                }
+            console.info(res);
+
+            if (platform == 'iOS') {
+                return regInStore(res);
+            } else if (platform == 'Android') {
+                return regInMarket(res);
             }
         }
     });
