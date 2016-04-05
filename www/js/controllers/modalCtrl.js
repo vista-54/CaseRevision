@@ -14,6 +14,5 @@ angular.module('CaseRevisionApp')
         $scope.close = function () {
             $mdDialog.hide();
             window.location = "#/sections";
-
         };
     });

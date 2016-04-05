@@ -27,27 +27,19 @@ app.controller('accessController', function ($scope, $http, $rootScope, $mdDialo
                     if ($scope.buyed.length != 0) {
                         $scope.buyed.push($scope.annual.id);
                     }
-
                     $scope.alias = sortSection(response.data, $rootScope.username, $rootScope.auth_key);
-
                 }, function (response) {
                 });
         }
         $scope.changePurchase = function (one, all) {
-            //$rootScope.section = {
-            //    "id": parseInt(one.id)
-            //};
             if ($rootScope.isLogged) {
                 $http.get("http://www.caserevision.co.uk/api/is-user-verified?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key)
                     .then(function (response) {
                         if (response.data.verify) {
                             store.order($scope.alias[one.name]);
                             store.refresh();
-
                             store.when($scope.alias[one.name]).owned(function (product) {
-                                sendToServer($rootScope.user_id, $rootScope.username, $rootScope.auth_key, one.id, product.price, function (data) {
-                                    $scope.response = data;
-                                });
+                                sendToServer($rootScope.user_id, $rootScope.username, $rootScope.auth_key, one.id, product.price, product.id);
                             });
                         } else {
                             $mdDialog.show({

@@ -1,10 +1,10 @@
 angular.module('purchase', [])
     .factory('sendToServer', function ($http, $mdDialog) {
-        return function (user_id, username, auth_key, section_id, price, callback) {
-            var link = 'http://www.caserevision.co.uk//api/get-subscription?';
+        return function (user_id, username, auth_key, section_id, price,id) {
+            var link = 'http://www.caserevision.co.uk/api/get-subscription?';
             var data = {};
 
-            $http.get(link + "user_id=" + user_id + "&auth_key=" + auth_key + "&section_id=" + section_id + "&price=" + price)
+            $http.get(link + "user_id=" + user_id + "&auth_key=" + auth_key + "&section_id=" + section_id + "&price=" + price+"&service_id="+id)
                 .then(function (response) {
                     if (response.data.success) {
                         data = {
@@ -19,22 +19,7 @@ angular.module('purchase', [])
                     }
                 }, function (error) {
                 });
-            $http.get("http://www.caserevision.co.uk/api/joinus?username=" + username + "&auth_key=" + auth_key)
-                .then(function (response) {
-                    console.info(response.data);
-                    callback(response.data);
-
-                }, function (response) {
-                });
         };
-    })
-    .factory('inArray', function () {
-        return function (value, array) {
-            for (var i = 0; i < array.length; i++) {
-                if (array[i] == value) return true;
-            }
-            return false;
-        }
     })
     .factory('regInStore', function () {
         return function (res) {
