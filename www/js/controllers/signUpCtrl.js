@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
+app.controller('signUpCtrl', function ($scope, $http, $rootScope, url) {
     window.scroll(0, 0);
     window.addEventListener('native.keyboardhide', $rootScope.keyboardHideHandlerSign);
     window.addEventListener('native.keyboardshow', $rootScope.keyboardShowHandlerSign);
@@ -29,9 +29,14 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
                 $scope.message = "Passwords do not match";
                 return false;
             } else {
+                for (var i in newUser) {
+                    if (newUser[i] == undefined) {
+                        newUser[i] = '';
+                    }
+                }
                 $scope.message = '';
                 $rootScope.email = newUser.email;
-                $http.get("http://www.caserevision.co.uk/api/signup?User[username]=" + newUser.user_name + "&User[email]=" + newUser.email + "&User[first_name]=" + newUser.first_name + "&User[lastname]=" + newUser.last_name + "&User[university]=" + newUser.university + "&User[address1]=" + newUser.address1 + "&User[address2]=" + newUser.address2 + "&User[address3]=" + newUser.address3 + "&User[zip]=" + newUser.zip + "&User[country]=" + newUser.country + "&User[password]=" + newUser.password + "&User[code]=" + newUser.discount_code + "&User[sales]=" + newUser.friend_email)
+                $http.get(url(newUser))
                     .then(function (response) {
 
                         $rootScope.responce.data.user_id = response.data.user_id;
@@ -74,4 +79,4 @@ app.controller('signUpCtrl', ['$scope', '$http', '$rootScope', function ($scope,
             return false;
         }
     }
-}]);
+});

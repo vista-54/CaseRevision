@@ -74,6 +74,9 @@ app.directive("breadcrumbs", breadcrumbs);
 function AppController($scope, $rootScope) {
     $scope.isLogged = $rootScope.isLogged;
     window.scroll(0, 0);
+    $scope.isOpenMenu = false;
+    $('.invisibleBlock').hide();
+    $('.mobile-menu').slideUp();
     $rootScope.verif = false;
 
     $rootScope.keyboardShowHandlerSign = function (e) {

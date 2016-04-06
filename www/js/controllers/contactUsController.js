@@ -14,7 +14,7 @@ app.controller('contactController', ['$scope', '$http','$rootScope', function ($
             if ($scope.contactUs.$error.required) {
                 $scope.errorMessage = "All fields are required";
             } else {
-                $scope.errorMessage = "The field 'email' must be email";
+                $scope.errorMessage = "Please enter a valid email address.";
             }
             $scope.isError = true;
             return false;
