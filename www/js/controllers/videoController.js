@@ -36,7 +36,6 @@ function videoController($scope, $routeParams, $http,$cookies, $location, $rootS
         }
     });
     req.error(function (data, status, headers, config) {
-        console.log(data);
     });
 
 }

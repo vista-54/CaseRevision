@@ -5,4 +5,5 @@
 /res
 /npm-debug.log
 /.idea
-/www/js/libs
+/www/js/libs/*
+!/www/js/libs/font-awesome

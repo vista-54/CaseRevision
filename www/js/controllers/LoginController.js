@@ -35,7 +35,6 @@ function loginController($scope, $http, $rootScope) {
         var req = $http.get("http://www.caserevision.co.uk/api/login?login=" + params.login + "&password=" + params.password);
         req.success(function (data, status, headers, config) {
             if (data.success) {
-                //console.info(data);
                 $rootScope.email = data.email;
                 $rootScope.isLogged = true;
                 $scope.loginSuccess = false;

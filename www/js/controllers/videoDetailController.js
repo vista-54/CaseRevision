@@ -67,7 +67,6 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
             audio.play();
         });
         req.error(function (data, status, headers, config) {
-            console.log(data);
         });
     };
     $scope.isCorrectAnswer = function (answer) {

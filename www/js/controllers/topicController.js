@@ -41,7 +41,6 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
             }
         });
         req.error(function (data, status, headers, config) {
-            console.log(data);
         });
     };
     $scope.search = function () {
@@ -59,6 +58,5 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
         $rootScope.topics = $scope.topics;
     });
     req.error(function (data, status, headers, config) {
-        console.log(data);
     });
 }

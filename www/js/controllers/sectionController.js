@@ -19,6 +19,5 @@ function sectionController($scope, $http, $rootScope) {
     });
 
     req.error(function (data, status, headers, config) {
-
     });
 }

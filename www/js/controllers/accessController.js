@@ -7,7 +7,6 @@ app.controller('accessController', function ($scope, $http, $rootScope, $mdDialo
             $http.get("http://www.caserevision.co.uk/api/joinus")
                 .then(function success(response) {
                     $scope.response = response.data;
-
                     $scope.contract = $scope.response.contract;
                     $scope.criminal = $scope.response.criminal;
                     $scope.annual = $scope.response.annual;
@@ -31,7 +30,7 @@ app.controller('accessController', function ($scope, $http, $rootScope, $mdDialo
                 }, function (response) {
                 });
         }
-        $scope.changePurchase = function (one, all) {
+        $scope.changePurchase = function (one) {
             if ($rootScope.isLogged) {
                 $http.get("http://www.caserevision.co.uk/api/is-user-verified?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key)
                     .then(function (response) {
@@ -50,16 +49,11 @@ app.controller('accessController', function ($scope, $http, $rootScope, $mdDialo
                         }
                     });
             } else {
-                $rootScope.oneSection = one;
-                $rootScope.all = all;
-                window.location = "#/signUp"; // если пользователь не авторизирован, его перекидает на страницу авторизации
-
                 $mdDialog.show({
                     clickOutsideToClose: false,
                     templateUrl: 'pages/infoTmpl.html',
                     controller: 'modalCtrl'
                 });
-                return false;
             }
         };
     }

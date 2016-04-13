@@ -16,15 +16,11 @@ document.addEventListener("deviceready", function () {
 }, false);
 
 
-app.config(['$routeProvider', '$httpProvider', function ($routeProvide, $httpProvider) {
+app.config(['$routeProvider', function ($routeProvide) {
     $routeProvide
         .when('/', {
             templateUrl: 'pages/homepage.html',
             controller: 'AppController'
-        })
-        .when('/signUp', {
-            templateUrl: 'pages/signUp.html',
-            controller: 'signUpCtrl'
         })
         .when('/about_us', {
             templateUrl: 'pages/aboutus.html',
@@ -74,10 +70,11 @@ app.directive("breadcrumbs", breadcrumbs);
 function AppController($scope, $rootScope) {
     $scope.isLogged = $rootScope.isLogged;
     window.scroll(0, 0);
-    $scope.isOpenMenu = false;
+    $rootScope.isOpenMenu = false;
     $('.invisibleBlock').hide();
     $('.mobile-menu').slideUp();
     $rootScope.verif = false;
+    console.info($rootScope.isOpenMenu);
 
     $rootScope.keyboardShowHandlerSign = function (e) {
         if (device.platform.indexOf("iOS") !== -1) {
@@ -118,21 +115,21 @@ function AppController($scope, $rootScope) {
     $scope.message = "HomeController";
 }
 
-function topMenu() {
-
+function topMenu($rootScope) {
     return {
         link: function ($scope, element, attrs) {
-            $scope.isOpenMenu = false;
             $scope.menuOpen = function () {
+                console.info($rootScope.isOpenMenu);
                 $('.mobile-menu').slideToggle('.mobile-menu');
 
-                if (!$scope.isOpenMenu) {
-                    $scope.isOpenMenu = true;
+                if (!$rootScope.isOpenMenu) {
+                    $rootScope.isOpenMenu = true;
                     $('.invisibleBlock').show();
-                } else {
-                    $scope.isOpenMenu = false;
+                } else if ($rootScope.isOpenMenu) {
+                    $rootScope.isOpenMenu = false;
                     $('.invisibleBlock').hide();
                 }
+                console.info($rootScope.isOpenMenu);
             };
             $scope.menuLinkClick = function () {
                 $scope.menuOpen();
