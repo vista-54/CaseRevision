@@ -212,6 +212,13 @@ header {
     z-index: 5000;
 }
 
+header > md-progress-linear {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
 /*.headerIsIOS {*/
 /*width: 100%;*/
 /*padding: 20px 15px 34px 15px;*/
@@ -410,6 +417,10 @@ footer {
 .back-block .fa-chevron-left,
 .search-block .fa-search {
 
+}
+
+.home > div > div > md-progress-circular {
+    margin: -10px 0 0 -4px;
 }
 
 .search-block {
@@ -916,6 +927,14 @@ nav a span {
     overflow: hidden;
 }
 
+.homeContainer a:hover {
+    background: rgb(110, 78, 147);
+}
+
+.homeContainer span:hover {
+    background: rgb(80, 153, 91);
+}
+
 .homeContainer#first {
     width: 100%;
     float: none;
@@ -1342,6 +1361,7 @@ a.disabled {
     .loginForm div input {
         width: 4%;
     }
+
     .list {
         margin: 0 auto;
         overflow: hidden;
@@ -1547,6 +1567,9 @@ a.disabled {
         width: 7%;
         height: 100%;
         margin: 0 15px 0 0;
+    }
+    header > .menu-button:hover {
+        color: #9ba7aa;
     }
 
     header a i {
@@ -1781,7 +1804,7 @@ a.disabled {
         font-size: 4.5em;
     }
 
-    .qublock{
+    .qublock {
         margin: 10% 0 0 0;
     }
 

@@ -1,5 +1,5 @@
 app.controller('loginController', loginController);
-function loginController($scope, $http, $rootScope) {
+function loginController($scope, $http, $rootScope, urls) {
     window.scroll(0, 0);
     $rootScope.username = false;
     $scope.user = {};
@@ -13,7 +13,10 @@ function loginController($scope, $http, $rootScope) {
     $rootScope.isLogged = false;
     $scope.loginSuccess = false;
     $scope.login = function () {
+        $rootScope.circular = 'indeterminate';
+        // cordova.plugins.Keyboard.close();
         if (!$scope.loginForm.$valid) {
+            $rootScope.circular = 0;
             $scope.loginSuccess = true;
             $scope.textError = 'Fields are not filled'; // Ошибка пустых полей
             return false;
@@ -30,10 +33,18 @@ function loginController($scope, $http, $rootScope) {
 
         }
         var params = {};
+        $scope.loginSuccess = false;
         params.login = $scope.user.username;
         params.password = $scope.user.password;
-        var req = $http.get("http://www.caserevision.co.uk/api/login?login=" + params.login + "&password=" + params.password);
-        req.success(function (data, status, headers, config) {
+        $http({
+            method: 'GET',
+            url: urls.login,
+            params: {
+                login: params.login,
+                password: params.password
+            }
+        }).success(function (data, status, headers, config) {
+            $rootScope.circular = 0;
             if (data.success) {
                 $rootScope.email = data.email;
                 $rootScope.isLogged = true;
@@ -48,8 +59,8 @@ function loginController($scope, $http, $rootScope) {
                 $scope.textError = 'Invalid login or password';
                 window.location = "#/login";
             }
-        });
-        req.error(function (data, status, headers, config) {
+        }).error(function () {
+            $rootScope.circular = 0;
         });
     };
 }

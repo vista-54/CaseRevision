@@ -10,6 +10,7 @@ app.controller('contactController', ['$scope', '$http','$rootScope', function ($
     $scope.isError = false;
     $scope.errorMessage = '';
     $scope.sendContact = function (contact) { //функция отправки данных контактной формы
+        $rootScope.circular = 'indeterminate';
         if ($scope.contactUs.$invalid) { // проверка на валидность полей
             if ($scope.contactUs.$error.required) {
                 $scope.errorMessage = "All fields are required";
@@ -21,6 +22,7 @@ app.controller('contactController', ['$scope', '$http','$rootScope', function ($
         }
         $http.get("http://www.caserevision.co.uk/api/academic?email=" + contact.email + "&first_name=" + contact.first_name + "&last_name=" + contact.last_name + "&message=" + contact.message)
             .success(function (data, status) {
+                $rootScope.circular = 0;
                 if (status == 200)
                     $scope.notError = true;
                 else{ // выведет ошибку в случае 500 ответа от сервера
@@ -34,6 +36,7 @@ app.controller('contactController', ['$scope', '$http','$rootScope', function ($
                 $scope.errorMessage = data.status;
             })
             .error(function () { // выведет ошибку интернет соединения
+                $rootScope.circular = 0;
                 $scope.notError = false;
                 $scope.isError = true;
                 $scope.errorMessage = "Error connection to the Internet";

@@ -15,6 +15,6 @@
     "ngCordova": "0.1.23-alpha",
     "angular-ui-router": "0.2.15",
     "angular": "^1.5.3",
-    "angular-material": "^1.0.6"
+    "angular-material": "^1.1.1"
   }
 }

@@ -59,14 +59,17 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
     $scope.isAnswerResult = false;
     $scope.videoPart1 = true;
     $scope.getAnswers = function () {
+        $rootScope.circular = 'indeterminate';
         var req = $http.get("http://www.caserevision.co.uk/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
         req.success(function (data, status, headers, config) {
+            $rootScope.circular = 0;
             $scope.answers = data.videos;
             $scope.videoPart1 = false;
             videoBlock.webkitExitFullScreen();
             audio.play();
         });
-        req.error(function (data, status, headers, config) {
+        req.error(function (response) {
+            $rootScope.circular = 'indeterminate';
         });
     };
     $scope.isCorrectAnswer = function (answer) {

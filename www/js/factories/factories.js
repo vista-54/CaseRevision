@@ -31,6 +31,7 @@ angular.module('purchase', [])
     })
     .factory('regInStore', function () {
         return function (res) {
+            store.verbosity = store.INFO;
             var alias = {};
             for (var j in res) {
                 if (res[j].percent == undefined) {
@@ -67,9 +68,9 @@ angular.module('purchase', [])
     })
     .factory('regInMarket', function () {
         return function (res) {
+            store.verbosity = store.INFO;
             var alias = {};
             for (var j in res) {
-                console.info(j);
                 if (res[j].percent == undefined) {
                     store.register({
                         id: "co.uk.caserevision." + j + "_n",
@@ -103,7 +104,7 @@ angular.module('purchase', [])
         }
     })
     .factory('sortSection', function ($http, inArray, regInStore, regInMarket) {
-        //var platform = device.platform;
+        var platform =  'Android';
         return function (obj) {
             var res = obj.sections;
 
@@ -139,7 +140,7 @@ angular.module('purchase', [])
                 discount_code: "&User[code]=" + newUser.discount_code
             };
             for (var i in newUser) {
-                if ((newUser[i] != undefined) && (i != 'check')&&(i != 'confirm_password')) {
+                if ((newUser[i] != undefined) && (i != 'check') && (i != 'confirm_password')) {
                     url += data[i];
                 }
             }

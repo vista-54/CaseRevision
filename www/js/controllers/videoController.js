@@ -28,14 +28,17 @@ function videoController($scope, $routeParams, $http,$cookies, $location, $rootS
     $cookies.put('username', $rootScope.username);
     $cookies.put('auth_key', $rootScope.auth_key);
     var req = $http.get("http://www.caserevision.co.uk/api/get-videos?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&topic_id=" + $scope.topicId);
+    $rootScope.circular = 'indeterminate';
     req.success(function (data, status, headers, config) {
+        $rootScope.circular = 0;
         $scope.videos = data.videos;
         $rootScope.videos = $scope.videos;
         if ($rootScope.Search.isSearch) {
             window.location = "#/section/" + $rootScope.Search.sectionId + '/' + $rootScope.Search.topic_id + '/' + $rootScope.Search.video_id;
         }
     });
-    req.error(function (data, status, headers, config) {
+    req.error(function (response) {
+        $rootScope.circular = 0;
     });
 
 }

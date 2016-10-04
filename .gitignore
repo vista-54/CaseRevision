@@ -7,3 +7,5 @@
 /.idea
 /www/js/libs/*
 !/www/js/libs/font-awesome
+info.txt
+platforms/

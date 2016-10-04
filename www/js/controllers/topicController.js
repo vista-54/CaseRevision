@@ -28,10 +28,12 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
         }
     };
     $rootScope.search = function (term) {
+        $rootScope.circular = 'indeterminate';
         var req = $http.get("http://www.caserevision.co.uk/api/find?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId + "&query=" + term);
         req.success(function (data, status, headers, config) {
+            $rootScope.circular = 0;
             $rootScope.videos = data.videos;
-            $rootScope.searchResult = $rootScope.videos.length > 0 ? true : false;
+            $rootScope.searchResult = ($rootScope.videos.length);
             if ($rootScope.isSearch) {
                 $rootScope.isSearch = false;
                 $scope.$apply();
@@ -40,7 +42,8 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
                 window.location = "#/search";
             }
         });
-        req.error(function (data, status, headers, config) {
+        req.error(function (response) {
+            $rootScope.circular = 0;
         });
     };
     $scope.search = function () {
@@ -51,12 +54,15 @@ function topicController($scope, $routeParams, $window, $http, $rootScope, $loca
     $scope.sectionLink = $rootScope.sectionLink;
     $scope.sectionName = $rootScope.sectionName;
     var req = $http.get("http://www.caserevision.co.uk/api/get-topics?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId);
+    $rootScope.circular = 'indeterminate';
     req.success(function (data, status, headers, config) {
+        $rootScope.circular = 0;
 
         $scope.access = data.access;
         $scope.topics = data.topics;
         $rootScope.topics = $scope.topics;
     });
-    req.error(function (data, status, headers, config) {
+    req.error(function () {
+        $rootScope.circular = 0;
     });
 }

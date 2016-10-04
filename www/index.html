@@ -12,17 +12,13 @@
 </head>
 <body class="input">
 <div class="head-wrapper">
-    <div class="mobile-menu" ng-click="menuLinkClick()" top-menu>
-    </div>
-    <header>
-        <a href="#/"><i class="fa fa-home"></i></a>
-        <div class="menu-button" ng-click="menuOpen()"></div>
-    </header>
+    <div class="mobile-menu" ng-click="menuLinkClick()" top-menu></div>
+    <cr-header></cr-header>
     <div ng-show="isOpenMenu" ng-click="invisiBlockStatus()" class="invisibleBlock" ng-cloak></div>
     <img class="logotype" src="img/logo.png" alt="Logo">
     <div class="view" ng-view></div>
 
-    <script src="cordova.js"></script>
+    <!--<script src="cordova.js"></script>-->
     <script src="js/libs/angular/angular.js"></script>
 
     <script src="js/libs/angular-animate/angular-animate.min.js"></script>
@@ -46,7 +42,9 @@
     <script src="js/controllers/contactUsController.js"></script>
     <script src="js/controllers/accessController.js"></script>
     <script src="js/controllers/searchController.js"></script>
-    <script src="js/controllers/factories.js"></script>
+    <script src="js/factories/factories.js"></script>
+    <script src="js/directives/directives.js"></script>
+    <script src="js/factories/urlFactory.js"></script>
 </div>
 </body>
 </html>

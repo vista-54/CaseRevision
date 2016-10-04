@@ -9,15 +9,28 @@ var app = angular.module('CaseRevisionApp', ['ngCookies', 'ngRoute', 'ngCordova'
 var username = '';
 var auth_key = '';
 
+app.config(config);
+app.run(appRun);
+app.controller('AppController', AppController);
+app.directive("topMenu", topMenu);
+app.directive("breadcrumbs", breadcrumbs);
 
-document.addEventListener("deviceready", function () {
-    StatusBar.overlaysWebView(false);
-    screen.lockOrientation('portrait');
-}, false);
-
-
-app.config(['$routeProvider', function ($routeProvide) {
-    $routeProvide
+function config($routeProvider, $mdThemingProvider) {
+    $mdThemingProvider.definePalette(
+        'myPalette',
+        $mdThemingProvider.extendPalette('green', {
+            500: '#dbe7ea',
+            'contrastDefaultColor': 'light'
+        })
+    );
+    $mdThemingProvider.theme('default')
+        .warnPalette('myPalette', {
+            'default': '500',
+            'hue-1': '300',
+            'hue-2': '800',
+            'hue-3': 'A100'
+        });
+    $routeProvider
         .when('/', {
             templateUrl: 'pages/homepage.html',
             controller: 'AppController'
@@ -61,20 +74,23 @@ app.config(['$routeProvider', function ($routeProvide) {
         .otherwise({
             redirectTo: '/'
         });
-}]);
-
-app.controller('AppController', AppController);
-app.directive("topMenu", topMenu);
-app.directive("breadcrumbs", breadcrumbs);
-
-function AppController($scope, $rootScope) {
+}
+function appRun(urls) {
+    document.addEventListener("deviceready", function () {
+        StatusBar.overlaysWebView(false);
+        screen.lockOrientation('portrait');
+    }, false);
+}
+function AppController($scope, $rootScope, $timeout) {
+    $timeout(function () {
+        $rootScope.circular = 0;
+    });
     $scope.isLogged = $rootScope.isLogged;
     window.scroll(0, 0);
     $rootScope.isOpenMenu = false;
     $('.invisibleBlock').hide();
     $('.mobile-menu').slideUp();
     $rootScope.verif = false;
-    console.info($rootScope.isOpenMenu);
 
     $rootScope.keyboardShowHandlerSign = function (e) {
         if (device.platform.indexOf("iOS") !== -1) {
@@ -114,12 +130,10 @@ function AppController($scope, $rootScope) {
     window.location = "#/";
     $scope.message = "HomeController";
 }
-
 function topMenu($rootScope) {
     return {
         link: function ($scope, element, attrs) {
             $scope.menuOpen = function () {
-                console.info($rootScope.isOpenMenu);
                 $('.mobile-menu').slideToggle('.mobile-menu');
 
                 if (!$rootScope.isOpenMenu) {
@@ -129,7 +143,6 @@ function topMenu($rootScope) {
                     $rootScope.isOpenMenu = false;
                     $('.invisibleBlock').hide();
                 }
-                console.info($rootScope.isOpenMenu);
             };
             $scope.menuLinkClick = function () {
                 $scope.menuOpen();
