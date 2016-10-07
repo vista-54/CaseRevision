@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 
-app.controller('contactController', ['$scope', '$http','$rootScope', function ($scope, $http,$rootScope) {
+app.controller('contactController', function ($scope, $http, $rootScope, urls) {
     window.scroll(0, 0);
     $scope.contact = {};
     $scope.isError = false;
     $scope.errorMessage = '';
-    $scope.sendContact = function (contact) { //функция отправки данных контактной формы
+    $scope.sendContact = function (contact) {
         $rootScope.circular = 'indeterminate';
-        if ($scope.contactUs.$invalid) { // проверка на валидность полей
+        if ($scope.contactUs.$invalid) {
             if ($scope.contactUs.$error.required) {
                 $scope.errorMessage = "All fields are required";
             } else {
@@ -20,26 +20,33 @@ app.controller('contactController', ['$scope', '$http','$rootScope', function ($
             $scope.isError = true;
             return false;
         }
-        $http.get("http://www.caserevision.co.uk/api/academic?email=" + contact.email + "&first_name=" + contact.first_name + "&last_name=" + contact.last_name + "&message=" + contact.message)
-            .success(function (data, status) {
-                $rootScope.circular = 0;
-                if (status == 200)
-                    $scope.notError = true;
-                else{ // выведет ошибку в случае 500 ответа от сервера
-                    $scope.notError = false;
-                    $scope.errorMessage = "Server is not available!";
-                    $scope.isError = true;
-                }
-
-                $scope.contact = {};
-                $scope.isError = true;
-                $scope.errorMessage = data.status;
-            })
-            .error(function () { // выведет ошибку интернет соединения
-                $rootScope.circular = 0;
+        $http({
+            method: 'GET',
+            url: urls.contactUs,
+            params: {
+                "email": contact.email,
+                "first_name": contact.first_name,
+                "last_name": contact.last_name,
+                "message": contact.message
+            }
+        }).success(function (data, status) {
+            $rootScope.circular = 0;
+            if (status == 200)
+                $scope.notError = true;
+            else { // выведет ошибку в случае 500 ответа от сервера
                 $scope.notError = false;
+                $scope.errorMessage = "Server is not available!";
                 $scope.isError = true;
-                $scope.errorMessage = "Error connection to the Internet";
-            });
+            }
+
+            $scope.contact = {};
+            $scope.isError = true;
+            $scope.errorMessage = data.status;
+        }).error(function () { // выведет ошибку интернет соединения
+            $rootScope.circular = 0;
+            $scope.notError = false;
+            $scope.isError = true;
+            $scope.errorMessage = "Error connection to the Internet";
+        });
     };
-}]);
+});

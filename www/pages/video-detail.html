@@ -13,8 +13,8 @@
     <div class="judgement" ng-show="isAnswerResult">{{video.judgement}}</div>
 
     <nav ng-show="isAnswerResult">
-        <button class="btn" ng-click="backBtn()">Back</button>
-        <button class="btn" ng-click="continueBtn()" ng-show="IsNextContinue(video.id)">Continue</button>
+        <md-button class="md-raised md-primary" ng-click="backBtn()">Back</md-button>
+        <md-button class="md-raised md-primary" ng-click="continueBtn()" ng-show="IsNextContinue(video.id)">Continue</md-button>
     </nav>
 
     <div class="qublock" ng-hide="videoPart1">

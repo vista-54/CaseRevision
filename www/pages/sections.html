@@ -1,8 +1,8 @@
 <label class="sectionsTitle">Revolutionise your case law training</label>
 <ul class="list sections">
     <li ng-if="section.id!=5" ng-repeat="section in sections">
-        <!--ng-if добавлен для скрытия лишнего круга, который появляется в случае отправки Серегой данных о Annual-->
-        <a ng-class="{'disabled':(section.coming_soon==1)}" href="#/section/{{section.id}}">{{section.name}}<img
-                alt="img" src="{{getComingSoon(section.coming_soon)}}" class="{{isCms}}"></a>
+        <!--ng-if добавлен для скрытия лишнего круга, который появляется в случае отправки данных о Annual-->
+        <a ng-class="{'disabled':(section.coming_soon == 1)}" href="#/section/{{section.id}}">{{section.name}}<img
+                alt="img" ng-show="section.coming_soon === '1'" ng-src="img/Coming-soon.png" class="isCms"></a>
     </li>
 </ul>

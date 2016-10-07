@@ -1,9 +1,8 @@
-
-    <ul>
-        <li><a href="#/">Home</a></li>
-        <li><a href="#/sections">{{isLogged?'Sections':''}}</a></li>
-        <li><a href="#/about_us">About Us</a></li>
-        <li><a href="#/contact">Contact</a></li>
-        <!--<li ng-if="!isLogged"><a href="#/signUp">Sign up</a></li>-->
-        <li><a href="#/login"  >{{isLogged?'Logout':'Login'}}</a></li>
-    </ul>
+<div class="top-menu" layout="column">
+    <md-button onclick="location.href = '#/'">Home</md-button>
+    <md-button ng-show="isLogged" onclick="location.href = '#/sections'">Sections</md-button>
+    <md-button onclick="location.href = '#/about_us'">About Us</md-button>
+    <md-button onclick="location.href = '#/contact'">Contact</md-button>
+    <md-button ng-style="{'padding-bottom':'5px'}" onclick="location.href = '#/login'">{{isLogged?'Logout':'Login'}}
+    </md-button>
+</div>

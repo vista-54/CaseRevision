@@ -1,5 +1,5 @@
 app.controller('videoDetailController', videoDetailController);
-function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $rootScope) {
+function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $rootScope, urls) {
 
     $scope.isAnswerGet = false;
     if (typeof ($rootScope.Search) !== 'undefined') {
@@ -60,15 +60,21 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
     $scope.videoPart1 = true;
     $scope.getAnswers = function () {
         $rootScope.circular = 'indeterminate';
-        var req = $http.get("http://www.caserevision.co.uk/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
-        req.success(function (data, status, headers, config) {
+        $http({
+            method: 'GET',
+            url: urls.getAnswers,
+            params: {
+                "username": $rootScope.username,
+                "auth_key": $rootScope.auth_key,
+                "video_id": $scope.videoId
+            }
+        }).success(function (data, status, headers, config) {
             $rootScope.circular = 0;
             $scope.answers = data.videos;
             $scope.videoPart1 = false;
             videoBlock.webkitExitFullScreen();
             audio.play();
-        });
-        req.error(function (response) {
+        }).error(function () {
             $rootScope.circular = 'indeterminate';
         });
     };
@@ -88,7 +94,7 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
                 if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
                     $scope.$apply();
             }, 1500);
-        }else {
+        } else {
             $scope.isCorrect = 'red';
             $scope.result = "You are incorrect";
             $scope.CurrentVideoLink = $scope.video.video1_part;
@@ -105,15 +111,15 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
     $scope.getUrlVideo = function (name) {
         $cookies.put('username', $rootScope.username);
         $cookies.put('auth_key', $rootScope.auth_key);
-        if ($scope.isAnswerGet) { // Если ответ получен
-            if ($scope.isAnswerResult) { // и он правильный откроется второе видео
-                return $sce.trustAsResourceUrl("http://www.caserevision.co.uk/api/secure-s-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+        if ($scope.isAnswerGet) {
+            if ($scope.isAnswerResult) {
+                return $sce.trustAsResourceUrl(urls.getSecondLink + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
-            else { // ответ неправильный - первое видео
-                return $sce.trustAsResourceUrl("http://www.caserevision.co.uk/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+            else {
+                return $sce.trustAsResourceUrl(urls.getFirstLink + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
-        } else { // ответ не получен - первое видео
-            return $sce.trustAsResourceUrl("http://www.caserevision.co.uk/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+        } else {
+            return $sce.trustAsResourceUrl(urls.getFirstLink + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
         }
     };
     $scope.backBtn = function () {
@@ -125,14 +131,9 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
     };
     $scope.IsNextContinue = function (id) {
         var nextId = parseInt($scope.getVideoById(id)) + 1;
-        if ($rootScope.videos[nextId]) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return ($rootScope.videos[nextId]);
     };
-    $scope.$on('$routeChangeStart', function(next, current) {
+    $scope.$on('$routeChangeStart', function (next, current) {
         screen.lockOrientation('portrait');
     });
 }

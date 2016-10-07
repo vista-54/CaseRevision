@@ -1,26 +1,31 @@
 app.controller('sectionController', sectionController);
-function sectionController($scope, $http, $rootScope) {
+function sectionController($scope, $http, $rootScope, urls) {
     window.scroll(0, 0);
     $rootScope.circular = 'indeterminate';
     $scope.TopMenuClass = 'menuOn';
     $scope.getComingSoon = function (com) {
         if (com === "1") {
-            $scope.isCms="";
+            $scope.isCms = "";
             return 'img/Coming-soon.png';
         }
-        else{
-            $scope.isCms="noCms";
+        else {
+            $scope.isCms = "noCms";
         }
     };
 
-    var req = $http.get("http://www.caserevision.co.uk/api/get-sections?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key);
-    req.success(function (data, status, headers, config) {
+    $http({
+        method: 'GET',
+        url: urls.getSections,
+        params: {
+            "username": $rootScope.username,
+            "auth_key": $rootScope.auth_key
+        }
+    }).success(function (data, status, headers, config) {
         $rootScope.circular = 0;
         $scope.sections = data.sections;
+        console.info($scope.sections);
         $rootScope.sections = $scope.sections;
-    });
-
-    req.error(function (data, status, headers, config) {
+    }).error(function (data, status, headers, config) {
         $rootScope.circular = 0;
     });
 }

@@ -5,8 +5,8 @@
         <h1 ng-hide="searchResult">Video not found</h1>
         <ul class="videoList" ng-show="searchResult">
 
-            <li  ng-repeat="video in videos">
-                <span >
+            <li ng-repeat="video in videos">
+                <span>
                     <a href="#/section/{{video.topic.section_id}}/{{video.topic.id}}/{{video.id}}">{{video.name}}
                         <br>
                         <div class="for_after">
@@ -19,13 +19,11 @@
         </ul>
     </div>
     <footer>
-        <div class="search-block">
-            <label>
-                <input placeholder="Search" ng-model="term">
-                <button ng-click="search()">
-                    <i class="fa fa-search"></i>
-                </button>
-            </label>
+        <div class="search-block" layout="row" layout-align="center center">
+            <input flex="80" placeholder="Search" ng-model="term">
+            <md-button ng-click="search()" class="search-button md-icon-button md-raised md-accent">
+                <md-icon md-svg-src="search"></md-icon>
+            </md-button>
         </div>
     </footer>
 </div>

@@ -15,11 +15,18 @@ app.controller('AppController', AppController);
 app.directive("topMenu", topMenu);
 app.directive("breadcrumbs", breadcrumbs);
 
-function config($routeProvider, $mdThemingProvider) {
+function config($routeProvider, $mdThemingProvider, $mdIconProvider) {
+    $mdIconProvider
+        .icon('home', 'img/home.svg')
+        .icon('search', 'img/search.svg')
+        .icon('menu', 'img/menu.svg');
+
     $mdThemingProvider.definePalette(
         'myPalette',
         $mdThemingProvider.extendPalette('green', {
             500: '#dbe7ea',
+            700: '#805CA5',
+            900: '#70c17b',
             'contrastDefaultColor': 'light'
         })
     );
@@ -29,6 +36,12 @@ function config($routeProvider, $mdThemingProvider) {
             'hue-1': '300',
             'hue-2': '800',
             'hue-3': 'A100'
+        })
+        .primaryPalette('myPalette', {
+            'default': '700'
+        })
+        .accentPalette('myPalette', {
+            'default':'900'
         });
     $routeProvider
         .when('/', {
@@ -75,21 +88,29 @@ function config($routeProvider, $mdThemingProvider) {
             redirectTo: '/'
         });
 }
-function appRun(urls) {
-    document.addEventListener("deviceready", function () {
-        StatusBar.overlaysWebView(false);
-        screen.lockOrientation('portrait');
-    }, false);
+function appRun() {
+
 }
 function AppController($scope, $rootScope, $timeout) {
-    $timeout(function () {
-        $rootScope.circular = 0;
-    });
+
+
+    document.addEventListener("deviceready", function () {
+        screen.lockOrientation('portrait');
+        StatusBar.overlaysWebView(false);
+        window.addEventListener("orientationchange", function () {
+            console.info(screen.orientation);
+        });
+    }, false);
+
+    $rootScope.circular = 0;
     $scope.isLogged = $rootScope.isLogged;
     window.scroll(0, 0);
-    $rootScope.isOpenMenu = false;
-    $('.invisibleBlock').hide();
-    $('.mobile-menu').slideUp();
+    if (!$rootScope.isOpenMenu) {
+        $rootScope.isOpenMenu = false;
+        $('.invisibleBlock').hide();
+        $('.mobile-menu').slideUp();
+    }
+
     $rootScope.verif = false;
 
     $rootScope.keyboardShowHandlerSign = function (e) {
@@ -144,6 +165,7 @@ function topMenu($rootScope) {
                     $('.invisibleBlock').hide();
                 }
             };
+
             $scope.menuLinkClick = function () {
                 $scope.menuOpen();
             };

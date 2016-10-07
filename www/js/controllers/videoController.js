@@ -33,12 +33,18 @@ function videoController($scope, $routeParams, $http,$cookies, $location, $rootS
         $rootScope.circular = 0;
         $scope.videos = data.videos;
         $rootScope.videos = $scope.videos;
-        if ($rootScope.Search.isSearch) {
-            window.location = "#/section/" + $rootScope.Search.sectionId + '/' + $rootScope.Search.topic_id + '/' + $rootScope.Search.video_id;
+        if($rootScope.Search){
+            if ($rootScope.Search.isSearch) {
+                window.location = "#/section/" + $rootScope.Search.sectionId + '/' + $rootScope.Search.topic_id + '/' + $rootScope.Search.video_id;
+            }
         }
     });
     req.error(function (response) {
         $rootScope.circular = 0;
     });
+
+    $rootScope.goToTopic = function () {
+        location.href = $scope.topicLink;
+    };
 
 }

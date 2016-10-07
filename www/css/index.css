@@ -203,11 +203,13 @@ body.input {
 }
 
 header {
-    width: 100%;
-    padding: 12px 15px;
+    /*width: 100%;*/
+    /*padding: 12px 15px;*/
     background-color: rgb(128, 92, 165);
     position: fixed;
     top: 0;
+    right: 0;
+    left: 0;
     height: 51px;
     z-index: 5000;
 }
@@ -228,11 +230,11 @@ header > md-progress-linear {
 /*height: 44px;*/
 /*z-index: 5000;*/
 /*}*/
-header a i {
-    font-size: 30px !important;
-    color: #dbe7ea;
-    float: left;
-}
+/*header a i {*/
+/*font-size: 30px !important;*/
+/*color: #dbe7ea;*/
+/*float: left;*/
+/*}*/
 
 .container {
     position: relative;
@@ -297,6 +299,12 @@ header a i {
 
 .list li:nth-child(2n) a {
     color: rgb(131, 62, 202);
+}
+
+.list li a {
+    font-size: 25px;
+    color: rgb(60, 127, 69);
+
 }
 
 .list span a {
@@ -383,14 +391,20 @@ header a i {
     outline: 0;
 }
 
-.login_btn {
+.md-button.md-raised.search-button{
+    border-radius: 0;
+    margin:0;
+    height: 46px;
+}
+
+.md-raised.md-primary.login_btn {
     background: #805CA5;
     border: 0;
     font-size: 16px;
     color: rgb(255, 255, 255);
-    padding: 10px 20px 10px 20px;
-    margin-bottom: 10px;
-    outline: 0;
+    /*padding: 10px 20px 10px 20px;*/
+    /*margin-bottom: 10px;*/
+    outline: none;
 }
 
 /*Footer*/
@@ -419,8 +433,15 @@ footer {
 
 }
 
-.home > div > div > md-progress-circular {
-    margin: -10px 0 0 -4px;
+header .md-button.md-icon-button {
+    margin: 0;
+    padding: 0;
+}
+
+header md-icon {
+    color: #dbe7ea;
+    height: 30px;
+    width: 30px;
 }
 
 .search-block {
@@ -439,12 +460,6 @@ footer {
     margin-right: 10px;
     font-size: 22px;
     color: #dbe7ea;
-}
-
-.list li a {
-    font-size: 25px;
-    color: rgb(60, 127, 69);
-
 }
 
 nav {
@@ -591,67 +606,60 @@ nav {
     /*padding: 0 0 30px 0;*/
 }
 
-.titleContainer div {
-    text-align: left;
-    padding: 0 10px 0 0;
-
-}
-
-.titleContainer :nth-child(2n+1) {
+.titleContainer button:nth-child(odd) {
     background: rgb(128, 92, 165);
     color: rgb(255, 255, 255);
 }
 
-.titleContainer a {
+.titleContainer button {
     background: rgb(112, 193, 123);
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 16px;
-    padding: 15px 10px 15px 10px;
     margin: 10px 0px 0 10px;
     float: left;
     font-weight: 800;
     height: 46px;
 }
 
-.titleContainer a i {
+.titleContainer button div.md-ripple-container {
+    /*display: none !important;*/
+}
+
+.titleContainer button i {
     font-size: 22px;
     padding: 0px 5px 0 5px;
     margin: -1px 0 0 0;
 }
 
-.titleContainer span {
-    font-size: 16px;
-    color: rgb(102, 102, 102);
-}
-
 .topicList {
     margin: 30px 10px 0 10px;
-    text-align: left;
+    /*text-align: left;*/
 }
 
-.topicList li {
+.topicList button.md-button {
     position: relative;
     border-bottom: 1px rgb(131, 62, 202) solid;
     line-height: 1.9;
+    padding: 0 14px 0 5px;
 }
 
-.topicList li a {
+.topicList div.topicName {
     display: block;
-    width: 95%;
     position: relative;
     text-decoration: none;
     color: rgb(102, 102, 102);
     z-index: 1;
     font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.topicList li i {
+.topicList button.md-button i {
     position: absolute;
     right: 0;
     top: 13px;
     color: rgb(32, 156, 31);
-    /*padding: 10px 0 0 0;*/
     z-index: 0;
 }
 
@@ -919,58 +927,48 @@ nav a span {
 
 }
 
-/**/
-.homeContainer {
-    width: 100%;
-    float: none;
-    padding: 0 10px 10px 10px;
-    overflow: hidden;
+button.md-button {
+    margin: 0;
+    text-transform: none;
+    border-radius: 0;
 }
 
-.homeContainer a:hover {
-    background: rgb(110, 78, 147);
-}
-
-.homeContainer span:hover {
-    background: rgb(80, 153, 91);
-}
-
-.homeContainer#first {
-    width: 100%;
-    float: none;
-    padding: 11px 10px 10px 10px;
-    overflow: hidden;
-}
-
-.homeContainer a {
-    background: rgb(128, 92, 165);
-    padding: 44px 0 25px 0;
-    width: 50%;
+.top-menu button.md-button {
+    font-size: 1.3em;
+    text-decoration: none;
+    color: #fff;
     display: block;
-    float: left;
+    outline: none;
+}
+
+/**/
+.homeHightContainer .homeContainer {
+    padding: 10px 10px 10px 10px;
+}
+
+.homeContainer .first-part {
+    background: rgb(128, 92, 165);
+    width: 50%;
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-size: 27px;
     font-weight: 800;
-    height: 115px;
+    height: 100px;
 }
 
-.homeContainer span {
+.homeContainer .second-part {
+    display: block;
     color: rgb(255, 255, 255);
     background: rgb(112, 193, 123);
-    display: block;
-    height: 115px;
-    padding: 0px 5px 0 5px;
+    padding: 10px 5px 10px 5px;
     font-size: 17px;
     font-weight: 600;
-    overflow: hidden;
     width: 50%;
-    display: table-cell;
-    vertical-align: middle;
+    height: 100px;
+    word-wrap: break-word;
 }
 
 .homeHightContainer {
-    overflow: hidden;
     padding: 0 0 90px 0;
 }
 
@@ -1564,25 +1562,23 @@ a.disabled {
     }
 
     header > .menu-button {
-        width: 7%;
+        /*width: 7%;*/
         height: 100%;
-        margin: 0 15px 0 0;
-    }
-    header > .menu-button:hover {
-        color: #9ba7aa;
+        /*margin: 0 15px 0 0;*/
     }
 
-    header a i {
-        font-size: 115px !important;
-        color: #dbe7ea;
-        float: left;
-        margin: 0 0 0 10px;
-    }
-
-    .menu-button:after {
-        font-size: 115px;
-    }
-
+    /*header > .menu-button:hover {*/
+    /*color: #9ba7aa;*/
+    /*}*/
+    /*header a i {*/
+    /*font-size: 115px !important;*/
+    /*color: #dbe7ea;*/
+    /*float: left;*/
+    /*margin: 0 0 0 10px;*/
+    /*}*/
+    /*.menu-button:after {*/
+    /*font-size: 115px;*/
+    /*}*/
     .mobile-menu {
         top: 4.5%;
     }
@@ -1731,7 +1727,7 @@ a.disabled {
         font-size: 4.5em;
     }
 
-    .topicList li {
+    .topicList button.md-button {
         line-height: 8em;
         border-bottom: 3px rgb(131, 62, 202) solid;
     }
@@ -1740,18 +1736,18 @@ a.disabled {
         height: 275px;
     }
 
-    .titleContainer a {
+    .titleContainer button {
         padding: 35px;
         font-size: 4.5em;
         height: 140px;
     }
 
-    .topicList li i {
+    .topicList button.md-button i {
         top: calc(50% - 25px);
         font-size: 50px;
     }
 
-    .topicList li a {
+    .topicList button.md-button a {
         font-size: 4.5em;
     }
 
