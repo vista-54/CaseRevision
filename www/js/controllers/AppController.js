@@ -10,7 +10,6 @@ var username = '';
 var auth_key = '';
 
 app.config(config);
-app.run(appRun);
 app.controller('AppController', AppController);
 app.directive("topMenu", topMenu);
 app.directive("breadcrumbs", breadcrumbs);
@@ -41,7 +40,7 @@ function config($routeProvider, $mdThemingProvider, $mdIconProvider) {
             'default': '700'
         })
         .accentPalette('myPalette', {
-            'default':'900'
+            'default': '900'
         });
     $routeProvider
         .when('/', {
@@ -88,18 +87,10 @@ function config($routeProvider, $mdThemingProvider, $mdIconProvider) {
             redirectTo: '/'
         });
 }
-function appRun() {
-
-}
-function AppController($scope, $rootScope, $timeout) {
-
-
+function AppController($scope, $rootScope) {
     document.addEventListener("deviceready", function () {
         screen.lockOrientation('portrait');
         StatusBar.overlaysWebView(false);
-        window.addEventListener("orientationchange", function () {
-            console.info(screen.orientation);
-        });
     }, false);
 
     $rootScope.circular = 0;

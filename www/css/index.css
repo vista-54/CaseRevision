@@ -391,9 +391,9 @@ header > md-progress-linear {
     outline: 0;
 }
 
-.md-button.md-raised.search-button{
+.md-button.md-raised.search-button {
     border-radius: 0;
-    margin:0;
+    margin: 0;
     height: 46px;
 }
 
@@ -956,6 +956,11 @@ button.md-button {
     height: 100px;
 }
 
+.homeContainer button.first-part span {
+    width: 100%;
+    text-align: center;
+}
+
 .homeContainer .second-part {
     display: block;
     color: rgb(255, 255, 255);
@@ -1049,7 +1054,7 @@ button.md-button {
     text-decoration: none;
 }
 
-.pad {
+.contactUs .pad {
     margin: 13px 0;
 }
 
@@ -1368,6 +1373,10 @@ a.disabled {
         padding: 0 5px 0 5px;
     }
 
+    header {
+        height: auto !important;
+    }
+
     .sections.list li:nth-child(4n+1) {
         vertical-align: middle;
         list-style: none;
@@ -1446,7 +1455,7 @@ a.disabled {
     }
 
     .logotype {
-        padding: 20px 10px 0 10px;
+        padding: 45px 10px 0 10px;
         width: 70%;
         margin: 44px 0 0 0;
     }
@@ -1495,7 +1504,7 @@ a.disabled {
     }
 
     .logotype {
-        padding: 20px 10px 0 10px;
+        padding: 45px 10px 0 10px;
         width: 85%;
         margin: 8% 0 0 0;
     }
@@ -1530,6 +1539,10 @@ a.disabled {
         height: 250px;
         font-size: 4.5em;
     }
+    .homeContainer button.first-part span {
+        width: 100%;
+        text-align: center;
+    }
 
     .loginForm div input {
         width: 2%;
@@ -1558,7 +1571,7 @@ a.disabled {
     }
 
     header {
-        height: 5%;
+        height: auto;
     }
 
     header > .menu-button {
