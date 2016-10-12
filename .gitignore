@@ -1,8 +1,6 @@
 /hooks
 /nbproject
 /*.zip
-/cr_cer
-/res
 /npm-debug.log
 /.idea
 /www/js/libs/*
