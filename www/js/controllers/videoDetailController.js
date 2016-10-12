@@ -1,3 +1,10 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 app.controller('videoDetailController', videoDetailController);
 function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $rootScope, urls) {
 
@@ -51,6 +58,7 @@ function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $roo
     $scope.video = $rootScope.videos[$scope.getVideoById($scope.videoId)];
     $scope.CurrentVideoLink = $scope.video.video1_part;
     if ($scope.CurrentVideoLink === "") {
+
         window.location = "#/noaccess";
         return false;
     }
