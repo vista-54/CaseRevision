@@ -1,105 +1,77 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-//var topicModule = angular.module('topicModule', []);
 app.controller('topicController', topicController);
-function topicController($scope, $routeParams, $window, $http, $rootScope, $location) {
-//    $rootScope.Search.isSearch=true;
+function topicController($scope, $routeParams, urls, $http, $rootScope, $location) {
     window.scroll(0, 0);
     window.addEventListener('native.keyboardhide', $rootScope.keyboardHideHandler);
     window.addEventListener('native.keyboardshow', $rootScope.keyboardShowHandler);
-//    $scope.inputIsActive = true;
     $rootScope.pages = {
         isSectionPage: true,
         isTopicPage: false,
         isVideoPage: false
     };
+    $rootScope.circular = 'indeterminate';
 
 
     $scope.isSectionPage = $rootScope.pages.isSectionPage;
     $scope.isTopicPage = $rootScope.pages.isTopicPage;
     $scope.isVideoPage = $rootScope.pages.isVideoPage;
-    console.log("topicController");
     $scope.sectionId = $routeParams.sectionId;
     $scope.page = $location.url();
-    $scope.$on('$routeChangeSuccess', function (event, current, previous) {
-        console.log(event);
-        console.log(current);
-        console.log(previous);
-//        console.log(oldUrl);
-    });
-//    $scope.getSectionName = function () {
-////          $scope.getSectionById();
-//        
-//        return $rootScope.sectionName;
-//    };
+
     $scope.getSectionById = function (id) {
-        for (var i in  $rootScope.sections) {
-            var obj = $rootScope.sections[i];
-            if (obj.id === id) {
-                return i;
-            }
-        }
+        return $rootScope.sections.filter(function (item) {
+            return item.id == id;
+        });
     };
     $rootScope.search = function (term) {
-        var req = $http.get("http://caserevision.co.uk/api/find?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId + "&query=" + term);
-        req.success(function (data, status, headers, config) {
+        $rootScope.circular = 'indeterminate';
+        $http({
+            method: 'GET',
+            url: urls.search,
+            params: {
+                "username": $rootScope.username,
+                "auth_key": $rootScope.auth_key,
+                "section_id": $scope.sectionId,
+                "query": term
+            }
+        }).success(function (data, status, headers, config) {
+            $rootScope.circular = 0;
             $rootScope.videos = data.videos;
-            console.info($rootScope.videos);
-            $rootScope.searchResult = $rootScope.videos.length > 0 ? true : false;
-            //$scope.$apply();
-            //window.location.reload();
+            $rootScope.searchResult = ($rootScope.videos.length);
             if ($rootScope.isSearch) {
                 $rootScope.isSearch = false;
                 $scope.$apply();
-            }
-            else {
+            } else {
                 window.location = "#/search";
             }
-
-
-//            return data.videos;
-//            for (var i in data.videos) {
-//                
-//                var obj = data.videos[i];
-//                console.log(obj.topic_id);
-//                console.log(obj.id);
-//                $rootScope.Search = {
-//                    sectionId: $scope.sectionId,
-//                    topic_id: obj.topic_id,
-//                    video_id: obj.id,
-//                    isSearch: true
-//                };
-//
-//                window.location = "#/section/" + $rootScope.Search.sectionId + '/' + obj.topic_id;
-//                console.log("#/section/" + $scope.sectionId + '/' + obj.topic_id + '/' + obj.id);
-//            }
-
-
+        }).error(function () {
+            $rootScope.circular = 0;
         });
-        req.error(function (data, status, headers, config) {
-            console.log(data);
-        });
-        //console.log($scope.term);
     };
     $scope.search = function () {
         $rootScope.search($scope.term);
     };
-    $rootScope.sectionName = $rootScope.sections[$scope.getSectionById($scope.sectionId)].name;
+    $rootScope.sectionName = $scope.getSectionById($scope.sectionId)[0].name;
     $rootScope.sectionLink = '#' + $scope.page;
     $scope.sectionLink = $rootScope.sectionLink;
     $scope.sectionName = $rootScope.sectionName;
-    var req = $http.get("http://caserevision.co.uk/api/get-topics?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&section_id=" + $scope.sectionId);
-    req.success(function (data, status, headers, config) {
-        console.log(data);
+    $http({
+        method: 'GET',
+        url: urls.getTopics,
+        params: {"username": $rootScope.username, "auth_key": $rootScope.auth_key, "section_id": $scope.sectionId}
+    }).success(function (data, status, headers, config) {
+        $rootScope.circular = 0;
         $scope.access = data.access;
         $scope.topics = data.topics;
         $rootScope.topics = $scope.topics;
+    }).error(function () {
+        $rootScope.circular = 0;
     });
-    req.error(function (data, status, headers, config) {
-        console.log(data);
-    });
+
+    $rootScope.goToSection = function () {
+        location.href = $scope.sectionLink;
+    };
+
+    $scope.goToPage = function (page, id) {
+        location.href = '#' + page + '/' + id;
+    }
 }

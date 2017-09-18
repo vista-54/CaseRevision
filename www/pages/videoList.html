@@ -1,20 +1,10 @@
 <div>
-    <!--    <h1>Video lists {{topicId}}</h1>-->
     <div class="historylinks">
-        <!--<a href="#/sections">Sections</a> > <a href="{{sectionLink}}">{{sectionName}}</a> > <a href="#{{page}}/{{video.id}}">{{getTopicName()}}</a>-->
     </div>
     <div class="titleContainer" breadcrumbs>
-        <!--            <a href="#/sections"><i class="fa fa-home"></i></a>
-                    <a href="{{sectionLink}}">{{sectionName}}</a>
-                    <a>{{topicName}}</a>-->
-        <!--            <span class="currTitle">
-                        {{topicName}}
-                    </span>-->
-
     </div>
     <ul class="videoList">
         <li ng-repeat="video in videos">
-            <!--{{count=parseInt(count)+1}}-->
             <a href="#{{page}}/{{video.id}}">
                 <div class="prevision">
                     {{video.name}}
@@ -27,4 +17,3 @@
         </li>
     </ul>
 </div>
-<!---->

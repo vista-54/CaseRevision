@@ -6,7 +6,7 @@
 
 
 app.controller('videoDetailController', videoDetailController);
-function videoDetailController($location, $scope, $sce, $routeParams, $cookies, $http, $rootScope) {
+function videoDetailController($scope, $sce, $routeParams, $cookies, $http, $rootScope, urls) {
 
     $scope.isAnswerGet = false;
     if (typeof ($rootScope.Search) !== 'undefined') {
@@ -28,19 +28,13 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
         return $scope.video.name;
     };
     $scope.$on('$routeChangeSuccess', function (event, current, previous) {
-        console.log(event);
-        console.log(current);
-        console.log(previous);
         $scope.backPage = previous.scope.page;
         if (!$scope.backPage) {
             $scope.backPage = previous.scope.backPage;
         }
     });
-    console.log(window.location);
 
     videoBlock.onended = function () {
-        console.log("Video END");
-        //screen.lockOrientation('portrait');
         $scope.result = "";
         if (videoBlock.getAttribute("data-number-video") === "1") {
             $scope.getAnswers();
@@ -50,9 +44,8 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
         }
     };
     videoBlock.onplay = function () {
-        //screen.unlockOrientation();
+
     };
-    console.log("videoDetailController");
     $scope.videoId = $routeParams.videoId;
     $scope.getVideoById = function (id) {
         for (var i in  $scope.videos) {
@@ -74,25 +67,29 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
     $scope.isAnswerResult = false;
     $scope.videoPart1 = true;
     $scope.getAnswers = function () {
-        console.info($rootScope.username + " " + $rootScope.auth_key + " " + $scope.videoId);
-        var req = $http.get("http://caserevision.co.uk/api/get-answers?username=" + $rootScope.username + "&auth_key=" + $rootScope.auth_key + "&video_id=" + $scope.videoId);
-        req.success(function (data, status, headers, config) {
-            console.log(data);
+        $rootScope.circular = 'indeterminate';
+        $http({
+            method: 'GET',
+            url: urls.getAnswers,
+            params: {
+                "username": $rootScope.username,
+                "auth_key": $rootScope.auth_key,
+                "video_id": $scope.videoId
+            }
+        }).success(function (data, status, headers, config) {
+            $rootScope.circular = 0;
             $scope.answers = data.videos;
-            console.info("answers " + $scope.answers);
             $scope.videoPart1 = false;
             videoBlock.webkitExitFullScreen();
             audio.play();
-        });
-        req.error(function (data, status, headers, config) {
-            console.log(data);
+        }).error(function () {
+            $rootScope.circular = 'indeterminate';
         });
     };
     $scope.isCorrectAnswer = function (answer) {
         $scope.isAnswerGet = true;
         window.scroll(0, 0);
         if (parseInt(answer.status) === 1) {
-            console.log("Answer is correct");
             $scope.isCorrect = 'green';
             $scope.result = "You are correct";
             $scope.CurrentVideoLink = $scope.video.video2_part;
@@ -105,8 +102,7 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
                 if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
                     $scope.$apply();
             }, 1500);
-        }else {
-            console.log("Answer is INcorrect");
+        } else {
             $scope.isCorrect = 'red';
             $scope.result = "You are incorrect";
             $scope.CurrentVideoLink = $scope.video.video1_part;
@@ -118,51 +114,34 @@ function videoDetailController($location, $scope, $sce, $routeParams, $cookies, 
                 if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
                     $scope.$apply();
             }, 1500);
-
-
         }
     };
     $scope.getUrlVideo = function (name) {
-//        return $sce.trustAsResourceUrl(name);
         $cookies.put('username', $rootScope.username);
         $cookies.put('auth_key', $rootScope.auth_key);
-        if ($scope.isAnswerGet) { // Если ответ плоучен
-            if ($scope.isAnswerResult) { // и он правильный откроется второе видео
-
-//                return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-s-link/" + $scope.videoId);
-                return $sce.trustAsResourceUrl("http://caserevision.com/api/secure-s-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+        if ($scope.isAnswerGet) {
+            if ($scope.isAnswerResult) {
+                return $sce.trustAsResourceUrl(urls.getSecondLink + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
-            else { // ответ неправильный - первое видео
-//                return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId);
-                return $sce.trustAsResourceUrl("http://caserevision.com/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+            else {
+                return $sce.trustAsResourceUrl(urls.getFirstLink + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
             }
-        } else { // ответ не получен - первое видео
-//            return $sce.trustAsResourceUrl("http://caserevision.com/video/secure-f-link/" + $scope.videoId);
-            return $sce.trustAsResourceUrl("http://caserevision.com/api/secure-f-link/" + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
+        } else {
+            return $sce.trustAsResourceUrl(urls.getFirstLink + $scope.videoId + '?username=' + $rootScope.username + '&auth_key=' + $rootScope.auth_key);
         }
-
     };
-
     $scope.backBtn = function () {
         window.location = '#' + $scope.backPage;
     };
     $scope.continueBtn = function () {
         var Id = parseInt($scope.getVideoById($scope.video.id)) + 1;
         return window.location = '#' + $scope.backPage + "/" + $rootScope.videos[Id].id;
-
     };
     $scope.IsNextContinue = function (id) {
         var nextId = parseInt($scope.getVideoById(id)) + 1;
-        if ($rootScope.videos[nextId]) {
-            return true;
-        }
-        else {
-            return false;
-        }
-
+        return ($rootScope.videos[nextId]);
     };
-    $scope.$on('$routeChangeStart', function(next, current) {
+    $scope.$on('$routeChangeStart', function (next, current) {
         screen.lockOrientation('portrait');
     });
-
 }

@@ -1,6 +1,5 @@
 <div>
     <div class="historylinks"  ng-cloak>
-        <!--<a href="#/sections">Sections</a> > <a href="{{sectionLink}}">{{sectionName}}</a> > <a href="{{topicLink}}">{{topicName}}</a> > <a href="{{topicLink}}">{{getVideoName()}}</a>-->
     </div>
     <div class="titleContainer" breadcrumbs>
     </div><br>
@@ -8,14 +7,14 @@
     <h1 class="nameVideo" ng-show="videoPart1">{{video.name}}</h1>
 
     <section   ng-show="videoPart1">
-        <video  width="100%" id="video" poster="{{video.image}}"  data-number-video="{{numberVideo}}" src="{{getUrlVideo(CurrentVideoLink)}}" controls autoplay></video>
+        <video  width="100%" id="video" poster="{{video.image}}"  data-number-video="{{numberVideo}}" ng-src="{{getUrlVideo(CurrentVideoLink)}}" controls autoplay></video>
     </section>
 
     <div class="judgement" ng-show="isAnswerResult">{{video.judgement}}</div>
 
     <nav ng-show="isAnswerResult">
-        <button class="btn" ng-click="backBtn()">Back</button>
-        <button class="btn" ng-click="continueBtn()" ng-show="IsNextContinue(video.id)">Continue</button>
+        <md-button class="md-raised md-primary" ng-click="backBtn()">Back</md-button>
+        <md-button class="md-raised md-primary" ng-click="continueBtn()" ng-show="IsNextContinue(video.id)">Continue</md-button>
     </nav>
 
     <div class="qublock" ng-hide="videoPart1">
@@ -25,13 +24,8 @@
             <li ng-repeat="(key,answer) in answers">
                 <img alt="answer img" src="img/answer{{key + 1}}.png"><a ng-click="isCorrectAnswer(answer)">{{answer.text}}</a>
             </li>
-            <audio preload="auto" src="media/sound1.mp3" type="audio/mp3">
-
+            <audio preload="auto" ng-src="media/sound1.mp3" type="audio/mp3">
             </audio>
         </ul>
     </div>
-
-
-
-
 </div>

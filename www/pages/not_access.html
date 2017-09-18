@@ -1,31 +1,25 @@
 <div id="access">
     <div class="accessFalseContainer">
-        <span class="green_yu" ng-if="verif">Message to verify your account have been sent to your E-mail {{email}} (Pleace, check your E-mail)</span>
         <nav class="accessFalse" >
 
             <div>
-                <a ng-class="{'grey':(buyed.indexOf(1)>-1)}" target="_blank" ng-click="clickLaw(contract)">Contract Law
+                <a ng-class="{'grey':(buyed.indexOf(1)>-1)}" ng-click="changePurchase(response.sections['contract'],response)">Contract Law
                     <h3>£ {{contract.price}}<br><span class="timeBuy">1 Year</span></h3>
                 </a>
                 <img class="leftarrow" alt="imgArrow" src="img/arrow1.png">
             </div>
             <div>
-                <a ng-class="{'grey':(buyed.indexOf(2)>-1)}" target="_blank" ng-click="clickLaw(criminal)">Criminal Law
+                <a ng-class="{'grey':(buyed.indexOf(2)>-1)}" ng-click="changePurchase(response.sections['criminal'],response)">Criminal Law
                     <h3>£ {{criminal.price}}<br><span
                             class="timeBuy">1 Year</span></h3>
                 </a>
                 <img class="rightarrow" alt="imgArrow" src="img/arrow2.png">
             </div>
-            <a ng-class="{'grey':(buyed.length>0)}" target="_blank" ng-click="clickLaw(annual)">Annual <span>Subscription</span>
+            <a ng-class="{'grey':(buyed.length>0)}" ng-click="changePurchase(response.sections['annual'],response)">Annual <span>Subscription</span>
                 <h3>£ {{annual.price}}<br><span class="timeBuy">for both</span></h3>
             </a>
         </nav>
-        <!--<div  ng-show="isLogged&&!response.promo">-->
-            <!--<form class="loginForm">-->
-                <!--<input type="text" ng-model="promo" placeholder="Enter promo-code to get discount" class="loginForm">-->
-            <!--</form>-->
-            <!--<input type="button" class="btn" value="Ok" ng-click="SendPromo(promo)">-->
-        <!--</div>-->
+
         <span class="acessFalseSubTitle">
             View ALL the case law videos for a full year as many times as you like. Join now to get your personal and secure login for one year.
         </span>
@@ -33,10 +27,7 @@
     </div>
 
     <div class="homeFooter">
-
         <h1>You could be revising for FREE!</h1>
         <span>When you recommend a friend we'll award you CREDITS visit our website for more details</span>
-
     </div>
-
 </div>

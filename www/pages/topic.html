@@ -1,34 +1,23 @@
 <div>
     <div class="topicContent">
-        <!--<h1>Topics lists</h1>-->
         <div class="historylinks">
-            <!--<a href="#/sections">Sections</a> > <a href="#{{page}}/{{topic.id}}">{{getSectionName()}}</a>-->
         </div>
         <div class="titleContainer" breadcrumbs>
-            <!--        <a href="#/sections"><i class="fa fa-home"></i></a>
-                    <a>{{sectionName}}</a>
-                    <div >
-                        <span>Select the case law from the menu below to view a range of videos</span>
-                    </div>-->
         </div>
-        <ul class="topicList">
-            <li ng-repeat="topic in topics">
-                <a href="#{{page}}/{{topic.id}}">{{topic.name}}</a><i class="fa fa-play"></i>
-                <div layout="row" layout-sm="column" layout-align="space-around">
-                    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-                </div>
-            </li>
-        </ul>
+        <div class="topicList" layout="column">
+            <md-button ng-repeat="topic in topics" layout="row" layout-align="space-between center"
+                       ng-click="goToPage(page, topic.id)">
+                <div class="topicName">{{topic.name}}</div>
+                <i class="fa fa-play"></i>
+            </md-button>
+        </div>
     </div>
     <footer>
-        <div class="search-block">
-
-            <label><input placeholder="Search" ng-model="term">
-                <button ng-click="search()"><i class="fa fa-search"></i></button>
-            </label>
-            <!--<a class="fBtn" href="#/sections" >BACK</a>-->
+        <div class="search-block" layout="row" layout-align="center center">
+                <input flex="80" placeholder="Search" ng-model="term">
+                <md-button ng-click="search()" class="search-button md-icon-button md-raised md-accent">
+                    <md-icon md-svg-src="search"></md-icon>
+                </md-button>
         </div>
-
     </footer>
-    <!--<div class="footer"> </div>-->
 </div>

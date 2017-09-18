@@ -1,100 +1,50 @@
 <!doctype html>
-<html ng-app="CaseRevisionApp" ><head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
-        <title>CaseRevision</title>
-        <link  href="css/index.css" rel='stylesheet'>
-        <link  href="css/layout.css" rel='stylesheet'>
-        <link rel="stylesheet" href="js/libs/font-awesome/css/font-awesome.min.css">
-        <!--<link  href="css/bootstrap-3.3.6-dist/css/bootstrap.css" rel='stylesheet'>-->
+<html ng-app="CaseRevisionApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+    <title>CaseRevision</title>
+    <link href="css/index.css" rel='stylesheet'>
+    <link href="css/layout.css" rel='stylesheet'>
+    <link rel="stylesheet" href="js/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="js/libs/angular-material/angular-material.min.css">
 
-        <!--<script src="js/index.js"></script>-->
+</head>
+<body class="input">
+<div class="head-wrapper">
+    <div class="mobile-menu" ng-click="menuLinkClick()" top-menu></div>
+    <cr-header></cr-header>
+    <div ng-show="isOpenMenu" ng-click="invisiBlockStatus()" class="invisibleBlock" ng-cloak></div>
+    <img class="logotype" src="img/logo.png" alt="Logo">
+    <div class="view" ng-view></div>
 
+    <script src="cordova.js"></script>
+    <script src="js/libs/angular/angular.js"></script>
 
-    </head>
-    <body class="input">
-        <div class="head-wrapper">
-            <div class="mobile-menu" ng-click="menuLinkClick()" top-menu>
-            </div>
-            <header >
-            <!--<header ng-class="{'headerIsIOS':(isIOS)}">-->
-                <a href="#/"><i class="fa fa-home"></i></a> 
-                <div class="menu-button" ng-click="menuOpen()"></div>
-            </header>
-            <div ng-show="isOpenMenu" ng-click="invisiBlockStatus()" class="invisibleBlock" ng-cloak></div>
-            <!--<img class="logotype" ng-class="{'logotypeIsIOS':(isIOS)}" src="img/logo.png" alt="Logo">-->
-            <img class="logotype"  src="img/logo.png" alt="Logo">
-            <div class="view" ng-view>
-            </div>
-            <!--            <footer>
-                                            <div class="back-block"><i class="fa fa-chevron-left"></i><span class="button-name">Back</span></div>
-                                            <div class="search-block"><span class="button-name">Search</span><i class="fa fa-search"></i></div>
-                        </footer>-->
+    <script src="js/libs/angular-animate/angular-animate.min.js"></script>
+    <script src="js/libs/angular-aria/angular-aria.min.js"></script>
+    <script src="js/libs/angular-messages/angular-messages.min.js"></script>
+    <script src="js/libs/angular-material/angular-material.min.js"></script>
+    <script src="js/libs/jq/jquery-2.1.4.min.js"></script>
 
+    <script src="js/libs/angular-route/angular-route.min.js"></script>
+    <script src="js/libs/angular-cookies/angular-cookies.min.js"></script>
 
-            <!--    <div>
-            
-                    <div ng-view></div>
-                    <a href="#/">Home</a>
-                    <a href="#/login">login</a>
-                    <a href="#/sections">Sections</a>
-                                <div ng-include="loadPage('login')">
-                    
-                                </div>
-            
-                </div>-->
-            <script src="cordova.js"></script>
-            <script src="js/libs/angular/angular.min.js"></script>
-            <script src="js/libs/jq/jquery-2.1.4.min.js"></script>
-            <script src="js/libs/ngmap/build/scripts/ng-map.min.js"></script>
-            <!--<script src="js/libs/ngvideo/dist/ng-video.min.js"></script>-->
-            <!--<script type="text/javascript" src="js/libs/angular-jwplayer/dist/angular-jwplayer.min.js" ></script>-->
-
-            <!--<script src="js/controllers/loginController.js"></script>-->
-            <script src="js/libs/angular-route/angular-route.min.js"></script>
-            <script src="js/libs/angular-cookies/angular-cookies.min.js"></script>
-            <!--<script src="js/libs/cdv-plugin-paypal-mobile-sdk.js"></script>-->
-            <!--<script src="js/libs/paypal-mobile-js-helper.js"></script>-->
-            <!--<script src="js/libs/jwplayer/jwplayer.js"></script>-->
-
-            <!--<script src="js/libs/angular-jwplayer/dist/angular-jwplayer.min.js"></script>-->
-
-            <!--<script src="js/libs/angular-ui-router/release/angular-ui-router.min.js"></script>-->
-
-
-            <!--<script type="text/javascript" src="js/libs/jw-plangular-master/dist/jw-plangular.min.js"></script>-->
-            <!--<script type="text/javascript">jwplayer.key = "Bte4fkW3EquKCISahS/lNNf0FWwMaOFvYx9s+A==";</script>-->
-            <script src="js/libs/ngCordova/dist/ng-cordova.js"></script>
-            <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>-->
-            <script src="js/controllers/AppController.js"></script>
-            <!--<script src="js/controllers/AppController.js"></script>-->
-            <!--<script src="js/controllers/payment.js"></script>-->
-            <script src="js/controllers/signUpCtrl.js"></script>
-            <script src="js/controllers/LoginController.js"></script>
-            <script src="js/controllers/sectionController.js"></script>
-            <script src="js/controllers/topicController.js"></script>
-            <script src="js/controllers/videoController.js"></script>
-            <script src="js/controllers/videoDetailController.js"></script>
-            <script src="js/controllers/aboutUsController.js"></script>
-            <script src="js/controllers/contactUsController.js"></script>
-            <script src="js/controllers/accessController.js"></script>
-            <script src="js/controllers/searchController.js"></script>
-            <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
-            <!--<script src="js/action.js"></script>-->
-            <!--<script src="https://code.angularjs.org/1.3.15/angular.js"></script>-->
-            <!--<script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>-->
-
-            <!--<script type="text/javascript">jwplayer.key = "Bte4fkW3EquKCISahS/lNNf0FWwMaOFvYx9s+A=="</script>-->
-            <script>$(function () {
-//                    $('.mobile-menu').click(function () {
-//                        $('.menu-button').click();
-//                    });
-//                    $('.menu-button').click(function () {
-//                        
-//                        $('.mobile-menu').slideToggle('.mobile-menu');
-//                    });
-                })
-            </script>
-        </div>
-    </body>
+    <script src="js/libs/ngCordova/dist/ng-cordova.js"></script>
+    <script src="js/controllers/AppController.js"></script>
+    <script src="js/controllers/modalCtrl.js"></script>
+    <script src="js/controllers/LoginController.js"></script>
+    <script src="js/controllers/sectionController.js"></script>
+    <script src="js/controllers/topicController.js"></script>
+    <script src="js/controllers/videoController.js"></script>
+    <script src="js/controllers/videoDetailController.js"></script>
+    <script src="js/controllers/aboutUsController.js"></script>
+    <script src="js/controllers/contactUsController.js"></script>
+    <script src="js/controllers/accessController.js"></script>
+    <script src="js/controllers/searchController.js"></script>
+    <script src="js/factories/factories.js"></script>
+    <script src="js/directives/directives.js"></script>
+    <script src="js/factories/urlFactory.js"></script>
+</div>
+</body>
 </html>

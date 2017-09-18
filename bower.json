@@ -1,0 +1,20 @@
+{
+  "name": "CaseRevision",
+  "homepage": "https://github.com/vista-54/CaseRevision",
+  "authors": [
+    "Tanatcu <ruslan.iuko777@mail.ru>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "font-awesome": "^4.5.0",
+    "angular-cookies": "1.4.9",
+    "angular-route": "1.5.0-build.4478+sha.8955cfb",
+    "ngCordova": "0.1.23-alpha",
+    "angular-ui-router": "0.2.15",
+    "angular": "^1.5.3",
+    "angular-material": "^1.1.1"
+  }
+}

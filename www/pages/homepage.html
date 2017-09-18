@@ -1,22 +1,41 @@
-<div>
-    <div class="homeHightContainer">
-        <div id="first" class="homeContainer">
-            <a href="#/about_us">About</a><span>Find out about CaseRevision and how it will work for you...</span>
-        </div>
-        <div class="homeContainer">
-            <a href="#/noaccess">Join Us</a><span>And make a huge difference to how you learn your case law from now on...</span>
-        </div>
-        
-        <div ng-hide="isLogged" class="homeContainer">
-            <a href="#/login">Login</a><span>Login to your personal account - any device and any time...</span>
-        </div>
-        <div ng-show="isLogged" class="homeContainer">
-            <a href="#/sections">Sections</a><span>Revolutionise your case law training</span>
+<div class="homeHightContainer">
+    <div class="homeContainer" layout="row">
+        <md-button onclick="location.href = '#/about_us'" layout="row" class="first-part md-raised md-primary">
+            About
+        </md-button>
+        <div layout="row" layout-align="center center" class="second-part">Find out
+            about CaseRevision and how it will work for you...
         </div>
     </div>
-    <div class="homeFooter">
+
+    <div class="homeContainer" layout="row">
+        <md-button onclick="location.href = '#/noaccess'" layout="row" class="first-part md-raised md-primary">
+            Join Us
+        </md-button>
+        <div layout="row" layout-align="center center" class="second-part">And make a huge difference to how you
+            learn your case law from now on...
+        </div>
+    </div>
+
+    <div ng-hide="isLogged" class="homeContainer" layout="row">
+        <md-button onclick="location.href = '#/login'" layout="row" class="first-part md-raised md-primary">
+            Login
+        </md-button>
+        <div layout="row" layout-align="center center" class="second-part">Login to your personal account - any
+            device and any time...
+        </div>
+    </div>
+
+    <div ng-show="isLogged" class="homeContainer" layout="row">
+        <md-button onclick="location.href = '#/sections'" layout="row" class="first-part md-raised md-primary">
+            Sections
+        </md-button>
+        <div layout="row" layout-align="center center" class="second-part">Revolutionise your case law training
+        </div>
+    </div>
+</div>
+<div class="homeFooter">
         <span>
             View All the case law videos for a full year as many time as you like. Join now to get your personal and secure login.
         </span>
-    </div>
 </div>

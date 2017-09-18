@@ -1,5 +1,6 @@
-<a href="#/sections">Sections</a>  
-<a href="{{sectionLink}}">{{sectionName}}</a>
+<md-button layout="row" class="md-raised md-primary" layout-align="center center" onclick="location.href = '#/sections'">Sections</md-button>
+<md-button layout="row" class="md-raised md-accent" layout-align="center center" ng-click="goToSection()">{{sectionName}}</md-button>
+<md-button layout="row" class="md-raised md-primary" layout-align="center center" ng-show="isTopicPage" ng-click="goToTopic()">{{topicName}}</md-button>
+
 <!--{{isSectionPage?'':'sectionLink'}}-->
-<a ng-show="isTopicPage" href="{{topicLink}}">{{topicName}}</a>
 <!--<a ng-show="isVideoPage" >{{video.name}}</a>-->

@@ -1,0 +1,11 @@
+<header class="md-padding">
+    <md-progress-linear ng-if="$root.circular" class="md-accent" md-mode="indeterminate"></md-progress-linear>
+    <div layout="row" layout-align="space-between start">
+        <md-button class="md-icon-button md-warm" onclick="location.href = '#/'">
+            <md-icon md-svg-src="home"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="menuOpen()">
+            <md-icon md-svg-src="menu"></md-icon>
+        </md-button>
+    </div>
+</header>
